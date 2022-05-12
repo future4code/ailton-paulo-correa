@@ -97,7 +97,7 @@
 // 2.
 const teoremaDePitagoras = (cateto1, cateto2) => {
   const somaCatetos = cateto1 ** 2 + cateto2 ** 2;
-  console.log(`A hipotenusa é ${Math.sqrt(somaCatetos)}`);
+  console.log(`A hipotenusa é ${somaCatetos ** 0.5}`);//Nessa parte quem me salvou foi o Daniel e Gabriel Theodoro, eu estava quase usando um Math.sqrt, eles me lembraram que 0,5 equivale a tirar raiz
 };
 teoremaDePitagoras(
   Number(prompt("Informe o primeiro cateto:")),
