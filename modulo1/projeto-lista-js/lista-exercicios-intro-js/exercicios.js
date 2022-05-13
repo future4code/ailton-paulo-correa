@@ -109,51 +109,68 @@ function checaIgualdadeDesconsiderandoCase(string1, string2) {
 function checaRenovacaoRG() {
   // implemente sua lógica aqui
   const anoAtual = Number(prompt("Qual é o ano atual?"));
-  const anoNascimento = Number(prompt("Qual é o seu ano de nascimento?"));
-  const anoEmissaoIdentidade = Number(
-    prompt("Qual o ano de emissão de sua carteira de identidade?")
-  );
-  const idadeUsuario = anoAtual - anoNascimento;
-  const tempoIdentidade = anoAtual - anoEmissaoIdentidade;
-  if (idadeUsuario <= 20 && tempoIdentidade >= 5) {
-    console.log(true);
-  } else {
-    if (idadeUsuario > 20 && idadeUsuario <= 50 && tempoIdentidade >= 10) {
-      console.log(true);
-    } else {
-      if (idadeUsuario > 50 && tempoIdentidade >= 15) {
-        console.log(true);
-      } else {
-        console.log(false);
-      }
-    }
-  }
+  const idadeUsuario = anoAtual - Number(prompt("Qual é o seu ano de nascimento?"));
+  const tempoIdentidade = anoAtual - Number(prompt("Qual o ano de emissão de sua carteira de identidade?"));
+  console.log((idadeUsuario <= 20 && tempoIdentidade >= 5) || (idadeUsuario > 20 && idadeUsuario <= 50 && tempoIdentidade >= 10) || (idadeUsuario > 50 && tempoIdentidade >= 15));
 }
+// ESSA FOI MINHA PRIMEIRA RESOLUÇÃO
+// const anoAtual = Number(prompt("Qual é o ano atual?"));
+// const anoNascimento = Number(prompt("Qual é o seu ano de nascimento?"));
+// const anoEmissaoIdentidade = Number(
+//   prompt("Qual o ano de emissão de sua carteira de identidade?")
+// );
+// const idadeUsuario = anoAtual - anoNascimento;
+// const tempoIdentidade = anoAtual - anoEmissaoIdentidade;
+// if (idadeUsuario <= 20 && tempoIdentidade >= 5) {
+//   console.log(true);
+// } else {
+//   if (idadeUsuario > 20 && idadeUsuario <= 50 && tempoIdentidade >= 10) {
+//     console.log(true);
+//   } else {
+//     if (idadeUsuario > 50 && tempoIdentidade >= 15) {
+//       console.log(true);
+//     } else {
+//       console.log(false);
+//     }
+//   }
+// }
+
 // EXERCÍCIO 14
 function checaAnoBissexto(ano) {
   // implemente sua lógica aqui
-  if (ano % 4 == 0 && (!(ano % 100 == 0) || ano % 400 == 0)) {
-    return true;
-  } else {
-    return false;
-  }
+  return (ano % 4 == 0 && (!(ano % 100 == 0) || ano % 400 == 0));
 }
+// ESSA FOI MINHA PRIMEIRA RESOLUÇÃO
+// if (ano % 4 == 0 && (!(ano % 100 == 0) || ano % 400 == 0)) {
+//   return true;
+// } else {
+//   return false;
+// }
 
 // EXERCÍCIO 15
 function checaValidadeInscricaoLabenu() {
   // implemente sua lógica aqui
-  const maiorDeIdade = prompt("Você tem mais de 18 anos?");
-  const medioCompleto = prompt("Você possui ensino médio completo?");
-  const disponibilidade = prompt(
-    "Você possui disponibilidade exclusiva durante o horário do curso?"
-  );
-  if (
-    maiorDeIdade.toUpperCase() == "SIM" &&
-    medioCompleto.toUpperCase() == "SIM" &&
-    disponibilidade.toUpperCase() == "SIM"
-  ) {
-    console.log(true);
-  } else {
-    console.log(false);
-  }
+  console.log(prompt("Você tem mais de 18 anos?").toUpperCase() == "SIM" && prompt("Você possui ensino médio completo?").toUpperCase() == "SIM" && prompt("Você possui disponibilidade exclusiva durante o horário do curso?").toUpperCase() == "SIM");
 }
+// ESSA FOI MINHA PRIMEIRA RESOLUÇÃO
+// const maiorDeIdade = prompt("Você tem mais de 18 anos?");
+// const medioCompleto = prompt("Você possui ensino médio completo?");
+// const disponibilidade = prompt(
+//   "Você possui disponibilidade exclusiva durante o horário do curso?"
+// );
+
+// console.log(
+//   maiorDeIdade.toUpperCase() == "SIM" &&
+//   medioCompleto.toUpperCase() == "SIM" &&
+//   disponibilidade.toUpperCase() == "SIM"
+// )
+
+// if (
+//   maiorDeIdade.toUpperCase() == "SIM" &&
+//   medioCompleto.toUpperCase() == "SIM" &&
+//   disponibilidade.toUpperCase() == "SIM"
+// ) {
+//   console.log(true);
+// } else {
+//   console.log(false);
+// }
