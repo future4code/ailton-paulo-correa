@@ -101,16 +101,12 @@ funcDesafio1();
 
 // 2
 const funcDesafio2 = (obj1, obj2) => {
-  console.log(
-    `O primeiro filme foi lançado antes do segundo? ${
-      obj1.anoLancamento < obj2.anoLancamento
-    }`
-  );
-  console.log(
-    `O primeiro filme foi lançado no mesmo ano do segundo? ${
-      obj1.anoLancamento === obj2.anoLancamento
-    }`
-  );
+  return `O primeiro filme foi lançado antes do segundo? ${
+    obj1.anoLancamento < obj2.anoLancamento
+  }
+  O primeiro filme foi lançado no mesmo ano do segundo? ${
+    obj1.anoLancamento === obj2.anoLancamento
+  }`;
 };
 const filme1 = {
   anoLancamento: 2020,
@@ -121,10 +117,8 @@ const filme2 = {
   nome: "O Projeto Adam",
 };
 
-funcDesafio2(filme1, filme2);
+console.log(funcDesafio2(filme1, filme2));
 
 // 3
-console.log(fruta1);
 const funcDesafio3 = (obj) => (obj.disponibilidade = !obj.disponibilidade);
 funcDesafio3(fruta1);
-console.log(fruta1);
