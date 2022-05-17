@@ -90,72 +90,82 @@ const comprador = {
     SF indica semi-final
     DT indica decisão de terceiro lugar
     FI indica Final`),
-  categoria: Number(prompt(`Qual a categoria?
-    Opções: 1, 2, 3 ou 4`)),
+  categoria: Number(
+    prompt(`Qual a categoria?
+    Opções: 1, 2, 3 ou 4`)
+  ),
   qntIngresso: Number(prompt("Quantos ingressos deseja comprar?")),
 };
-
-if (comprador.etapaJogo === "SF") {
-  switch (comprador.categoria) {
-    case 1:
-      comprador.valorUnitario = 1320;
-      break;
-    case 2:
-      comprador.valorUnitario = 880;
-      break;
-    case 3:
-      comprador.valorUnitario = 550;
-      break;
-    case 4:
-      comprador.valorUnitario = 270;
-      break;
-    default:
-      console.log("Opção da categoria invalida!");
-      break;
-  }
-} else if (comprador.etapaJogo === "DT") {
-  switch (comprador.categoria) {
-    case 1:
-      comprador.valorUnitario = 660;
-      break;
-    case 2:
-      comprador.valorUnitario = 440;
-      break;
-    case 3:
-      comprador.valorUnitario = 330;
-      break;
-    case 4:
-      comprador.valorUnitario = 170;
-      break;
-    default:
-      console.log("Opção da categoria invalida!");
-      break;
-  }
-} else if (comprador.etapaJogo === "FI") {
-  switch (comprador.categoria) {
-    case 1:
-      comprador.valorUnitario = 1980;
-      break;
-    case 2:
-      comprador.valorUnitario = 1320;
-      break;
-    case 3:
-      comprador.valorUnitario = 880;
-      break;
-    case 4:
-      comprador.valorUnitario = 330;
-      break;
-    default:
-      console.log("Opção da categoria invalida!");
-      break;
-  }
-} else {
-  console.log("Etapa do jogo não existente!");
+switch (comprador.etapaJogo.toUpperCase()) {
+  case "SF":
+    switch (comprador.categoria) {
+      case 1:
+        comprador.valorUnitario = 1320;
+        break;
+      case 2:
+        comprador.valorUnitario = 880;
+        break;
+      case 3:
+        comprador.valorUnitario = 550;
+        break;
+      case 4:
+        comprador.valorUnitario = 270;
+        break;
+      default:
+        console.log("Opção da categoria invalida!");
+        break;
+    }
+    break;
+  case "DT":
+    switch (comprador.categoria) {
+      case 1:
+        comprador.valorUnitario = 660;
+        break;
+      case 2:
+        comprador.valorUnitario = 440;
+        break;
+      case 3:
+        comprador.valorUnitario = 330;
+        break;
+      case 4:
+        comprador.valorUnitario = 170;
+        break;
+      default:
+        console.log("Opção da categoria invalida!");
+        break;
+    }
+    break;
+  case "FI":
+    switch (comprador.categoria) {
+      case 1:
+        comprador.valorUnitario = 1980;
+        break;
+      case 2:
+        comprador.valorUnitario = 1320;
+        break;
+      case 3:
+        comprador.valorUnitario = 880;
+        break;
+      case 4:
+        comprador.valorUnitario = 330;
+        break;
+      default:
+        console.log("Opção da categoria invalida!");
+        break;
+    }
+    break;
+  default:
+    console.log("Etapa do jogo não existente!");
+    comprador.continuar = false;
+    break;
 }
-
 comprador.valorTotal = comprador.valorUnitario * comprador.qntIngresso;
-
-const imprimirComprovante = (obj) =>
+const imprimirComprovante = (obj, tipoJogo) => {
+  if (tipoJogo === "IN") {
+    tipoJogo = "U$";
+  } else {
+    tipoJogo = "R$";
+  }
   console.log(`
 ---Dados da compra--- 
 Nome do cliente:  ${obj.nomeCompleto} 
@@ -164,16 +174,28 @@ Etapa do jogo:  ${obj.etapaJogo}
 Categoria:  ${obj.categoria} 
 Quantidade de Ingressos:  ${obj.qntIngresso} ingressos 
 ---Valores--- 
-Valor do ingresso:  R$ ${obj.valorUnitario}
-Valor total:  R$ ${obj.valorTotal}
+Valor do ingresso:  ${tipoJogo} ${obj.valorUnitario}
+Valor total:  ${tipoJogo} ${obj.valorTotal}
 `);
-
-if (comprador.tipoJogo.toUpperCase() === "IN") {
-  comprador.valorUnitario = comprador.valorUnitario / 4.1;
-  comprador.valorTotal = comprador.valorTotal / 4.1;
-  imprimirComprovante(comprador);
-} else if (comprador.tipoJogo.toUpperCase() === "DO") {
-  imprimirComprovante(comprador);
-} else {
-  console.log("Tipo do jogo não existente!");
+};
+switch (comprador.continuar) {
+  case false:
+    console.log("Compra cancelada!!!")
+    break;
+  default:
+    switch (comprador.tipoJogo.toUpperCase()) {
+      case "IN":
+        comprador.valorUnitario = comprador.valorUnitario / 4.1;
+        comprador.valorTotal = comprador.valorTotal / 4.1;
+        imprimirComprovante(comprador, "IN");
+        break;
+      case "DO":
+        imprimirComprovante(comprador, "DO");
+        break;
+      default:
+        console.log("Tipo do jogo não existente!");
+        console.log("Compra cancelada!!!")
+        break;
+    }
+    break;
 }
