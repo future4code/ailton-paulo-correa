@@ -70,7 +70,7 @@ if (
 
   if (usuario.resultado > 21) {
     alert(`${mensagemFinal()}\nO computador ganhou!`);
-  } else if (computador > 21) {
+  } else if (computador.resultado > 21) {
     alert(`${mensagemFinal()}\nO usuário ganhou!`);
   } else if (usuario.resultado > computador.resultado) {
     alert(`${mensagemFinal()}\nO usuário ganhou!`);
