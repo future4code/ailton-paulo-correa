@@ -13,7 +13,7 @@ const iniciar = () => {
     repetir = false;
   }
   return {
-    cartas: valor1.texto + valor2.texto,
+    cartas: valor1.texto +" "+valor2.texto,
     resultado: valor1.valor + valor2.valor,
     primeiraCarta: valor1.texto,
     repitiu: repetir,
@@ -29,16 +29,14 @@ while (comecar === true) {
 }
 
 if (
-  confirm("Boas vindas ao jogo de Blackjack! \nQuer iniciar uma nova rodada?")
+  confirm("Boas vindas ao jogo de Blackjack!\nQuer iniciar uma nova rodada?")
 ) {
-  let usuario = iniciar();
-  let computador = iniciar();
   let continuarComprando = true;
 
   const comprarNova = (obj) => {
     const valor = comprarCarta();
     return {
-      cartas: obj.cartas + valor.texto,
+      cartas: obj.cartas +" "+ valor.texto,
       resultado: obj.resultado + valor.valor,
       primeiraCarta: obj.primeiraCarta
     };
