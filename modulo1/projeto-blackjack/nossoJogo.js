@@ -22,14 +22,12 @@ if (confirm("Quer iniciar uma nova rodada?")) {
     console.log("O computador ganhou!");
   } else if (computador > 21) {
     console.log("O usuário ganhou!");
+  } else if (usuario.resultado > computador.resultado) {
+    console.log("O usuário ganhou!");
+  } else if (computador.resultado > usuario.resultado) {
+    console.log("O computador ganhou!");
   } else {
-    if (usuario.resultado > computador.resultado) {
-      console.log("O usuário ganhou!");
-    } else if (computador.resultado > usuario.resultado) {
-      console.log("O computador ganhou!");
-    } else {
-      console.log("Empate!");
-    }
+    console.log("Empate!");
   }
 } else {
   console.log("O jogo acabou :(");
