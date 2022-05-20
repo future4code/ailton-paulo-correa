@@ -61,7 +61,7 @@ if (
     } else {
       continuarComprando = false;
     }
-    if(continuarComprando===false && usuario.resultado<=21){
+    if(continuarComprando===false && usuario.resultado<21){
       while(computador.resultado<usuario.resultado){
          computador=comprarNova(computador)
       }
