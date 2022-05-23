@@ -51,10 +51,20 @@ function retornaNumerosPares(array) {
 }
 
 // EXERCÍCIO 05
-function retornaNumerosParesElevadosADois(array) {}
+function retornaNumerosParesElevadosADois(array) {
+    let arrayPar = []
+    for (const valor of array) {
+        if(valor%2 === 0){
+            arrayPar.push(valor**2)
+        }
+    }
+    return arrayPar
+}
 
 // EXERCÍCIO 06
-function retornaMaiorNumero(array) {}
+function retornaMaiorNumero(array) {
+    
+}
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {}
