@@ -19,11 +19,11 @@ function retornaArrayInvertido(array) {
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
   let arrayOrdenado = [];
-  let arrayDescartavel = [... array];
+  let arrayDescartavel = [...array];
   let segura;
-  let soma = 0
+  let soma = 0;
   for (const valor of array) {
-      soma+=valor
+    soma += valor;
   }
   while (array.length > arrayOrdenado.length) {
     segura = { numero: soma, index: 0 };
@@ -33,7 +33,7 @@ function retornaArrayOrdenado(array) {
         segura.index = i;
       }
     }
-    arrayDescartavel.splice(segura.index, 1)
+    arrayDescartavel.splice(segura.index, 1);
     arrayOrdenado.push(segura.numero);
   }
   return arrayOrdenado;
@@ -41,29 +41,35 @@ function retornaArrayOrdenado(array) {
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
-    let arrayPar = []
-    for (const valor of array) {
-        if(valor%2 === 0){
-            arrayPar.push(valor)
-        }
+  let arrayPar = [];
+  for (const valor of array) {
+    if (valor % 2 === 0) {
+      arrayPar.push(valor);
     }
-    return arrayPar
+  }
+  return arrayPar;
 }
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {
-    let arrayPar = []
-    for (const valor of array) {
-        if(valor%2 === 0){
-            arrayPar.push(valor**2)
-        }
+  let arrayPar = [];
+  for (const valor of array) {
+    if (valor % 2 === 0) {
+      arrayPar.push(valor ** 2);
     }
-    return arrayPar
+  }
+  return arrayPar;
 }
 
 // EXERCÍCIO 06
 function retornaMaiorNumero(array) {
-    
+  let maior = 0;
+  for (const valor of array) {
+    if (maior < valor) {
+      maior = valor;
+    }
+  }
+  return maior;
 }
 
 // EXERCÍCIO 07
