@@ -1,93 +1,78 @@
 // ATENÇÃO!!!
-//    -> NÃO COMENTE NENHUMA DAS FUNÇÕES DECLARADAS!!! 
+//    -> NÃO COMENTE NENHUMA DAS FUNÇÕES DECLARADAS!!!
 //    -> NÃO MODIFIQUE OS PARÂMETROS DAS FUNÇÕES!!! ()
-
 
 // EXERCÍCIO 01
 function retornaTamanhoArray(array) {
-   return array.length
+  return array.length;
 }
 
 // EXERCÍCIO 02
 function retornaArrayInvertido(array) {
-  let arrayInvertido = []
-  for (let index = array.length-1; index >= 0; index--) {
-      arrayInvertido.push(array[index])      
+  let arrayInvertido = [];
+  for (let index = array.length - 1; index >= 0; index--) {
+    arrayInvertido.push(array[index]);
   }
-  return arrayInvertido
+  return arrayInvertido;
 }
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-  
+  let arrayOrdenado = [];
+  let arrayDescartavel = [... array];
+  let segura;
+  while (array.length > arrayOrdenado.length) {
+    segura = { numero: 999999, index: 0 };
+    for (let i = 0; i < arrayDescartavel.length; i++) {
+      if (segura.numero > arrayDescartavel[i]) {
+        segura.numero = arrayDescartavel[i];
+        segura.index = i;
+      }
+    }
+    arrayDescartavel.splice(segura.index, 1)
+    arrayOrdenado.push(segura.numero);
+  }
+  return arrayOrdenado;
 }
 
 // EXERCÍCIO 04
-function retornaNumerosPares(array) {
-  
-}
+function retornaNumerosPares(array) {}
 
 // EXERCÍCIO 05
-function retornaNumerosParesElevadosADois(array) {
- 
-}
+function retornaNumerosParesElevadosADois(array) {}
 
 // EXERCÍCIO 06
-function retornaMaiorNumero(array) {
-  
-}
+function retornaMaiorNumero(array) {}
 
 // EXERCÍCIO 07
-function retornaObjetoEntreDoisNumeros(num1, num2) {
-
-}
+function retornaObjetoEntreDoisNumeros(num1, num2) {}
 
 // EXERCÍCIO 08
-function retornaNPrimeirosPares(n) {
-   
-}
+function retornaNPrimeirosPares(n) {}
 
 // EXERCÍCIO 09
-function classificaTriangulo(ladoA, ladoB, ladoC) {
-
-}
+function classificaTriangulo(ladoA, ladoB, ladoC) {}
 
 // EXERCÍCIO 10
-function retornaSegundoMaiorESegundoMenor(array) {
-  
-}
+function retornaSegundoMaiorESegundoMenor(array) {}
 
 // EXERCÍCIO 11
-function retornaChamadaDeFilme(filme) {
-   
-}
+function retornaChamadaDeFilme(filme) {}
 
 // EXERCÍCIO 12
-function retornaPessoaAnonimizada(pessoa) {
-   
-}
+function retornaPessoaAnonimizada(pessoa) {}
 
 // EXERCÍCIO 13A
-function retornaPessoasAutorizadas(pessoas) {
-   
-}
+function retornaPessoasAutorizadas(pessoas) {}
 
 // EXERCÍCIO 13B
-function retornaPessoasNaoAutorizadas(pessoas) {
-  
-}
+function retornaPessoasNaoAutorizadas(pessoas) {}
 
 // EXERCÍCIO 14
-function retornaContasComSaldoAtualizado(contas) {
-
-}
+function retornaContasComSaldoAtualizado(contas) {}
 
 // EXERCÍCIO 15A
-function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
-}
+function retornaArrayOrdenadoAlfabeticamente(consultas) {}
 
 // EXERCÍCIO 15B
-function retornaArrayOrdenadoPorData(consultas) {
-   
-}
+function retornaArrayOrdenadoPorData(consultas) {}
