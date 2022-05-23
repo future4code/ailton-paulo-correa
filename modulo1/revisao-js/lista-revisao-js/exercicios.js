@@ -21,8 +21,12 @@ function retornaArrayOrdenado(array) {
   let arrayOrdenado = [];
   let arrayDescartavel = [... array];
   let segura;
+  let soma = 0
+  for (const valor of array) {
+      soma+=valor
+  }
   while (array.length > arrayOrdenado.length) {
-    segura = { numero: 999999, index: 0 };
+    segura = { numero: soma, index: 0 };
     for (let i = 0; i < arrayDescartavel.length; i++) {
       if (segura.numero > arrayDescartavel[i]) {
         segura.numero = arrayDescartavel[i];
@@ -36,7 +40,15 @@ function retornaArrayOrdenado(array) {
 }
 
 // EXERCÍCIO 04
-function retornaNumerosPares(array) {}
+function retornaNumerosPares(array) {
+    let arrayPar = []
+    for (const valor of array) {
+        if(valor%2 === 0){
+            arrayPar.push(valor)
+        }
+    }
+    return arrayPar
+}
 
 // EXERCÍCIO 05
 function retornaNumerosParesElevadosADois(array) {}
