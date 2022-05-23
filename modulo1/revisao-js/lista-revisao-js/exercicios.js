@@ -183,5 +183,25 @@ function retornaArrayOrdenadoAlfabeticamente(consultas) {
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-  
+  let arrayDataSemBarra = [];
+  for (const valor of consultas) {
+    arrayDataSemBarra.push(valor.dataDaConsulta.split("/"));
+  }
+  let arrayTeste = [];
+  for (const valor of arrayDataSemBarra) {
+    arrayTeste.push(`${valor[2]}-${valor[1]}-${valor[0]}`);
+  }
+  for (let i = 0; i < consultas.length; i++) {
+    consultas[i].dataSemBarra = arrayTeste[i];
+  }
+  const arr = arrayTeste.sort();
+  let arrayOrdenado = [];
+  for (let i = 0; i < arr.length; i++) {
+    for (const valor of consultas) {
+      if (valor.dataSemBarra === arr[i]) {
+        arrayOrdenado.push({nome: valor.nome, dataDaConsulta: valor.dataDaConsulta})
+      }
+    }
+  }  
+  return arrayOrdenado;
 }
