@@ -75,7 +75,7 @@ function retornaMaiorNumero(array) {
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
   let objeto = {
-    maiorNumero: 0
+    maiorNumero: 0,
   };
   if (num1 > num2) {
     objeto.maiorNumero = num1;
@@ -91,51 +91,67 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-    let array=[]
-    n--
-    let numero=0
-    while(n>=0){
-        if(numero%2===0){
-            array.push(numero)
-            n--
-        }
-        numero++
+  let array = [];
+  n--;
+  let numero = 0;
+  while (n >= 0) {
+    if (numero % 2 === 0) {
+      array.push(numero);
+      n--;
     }
-    return array
+    numero++;
+  }
+  return array;
 }
 
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-    if(ladoA === ladoB && ladoA===ladoC){
-        return "Equilátero"        
-    } else if(ladoA === ladoB || ladoA === ladoC || ladoB === ladoC){
-        return "Isósceles"
-    }else{
-        return "Escaleno"
-    }
+  if (ladoA === ladoB && ladoA === ladoC) {
+    return "Equilátero";
+  } else if (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC) {
+    return "Isósceles";
+  } else {
+    return "Escaleno";
+  }
 }
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
-    const arrayOrdenado = retornaArrayOrdenado(array)
-    return [arrayOrdenado[arrayOrdenado.length-2],arrayOrdenado[1]]
+  const arrayOrdenado = retornaArrayOrdenado(array);
+  return [arrayOrdenado[arrayOrdenado.length - 2], arrayOrdenado[1]];
 }
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-    return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
+  return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`;
 }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-    return {...pessoa, nome:"ANÔNIMO"}
+  return { ...pessoa, nome: "ANÔNIMO" };
 }
 
 // EXERCÍCIO 13A
-function retornaPessoasAutorizadas(pessoas) {}
+function retornaPessoasAutorizadas(pessoas) {
+  let arrayPermitidos = [];
+  for (const valor of pessoas) {
+    if (valor.altura >= 1.5 && valor.idade > 14 && valor.idade < 60) {
+      arrayPermitidos.push(valor);
+    }
+  }
+  return arrayPermitidos;
+}
 
 // EXERCÍCIO 13B
-function retornaPessoasNaoAutorizadas(pessoas) {}
+function retornaPessoasNaoAutorizadas(pessoas) {
+  let arrayNaoPermitidos = [];
+  for (const valor of pessoas) {
+    if (valor.altura < 1.5 || valor.idade <= 14 || valor.idade >= 60) {
+      arrayNaoPermitidos.push(valor);
+    }
+  }
+  return arrayNaoPermitidos;
+}
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {}
