@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header-other-pages {
+  background-color: #252525;
+  padding: 8px;
+  color: #c8c8c8;
+  font-size: 28px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  border-bottom: solid 2px #212121;
+  width: 100%;
+}
+nav {
+  background-color: #292929;
+  padding: 4px;
+  font-weight: bold;
+  border-bottom: solid 2px #212121;
+}
+.ref-nav {
+  color: #c8c8c8;
+  text-decoration: dotted;
+}
+body {
+  position: relative;
+  min-height: 100%;
+  background-color: #c8c8c8;
+  padding: 0;
+  margin: 0;
+}
+input {
+  margin: 4px;
+  padding: 4px;
+}
+#link-foto {
+  width: 251px;
+}
+#descricao {
+  width: 205px;
+}
+#preco {
+  width: 250px;
+}
+#quantidade-disponivel{
+    width: 199px;
+}
+label {
+  margin: 4px;
+  padding: 4px;
+}
+button {
+  padding: 4px;
+  background-color: #c8c8c8;
+  border: solid 1px;
+  margin: 8px;
+}
+div {
+  margin: 0px 20px;
+}
+h2 {
+  margin: 12px 20px;
+}
+#rodape {
+  bottom: 0;
+  padding: 12px 4px;
+  background-color: #292929;
+  color: #fff;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  position: fixed;
+  border-top: solid 5px #212121;
+}
