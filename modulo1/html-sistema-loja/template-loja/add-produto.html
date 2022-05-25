@@ -1,48 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Adicionar Produto - Quitanda do Ailton Krenak</title>
-</head>
-<body>
-    <header>
-        <p>Quitanda do Ailton Krenak</p>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header-other-pages">
+      <p>Quitanda do Ailton Krenak</p>
     </header>
-    
+
     <nav>
-        <a href="index.html">Página Inicial |</a>
-        <a href="ctrl-estoque.html">Controle de Estoque |</a>
-        <a href="add-produto.html">Adicionar Produto |</a>
-        <a href="funcionarios.html">Funcionários</a>
+      <a class="ref-nav" href="index.html">Página Inicial |</a>
+      <a class="ref-nav" href="ctrl-estoque.html">Controle de Estoque |</a>
+      <a class="ref-nav" href="add-produto.html">Adicionar Produto |</a>
+      <a class="ref-nav" href="funcionarios.html">Funcionários |</a>
+      <a class="ref-nav" href="venda.html">Vendas |</a>
+      <a class="ref-nav" href="historico-venda.html">Histórico de Vendas</a>
     </nav>
 
-    
     <h2>Adicionar Produto</h2>
-    <form action="#">
-            <label for="link-foto">Link para foto: </label>
-            <input type="url" id="link-foto" name="link-foto">
-            <br>
-     
-            <label for="descricao">Descrição do produto: </label>
-            <!-- Adicione o id apropriado para o input abaixo -->
-            <input type="text" id="descricao" name="descrição">
-            <br>
-            <label for="preco">Preço (em R$): </label>
-            <!-- Adicione o id apropriado e o type para receber números abaixo -->
-            <input type="number" id="preco" name="preço">
-            <br>
+    <div>
+      <form action="#">
+        <label for="link-foto">Link para foto: </label>
+        <input type="url" id="link-foto" name="link-foto" />
+        <br />
 
-            <!-- Preencha as propriedades necessárias para os elementos abaixo -->
-            <label for="quantidade-disponivel">Quantidade disponível: </label>
-            <input type="number" id="qntDisponivel" nome="quantidade-disponível">
+        <label for="descricao">Descrição do produto: </label>
+        <!-- Adicione o id apropriado para o input abaixo -->
+        <input type="text" id="descricao" name="descrição" />
+        <br />
+        <label for="preco">Preço (em R$): </label>
+        <!-- Adicione o id apropriado e o type para receber números abaixo -->
+        <input type="number" id="preco" name="preço" />
+        <br />
 
-            <br>
-            <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
-            <button type="submit">Adicionar</button>
+        <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+        <label for="quantidade-disponivel">Quantidade disponível: </label>
+        <input
+          type="number"
+          id="quantidade-disponivel"
+          nome="quantidade-disponível"
+        />
 
-    </form>
-
-</body>
+        <br />
+        <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+        <button type="submit">Adicionar</button>
+      </form>
+    </div>
+    <footer id="rodape">
+      <p>Siga-nos nas redes sociais!</p>
+      <a href="https://www.facebook.com/Labenu-388131481831991/" target="_blank"
+        ><img src="./img/facebook.png" alt="Facebook" width="40"
+      /></a>
+      <a href="https://www.instagram.com/labenu_/" target="_blank"
+        ><img src="./img/instagram.png" alt="Instagram" width="40"
+      /></a>
+      <a href="https://twitter.com/labenu_" target="_blank"
+        ><img src="./img/twitter.png" alt="Twitter" width="40"
+      /></a>
+    </footer>
+  </body>
 </html>
