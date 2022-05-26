@@ -68,13 +68,14 @@ div img {
   **/
 
 #container-de-descricao {
-    background-color: #2274a5;
+    background-color: #2274a5;    
     color: white;
 }
 
 #container-de-descricao>p {
     display: block;
-    margin: 0 377px;
+    margin: 0 auto;
+    width: 19vh
 }
 
 #container-de-descricao>ol {
@@ -105,6 +106,7 @@ div:last-child {
 
 table {
     width: 60%;
+    text-align: center;
 }
 
 td button {
