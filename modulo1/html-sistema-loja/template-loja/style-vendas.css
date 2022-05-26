@@ -29,6 +29,32 @@ body {
   padding: 0;
   margin: 0;
 }
+label {
+  margin: 4px;
+  padding: 4px;
+}
+button {
+  padding: 4px;
+  background-color: #c8c8c8;
+  border: solid 1px;
+  margin: 8px;
+}
+input, select {
+  margin: 4px;
+  padding: 4px;
+}
+#cliente{
+  width: 295px;
+}
+#lista-produtos{
+  width: 242px;
+}
+#qnt-produto{
+width: 268px;
+}
+#pagamento{
+width: 218px;
+}
 div {
   margin: 0px 20px;
 }

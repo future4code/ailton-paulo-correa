@@ -27,6 +27,16 @@ body {
   padding: 0;
   margin: 0;
 }
+.texto-home div {
+  text-align: center;
+  margin-top: 12px;
+}
+.texto-home p {
+  margin: 12px 20px;
+  font-size: 18px;
+  text-align: justify;
+  text-indent: 40px;
+}
 div {
   margin: 0px 20px;
 }
@@ -43,14 +53,4 @@ h2 {
   text-align: center;
   position: fixed;
   border-top: solid 5px #212121;
-}
-.texto-home div {
-  text-align: center;
-  margin-top: 12px;
-}
-.texto-home p {
-  margin: 12px 20px;
-  font-size: 18px;
-  text-align: justify;
-  text-indent: 40px;
 }

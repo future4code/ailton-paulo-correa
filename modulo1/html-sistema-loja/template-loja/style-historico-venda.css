@@ -32,6 +32,16 @@ body {
 div {
   margin: 0px 20px;
 }
+table {
+  background-color: white;
+  border: 1px solid #262626;
+  text-align: center;
+}
+th,
+td {
+  border: 1px solid #262626;
+  padding: 4px;
+}
 h2 {
   margin: 12px 20px;
 }
