@@ -75,11 +75,14 @@ div > p:first-child {
 #container-de-descricao > p {
   display: block;
   margin: 0 auto;
-  width: 19vh;
+  width: 21vh;
 }
 
 #container-de-descricao > ol {
-  padding: 15px 0px;
+  display: block;
+  padding: 15px 0;
+  margin: 0 auto;
+  list-style-position:inside;
 }
 
 #container-para-comprar {
@@ -107,8 +110,8 @@ table {
   width: 60%;
   text-align: center;
 }
-table img{
-    width: 6vh;
+table img {
+  width: 6vh;
 }
 td button {
   background-color: #fadf63;
@@ -136,17 +139,20 @@ td button {
 #back-button:hover {
   background-color: #635a3d;
 }
-.botao-comprar:hover{
-background-color: #a6ad19;
+.botao-comprar:hover {
+  background-color: #a6ad19;
 }
-.botao-comprar:active{
-    color: white;
+.botao-comprar:active {
+  color: white;
 }
-.campo-texto{
-    border: 0;
-    border-bottom: 2px black solid;
+.campo-texto {
+  border: 0;
+  border-bottom: 2px black solid;
 }
-.tabela table,tr,td,th{
-    text-align: center;
-    margin: 0 auto;
+table,
+tr,
+td,
+th {
+  text-align: center;
+  margin: 0 auto;
 }
