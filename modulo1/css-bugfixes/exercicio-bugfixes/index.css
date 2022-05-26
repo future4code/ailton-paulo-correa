@@ -141,3 +141,7 @@ background-color: #a6ad19;
 .botao-comprar:active{
     color: white;
 }
+.campo-texto{
+    border: 0;
+    border-bottom: 2px black solid;
+}
