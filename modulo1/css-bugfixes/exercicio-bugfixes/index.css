@@ -40,6 +40,7 @@ div > p:first-child {
 
 .botao-amarelo {
   background-color: #ffaf43;
+  margin: 100px;
   width: 250px;
   height: 40px;
   border-radius: 5px;
@@ -52,8 +53,8 @@ div > p:first-child {
 }
 
 .container {
-  height: 500px;
-  padding-top: 20px;
+  height: 300px;
+  padding: 100px;
   text-align: center;
 }
 
