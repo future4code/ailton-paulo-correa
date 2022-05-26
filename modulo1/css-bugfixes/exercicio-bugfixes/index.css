@@ -146,3 +146,7 @@ background-color: #a6ad19;
     border: 0;
     border-bottom: 2px black solid;
 }
+.tabela table,tr,td,th{
+    text-align: center;
+    margin: 0 auto;
+}
