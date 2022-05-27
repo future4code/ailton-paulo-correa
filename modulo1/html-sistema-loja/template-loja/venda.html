@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vendas - Quitanda do Ailton Krenak</title>
+    <link rel="stylesheet" href="style-vendas.css" />
+  </head>
+  <body>
+    <header class="header-other-pages">
+      <p>Quitanda do Ailton Krenak</p>
+    </header>
+
+    <nav>
+      <a class="ref-nav" href="index.html">Página Inicial |</a>
+      <a class="ref-nav" href="ctrl-estoque.html">Controle de Estoque |</a>
+      <a class="ref-nav" href="add-produto.html">Adicionar Produto |</a>
+      <a class="ref-nav" href="funcionarios.html">Funcionários |</a>
+      <a class="ref-nav" href="venda.html">Vendas |</a>
+      <a class="ref-nav" href="historico-venda.html">Histórico de Vendas</a>
+    </nav>
+
+    <h2>Vendas</h2>
+
+    <div>
+      <form action="#">
+        <label for="cliente">Cliente: </label>
+        <input type="text" id="cliente" name="cliente" />
+        <br />
+        <label for="lista-produtos">Lista de Produtos: </label>
+        <select id="lista-produtos" name="lista-produtos">
+          <option value="abacate">Abacate</option>
+          <option value="abacaxi">Abacaxi</option>
+          <option value="laranja">Laranja</option>
+          <option value="maca">Maçã</option>
+          <option value="morango">Morango</option>
+        </select>
+        <br />
+        <label for="qnt-produto">Quantidade: </label>
+        <input type="number" id="qnt-produto" name="qnt-produto" />
+        <br />
+        <label for="pagamento">Forma de Pagamento: </label>
+        <select name="pagamento" id="pagamento">
+          <option value="cartao-de-credito">Cartão de crédito</option>
+          <option value="dinheiro">Dinheiro</option>
+        </select>
+        <br />
+        <button type="submit">Finalizar</button>
+      </form>      
+    </div>
+
+    <footer id="rodape">
+      <p>Siga-nos nas redes sociais!</p>
+      <a href="https://www.facebook.com/Labenu-388131481831991/" target="_blank"
+        ><img src="./img/facebook.png" alt="Facebook" width="40"
+      /></a>
+      <a href="https://www.instagram.com/labenu_/" target="_blank"
+        ><img src="./img/instagram.png" alt="Instagram" width="40"
+      /></a>
+      <a href="https://twitter.com/labenu_" target="_blank"
+        ><img src="./img/twitter.png" alt="Twitter" width="40"
+      /></a>
+    </footer>
+  </body>
+</html>
