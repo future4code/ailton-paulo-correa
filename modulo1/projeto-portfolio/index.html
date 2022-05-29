@@ -9,40 +9,31 @@
   </head>
   <body>
     <header>
-      <img src="./img/minha-foto.png" alt="Foto do Paulo Henrique" />
-      <h1>Paulo Henrique Correa da Silva</h1>
-      <h3>Estudante, Gamer e futuro Desenvolvedor!</h3>
+      <div id="div-nav">
+        <a href="index.html">Home</a>
+        <a href="projeto-js.html">Projetos JS</a>
+        <a href="projeto-css-html.html">Projetos HTML/CSS</a>
+      </div>
+      <div id="div-header">
+        <img src="./img/minha-foto.png" alt="Foto do Paulo Henrique" />
+        <h1>Paulo Henrique Correa da Silva</h1>
+        <h3>Estudante, Gamer e futuro Desenvolvedor!</h3>
+      </div>
     </header>
     <main>
-      <div>
-        <h2>Olá</h2>
+      <div class="div-sobre">
+        <h1>Olá,</h1>
         <p>
-          Meu nome é Paulo Henrique mas pode me chamar pelo meu apelido Mankey!
+          Meu nome é Paulo Henrique mas se quiser pode me chamar pelo meu apelido Mankey,
+          meu apelido tem origem do nome de um pokemon, mas meu pokemon favorito
+          é o Koffing 🤭, tenho 26 Anos e moro na cidade de Quatá interior de
+          São Paulo, até hoje só tive experiência profissional como motorista e entregador.
         </p>
-        <p>Tenho 26 Anos e moro na cidade de Quatá interior de São Paulo.</p>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
-          repellat qui explicabo ratione possimus vel nemo. Ducimus explicabo
-          distinctio illo molestiae quas tempore necessitatibus nihil tempora
-          eos expedita in odit delectus quis itaque dicta quam magnam
-          repudiandae voluptates harum illum accusantium, blanditiis ullam. Odit
-          perferendis voluptatum deserunt dolorem placeat obcaecati ducimus ab
-          cumque, eius soluta cupiditate aperiam consequatur earum ea? Ad,
-          pariatur quasi. Qui quisquam vel ducimus aperiam similique optio et
-          fuga aut libero officia nam totam perferendis rerum sit unde,
-          blanditiis fugit, ipsa repudiandae consectetur nobis vero sunt nulla.
-          Minus autem tempore, delectus facilis aut illum quis! Doloremque,
-          voluptatem architecto odio beatae incidunt repellat quas, id nam illo
-          quae sed corporis? Temporibus optio earum totam, veritatis sed error
-          nulla dolorum. Impedit mollitia temporibus maiores nihil repudiandae?
-          Consectetur incidunt amet ipsam, deserunt perferendis cumque. Quas
-          possimus incidunt rerum porro ipsa repellat nemo a iusto temporibus
-          atque quisquam expedita iste quae vel harum, autem assumenda ab
-          accusantium, dolore explicabo voluptas beatae quasi eligendi! Ipsa in
-          quibusdam eaque eum quod, voluptas cumque, illo, sapiente porro illum
-          sint? Inventore voluptatum laborum nam dolores in eaque, hic
-          doloremque, suscipit similique optio voluptates accusamus. Et iure
-          expedita debitis! Autem ullam, vel rerum corporis aspernatur eligendi!
+          Sou um rapaz calmo, tímido e tento ser o mais amigável possível, também gosto de ouvir músicas, assistir animes, jogar e conversar com os amigos.
+        </p>
+        <p>
+          Estou dando início para estudos na área de programação com ambição de iniciar uma carreira como desenvolvedor, comecei a ter interesse por essa área em 2012 quando fiz um curso técnico de Informática onde aprendi C# e aprendi o básico de lógica de programação, e foi básicamente uma paixão, mas passei um tempo tentando descobrir em que área queria me dedicar e nesse meio tempo estudei um pouco sobre Gestão da TI e Química mas não conclui em nenhum desses estudos, estão agora estou focando no curso de Web Full Stack na Labenu onde eu estou colocando toda minha confiaça e dedicação para iniciar minha carreira como desenvolvedor.
         </p>
       </div>
       <div class="div-escolaridade">
@@ -66,11 +57,12 @@
         </div>
         <ul>
           <li>
-            Cursado Técnico em Agropecrária integrado ao Ensino Médio na Etec Dr
-            Luiz César Couto - CPS
+            Cursado Agropecrária integrado ao Ensino Médio na Etec Dr Luiz César
+            Couto / CPS - Centro Paula Souza
           </li>
           <li>
-            Cursado Técnico em Informática na Etec Dr Luiz César Couto - CPS
+            Cursado Informática na Etec Dr Luiz César Couto / CPS - Centro Paula
+            Souza
           </li>
           <li>Cursando Web Full Stack Integral na Labenu</li>
           <li>
@@ -93,6 +85,34 @@
           </div>
         </div>
       </div>
+      <div class="div-habilidades">
+        <h2>Habilidades</h2>
+        <table>
+          <tr>
+            <td>
+              <h3>Aprendizado Rápido</h3>
+              <p>
+                Tenho uma boa capacidade de aprender coisas novas durante as
+                práticas.
+              </p>
+            </td>
+            <td>
+              <h3>Trabalho em Equipe</h3>
+              <p>
+                Gosto de cooperar e ajudar meus colegas me disponibilizando
+                sempre que possível.
+              </p>
+            </td>
+            <td>
+              <h3>Flexibilidade</h3>
+              <p>
+                Sempre disposto a cooperar em tarefas urgentes e preparado para
+                novas rotinas e conhecimentos.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
     </main>
     <footer>
       <div id="div-footer">
@@ -105,12 +125,21 @@
             <label for="mensagem">Mensagem</label>
             <input type="text" id="mensagem" />
             <button>Enviar</button>
-            <div id="sociais">
-              <p>Discord</p>
-              <p>Twitter</p>
-              <p>LinkedIn</p>
-            </div>
           </form>
+          <div id="sociais">
+            <p id="discord" data-hover="Mankey#3398">Discord</p>
+            <a href="https://github.com/phcsilva056" target="_blank"
+              ><p>GitHub</p></a
+            >
+            <a
+              href="https://www.linkedin.com/in/paulo-henrique-correa-da-silva-68782b236/"
+              target="_blank"
+              ><p>LinkedIn</p></a
+            >
+            <a href="https://twitter.com/Mankey_" target="_blank"
+              ><p>Twitter</p></a
+            >
+          </div>
         </div>
       </div>
     </footer>

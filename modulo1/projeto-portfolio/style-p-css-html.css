@@ -7,6 +7,7 @@
 
 h2 {
   padding-bottom: 12px;
+  text-align: center;
 }
 
 div {
@@ -19,29 +20,17 @@ a {
   color: whitesmoke;
 }
 
-h2,
-ul {
-  text-align: center;
-}
-
-ul,
-li {
-  margin: 0 12px;
-  list-style: none;
-  padding: 4px 0;
-}
-
 #div-nav {
   font-size: large;
   padding: 12px;
   margin: 0 auto;
 }
 
-#div-nav a{
+#div-nav a {
   margin: 0 10px;
 }
 
-#div-nav a:hover{
+#div-nav a:hover {
   background: #333333;
   color: whitesmoke;
   padding: 4px;
@@ -51,28 +40,30 @@ li {
 
 header {
   text-align: center;
-  background-image: linear-gradient(to bottom, #010101,#191919);
+  height: 5vh;
+  background: #010101;
   color: whitesmoke;
-}
-
-#div-header {
-  padding-top: 10vh;
-}
-
-header img {
-  border-radius: 50%;
-  border: #333333 solid;
-}
-
-header img:hover {
-  box-shadow: 0 0 8px 0 #333333;
 }
 
 main {
   padding-top: 10vh;
+  height: 80vh;
   text-align: center;
-  background-color: #191919;
+  background-image: linear-gradient(to bottom, #010101, #191919);
   color: whitesmoke;
+  margin: 0 auto;
+}
+
+.div-main li{
+    list-style: none;
+}
+
+.div-main p {
+  padding: 12px;
+}
+
+.div-main img {
+  width: 50vw;
 }
 
 .div-sobre {
@@ -80,83 +71,13 @@ main {
   text-indent: 32px;
 }
 
-.div-sobre h1{
-text-align: left;
-text-indent: 0;
-}
-
-.div-escolaridade {
-  padding-top: 10vh;
-}
-
-.div-escolaridade ul,
-li {
-  display: block;
-  text-align: center;
-}
-
-.div-escolaridade div {
-  margin: 0 auto;
-  justify-content: center;
-  display: flex;
-}
-
-#img-escolas img {
-  width: 100px;
-}
-
-#img-escolas div:hover {
-  background-color: #333333;
-}
-
-.div-projeto {
-  padding-top: 10vh;
-}
-
-.div-projeto div {
-  margin: 0 auto;
-  justify-content: center;
-  display: flex;
-}
-
-#projetos img {
-  width: 100px;
-}
-
-#projetos div:hover {
-  background-color: #333333;
-}
-
-.div-habilidades {
-  padding-top: 10vh;
-}
-
-.div-habilidades table,
-td,
-tr {
-  text-align: center;
-  margin: 0 auto;
-}
-.div-habilidades table {
-  width: 100%;
-}
-
-.div-habilidades table h4 {
-  padding-top: 8px;
-}
-
-.div-habilidades table p {
-  padding: 8px;
-}
-
-.div-habilidades td {
-  width: 33%;
-  border-radius: 0.5em;
-  background-color: #333333;
-  padding: 8px;
+.div-sobre h1 {
+  text-align: left;
+  text-indent: 0;
 }
 
 footer {
+  height: 15vh;
   background-image: linear-gradient(to bottom, #191919, #010101);
   color: whitesmoke;
 }
