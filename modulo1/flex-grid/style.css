@@ -22,9 +22,9 @@ header {
   align-items: center;
   background-color: mediumvioletred;
   display: flex;
-  height: 6vh;
+  height: 68px;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 22px;
 }
 
 header div {
@@ -52,12 +52,12 @@ main {
 
 .div-nav {
   background-color: #f2d0e0;
-  min-width: 28vh;
   padding: 12px;
 }
 
 .div-nav div {
   display: flex;
+  flex-grow: 1;
 }
 
 .div-nav div img {
@@ -69,31 +69,30 @@ main {
 }
 
 .nav div {
-  padding-top: 3px;
-  flex-grow: 1;
-  padding-left: 8px;
+  padding-top: 2px;
+  padding-left: 12px;
+  padding-right: 80px;
 }
 
 .div-main {
   padding: 16px;
   align-items: center;
   display: flex;
-  flex-grow: 1;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 16px;
 }
 
 .div-main img {
-  height: 250px;
-  width: 250px;
+  height: 300px;
+  width: 300px;
 }
 
 .card {
   box-shadow: 4px 4px 4px darkgray;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 250px;
+  gap: 8px;
+  width: 300px;
   text-align: center;
 }
 
@@ -109,7 +108,7 @@ footer {
   background-color: mediumvioletred;
   display: flex;
   font-weight: bold;
-  height: 6vh;
+  height: 68px;
   justify-content: center;
   padding: 0 4px;
 }
