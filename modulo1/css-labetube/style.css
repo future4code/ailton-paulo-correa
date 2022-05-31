@@ -1,0 +1,169 @@
+/* Global */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+video {
+    text-decoration: none;
+}
+
+/* Container principal */
+#container {
+    display: grid;
+    grid-template-rows: 10vh 78vh 12vh;
+    grid-template-columns: repeat(3, 1fr);
+    font-family: sans-serif;
+    font-size: 1.8vh;
+}
+
+/* Header */
+
+header {
+    display: flex;
+    background-color: white;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2vh;
+    border-bottom: #fe7e02 solid;
+}
+
+header div {
+    display: flex;
+    gap: 8px;
+}
+
+/* -----Logo */
+
+.logo {
+    user-select: none;
+    box-shadow: 3px 4px 1px orangered;
+    border-radius: 4px 32px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #fe7e02;
+    padding: 1vh 1.8vw;
+    font-family: sans-serif;
+    font-size: 2vh;
+}
+
+.logo:active {
+    box-shadow: 3px 4px 1px #fc9e40;
+    background-color: orangered;
+}
+
+/* -----Barra de pesquisa */
+
+#bar-search {
+    padding: 8px;
+    border-bottom: #777 solid 1px;
+    border-radius: 8px;
+    width: 40vw;
+    height: 3vh;
+}
+
+/* -----Botão de pesqueisa */
+
+.icon-search {
+    background-color: #fe7e02;
+    border: #777 solid 1px;
+    border-radius: 8px;
+    padding: 0.4vh 1vw;
+    width: 4vw;
+    max-width: 64px;
+}
+
+header div img:hover {
+    background-color: #fc9e40;
+}
+
+header div img:active {
+    background-color: orangered;
+}
+
+/* -----Botão de login */
+
+.div-login-button {
+    user-select: none;
+    background-color: #fe7e02;
+    height: 100%;
+    width: 12%;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-login-button:hover {
+    background-color: #fc9e40;
+}
+
+.div-login-button:hover {
+    text-decoration: underline;
+}
+
+.div-login-button:active {
+    color: white;
+    background-color: orangered;
+}
+
+
+/* Main */
+
+main {
+    display: grid;
+    padding: 2vh 1vw;
+    grid-template-rows: 4vh 1fr;
+    grid-column: 1 / -1;
+    background-color: #fff;
+    text-align: center;
+}
+
+.container-cards {
+    background-color: aqua;
+    display: grid;
+    gap: 20px;
+    padding: 4vh 4vw;
+    background-color: #fff;
+    grid-template-rows: repeat(4, 36%);
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    padding: 1vh 1vw;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px #333;
+}
+
+.cards video {
+    height: 16vh;
+    width: 16vw;
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #333;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.4vh;
+}
+
+/* -----Atalhos redes sociais */
+
+.sociais a img {
+    width: 4vw;
+    height: 4vh;
+}
