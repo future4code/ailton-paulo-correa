@@ -24,6 +24,8 @@ header {
 
 header h1 {
   color: #ffffff;
+  cursor: pointer;
+  user-select: none;
 }
 
 main {
@@ -37,6 +39,14 @@ nav {
   background-color: #212121;
 }
 
+.menu-vertical>ul {
+  padding: 0 4px;
+}
+
+.menu-vertical>ul>li {
+  padding-left: 20px;
+}
+
 .menu-vertical {
   flex-basis: 200px;
   border-right: #383838 solid 1px;
@@ -47,6 +57,9 @@ nav {
 
 .botoes-meunu-vertical {
   list-style-type: none;
+  height: 24px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .painel-de-videos {
@@ -56,19 +69,38 @@ nav {
   flex-grow: 1;
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 320px));
-  grid-template-rows: repeat(auto-fill, minmax(130px, 260px));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 320px));
+  grid-template-rows: repeat(auto-fill, minmax(200px, 264px));
 }
 
 .box-pagina-principal {
   border: #383838 1px;
+  cursor: pointer;
+  user-select: none;
   display: grid;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 3fr 1fr 1fr 1fr;
   grid-template-columns: 1fr;
   border-style: solid;
   border-width: thin;
   align-items: start;
   justify-items: stretch;
+}
+
+.box-pagina-principal>img {
+  width: 100%;
+  height: 180px;
+}
+
+.box-pagina-principal>h5 {
+  margin: 4px 0 0 20px;
+}
+
+.box-pagina-principal>h4 {
+  margin: 8px 0 0 20px;
+}
+
+.botoes-meunu-vertical:hover {
+  background-color: #383838;
 }
 
 footer {
@@ -80,15 +112,8 @@ footer {
   padding: 0;
   display: flex;
   align-items: center;
-}
-
-.box-pagina-principal>img {
-  width: 100%;
-  height: 200px;
-}
-
-h4 {
-  margin-left: 20px;
+  user-select: none;
+  justify-content: center;
 }
 
 @media screen and (max-width:480px) {
