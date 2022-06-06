@@ -1,0 +1,244 @@
+/* Global */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+video {
+    text-decoration: none;
+}
+
+/* Container principal */
+#container {
+    display: grid;
+    grid-template-rows: 80px 1fr 80px;
+    flex-direction: column;
+    font-family: sans-serif;
+    font-size: 1rem;
+    min-height: 100vh;
+}
+
+/* Header */
+
+header {
+    width: 100%;
+    height: 80px;
+    grid-area: 1/1/2/5;
+    position: fixed;
+    display: grid;
+    background-color: white;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 12px;
+    border-bottom: #fe7e02 solid;
+}
+
+
+/* -----Logo */
+.div-logo {
+    grid-area: 1/1/2/2;
+}
+
+.logo {
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-shadow: 3px 4px 1px orangered;
+    border-radius: 4px 32px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #fe7e02;
+    padding: 8px;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    height: 100%;
+    width: 140px;
+}
+
+.logo:active {
+    box-shadow: 3px 4px 1px #fc9e40;
+    background-color: orangered;
+}
+
+/* -----Barra de pesquisa */
+
+.div-pesquisa {
+    padding: 8px;
+    display: flex;
+    gap: 8px;
+    grid-area: 1/2/2/4;
+    align-items: center;
+    justify-content: center;
+}
+
+#bar-search {
+    padding: 8px;
+    border-bottom: #777 solid 1px;
+    border-radius: 8px;
+    width: 400px;
+    height: 32px;
+}
+
+/* -----Botão de pesqueisa */
+
+.icon-search {
+    background-color: #fe7e02;
+    border: #777 solid 1px;
+    border-radius: 8px;
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+}
+
+header div img:hover {
+    background-color: #fc9e40;
+}
+
+header div img:active {
+    background-color: orangered;
+}
+
+/* -----Botão de login */
+
+.div-login-button {
+    grid-area: 1/4/2/5;
+    user-select: none;
+    background-color: #fe7e02;
+    height: 100%;
+    width: 140px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-login-button:hover {
+    background-color: #fc9e40;
+}
+
+.div-login-button:hover {
+    text-decoration: underline;
+}
+
+.div-login-button:active {
+    color: white;
+    background-color: orangered;
+}
+
+
+/* Main */
+
+main {
+    grid-area: 2/1/3/5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 2vh 1vw;
+    background-color: #fff;
+    align-items: center;
+    grid-template-rows: 40px 1fr;
+}
+
+.video {
+    height: min-content;
+    max-width: 100%;
+}
+
+video {
+    width: 90vw;
+    max-height: 64vh;
+}
+
+/* Footer */
+
+footer {
+    grid-area: 3/1/4/5;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background-color: #333;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+}
+
+/* -----Atalhos redes sociais */
+
+.sociais a img {
+    width: 36px;
+    height: 36px;
+}
+
+/* Media Query */
+
+/* Celulares */
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    #bar-search {
+        width: 150px;
+        transition: width 0.8s;
+    }
+
+    .div-login-button {
+        width: 50px;
+        transition: width 0.8s;
+    }
+
+    .logo {
+        font-size: 16px;
+        width: 100px;
+    }
+}
+
+/* tablets */
+
+@media screen and (min-width: 481px) and (max-width: 620px) {
+    #bar-search {
+        width: 190px;
+        transition: width 0.8s;
+    }
+
+    .div-login-button {
+        width: 100px;
+        transition: width 0.8s;
+    }
+
+    .logo {
+        font-size: 16px;
+        width: 100px;
+        transition: width 0.8s, font-size 0.8s;
+    }
+}
+
+@media screen and (min-width: 621px) and (max-width: 800px) {
+    #bar-search {
+        width: 250px;
+        transition: width 0.8s;
+    }
+
+    .div-login-button {
+        width: 140px;
+        transition: width 0.8s;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        width: 140px;
+        transition: width 0.8s, font-size 0.8s;
+    }
+}
+
+/* computadores */
+
+@media screen and (min-width: 801px) {
+    #bar-search {
+        width: 400px;
+        transition: width 0.8s;
+    }
+}
