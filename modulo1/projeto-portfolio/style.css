@@ -1,0 +1,226 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+  padding-bottom: 12px;
+}
+
+div {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+h2,
+ul {
+  text-align: center;
+}
+
+ul,
+li {
+  margin: 0 12px;
+  list-style: none;
+  padding: 4px 0;
+}
+
+#div-nav {
+  font-size: large;
+  padding: 12px;
+  margin: 0 auto;
+}
+
+#div-nav a{
+  margin: 0 10px;
+}
+
+#div-nav a:hover{
+  background: #333333;
+  color: whitesmoke;
+  padding: 4px;
+  text-decoration: underline solid whitesmoke;
+  text-shadow: 0 0 4px whitesmoke;
+}
+
+header {
+  text-align: center;
+  background-image: linear-gradient(to bottom, #010101,#191919);
+  color: whitesmoke;
+}
+
+#div-header {
+  padding-top: 10vh;
+}
+
+header img {
+  border-radius: 50%;
+  border: #333333 solid;
+}
+
+header img:hover {
+  box-shadow: 0 0 8px 0 #333333;
+}
+
+main {
+  padding-top: 10vh;
+  text-align: center;
+  background-color: #191919;
+  color: whitesmoke;
+}
+
+.div-sobre {
+  text-align: justify;
+  text-indent: 32px;
+}
+
+.div-sobre h1{
+text-align: left;
+text-indent: 0;
+}
+
+.div-escolaridade {
+  padding-top: 10vh;
+}
+
+.div-escolaridade ul,
+li {
+  display: block;
+  text-align: center;
+}
+
+.div-escolaridade div {
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+#img-escolas img {
+  width: 100px;
+}
+
+#img-escolas div:hover {
+  background-color: #333333;
+}
+
+.div-projeto {
+  padding-top: 10vh;
+}
+
+.div-projeto div {
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+#projetos img {
+  width: 100px;
+}
+
+#projetos div:hover {
+  background-color: #333333;
+}
+
+.div-habilidades {
+  padding-top: 10vh;
+}
+
+.div-habilidades table,
+td,
+tr {
+  text-align: center;
+  margin: 0 auto;
+}
+.div-habilidades table {
+  width: 100%;
+}
+
+.div-habilidades table h4 {
+  padding-top: 8px;
+}
+
+.div-habilidades table p {
+  padding: 8px;
+}
+
+.div-habilidades td {
+  width: 33%;
+  border-radius: 0.5em;
+  background-color: #333333;
+  padding: 8px;
+}
+
+footer {
+  background-image: linear-gradient(to bottom, #191919, #010101);
+  color: whitesmoke;
+}
+
+#div-footer {
+  width: 70vw;
+  margin: 0 auto;
+  padding-top: 5vh;
+}
+
+label {
+  text-align: left;
+}
+
+button {
+  width: 100%;
+  height: 24px;
+  margin-top: 8px;
+  background-color: #888888;
+}
+
+button:hover {
+  background-color: white;
+}
+
+input {
+  margin: 4px 0;
+  width: 100%;
+  height: 24px;
+  background: #555555;
+  border-bottom: whitesmoke solid 1px;
+  color: whitesmoke;
+}
+
+#mensagem {
+  height: 12vh;
+}
+
+#sociais {
+  width: 50%;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+#sociais p {
+  padding: 40px;
+  font-size: 16px;
+}
+
+#sociais p:hover {
+  text-decoration: underline solid #888888;
+  text-shadow: 0 0 4px #888888;
+}
+
+#discord:hover {
+  font-size: 0;
+}
+
+#discord:hover::after {
+  content: attr(data-hover);
+  font-size: 16px;
+}
+
+#formulario {
+  width: 50%;
+}
