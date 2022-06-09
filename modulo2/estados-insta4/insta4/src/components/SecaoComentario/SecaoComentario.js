@@ -12,28 +12,46 @@ const InputComentario = styled.input`
   margin-right: 5px;
 `;
 
+const BoxComment = styled.div`
+  border: 1px gray;
+  border-style: solid;
+  padding: 8px;
+`;
+
+const SectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const TextoComentario = styled.p`
+width: 96%;
+text-align: justify;
+word-wrap: break-word;
+`
+
 export class SecaoComentario extends Component {
-  state = {
-    texto: "",
-  };
-
-  onChangeComentario = (event) => {
-    console.log(event.target.value);
-    this.setState({
-      texto: event.target.value,
-    });
-  };
-
   render() {
+    const comentarios = this.props.comentario.map((item, index) => {
+      return (
+        <BoxComment key={index}>
+          <h4>Usuário Anônimo comentou:</h4>
+          <TextoComentario>{item}</TextoComentario>
+        </BoxComment>
+      );
+    });
     return (
-      <CommentContainer>
-        <InputComentario
-          placeholder={"Comentário"}
-          value={this.state.texto}
-          onChange={this.onChangeComentario}
-        />
-        <button onClick={this.props.aoEnviar}>Enviar</button>
-      </CommentContainer>
+      <SectionContainer>
+        <CommentContainer>
+          <InputComentario
+            placeholder={"Comentário"}
+            value={this.props.textoInput}
+            onChange={this.props.onChangeComentario}
+          />
+          <button onClick={this.props.aoEnviar}>Enviar</button>
+        </CommentContainer>
+        {comentarios}
+      </SectionContainer>
     );
   }
 }

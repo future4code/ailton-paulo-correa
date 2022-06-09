@@ -35,8 +35,6 @@ const PostFooter = styled.div`
   justify-content: space-between;
 `;
 
-const PostMarcar = styled.div``;
-
 const UserPhoto = styled.img`
   height: 30px;
   width: 30px;
@@ -58,6 +56,8 @@ class Post extends React.Component {
     marcar: false,
     compartilhar: false,
     rede: "",
+    textoInput: "",
+    comentario: [],
   };
 
   onClickCompartilhar = () => {
@@ -80,7 +80,6 @@ class Post extends React.Component {
     this.setState({
       curtido: !this.state.curtido,
     });
-
     if (this.state.curtido) {
       console.log("Descurtiu!");
       this.setState({
@@ -101,10 +100,18 @@ class Post extends React.Component {
   };
 
   aoEnviarComentario = () => {
-    this.setState({
-      comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1,
-    });
+    if(this.state.textoInput !== ""){
+      this.setState({
+        numeroComentarios: this.state.numeroComentarios + 1,
+      });
+      let segura = [...this.state.comentario];
+      segura.push(this.state.textoInput);
+      console.log(segura);
+      this.setState({
+        textoInput: "",
+        comentario: [...segura],
+      });
+    }
   };
 
   compartilhouInsta = () => {
@@ -115,6 +122,13 @@ class Post extends React.Component {
   };
   compartilhouTT = () => {
     console.log(`Post compartilhado no Twitter`);
+  };
+
+  onChangeComentario = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      textoInput: event.target.value,
+    });
   };
 
   render() {
@@ -146,7 +160,12 @@ class Post extends React.Component {
     }
     if (this.state.comentando) {
       componenteComentario = (
-        <SecaoComentario aoEnviar={this.aoEnviarComentario} />
+        <SecaoComentario
+          onChangeComentario={this.onChangeComentario}
+          aoEnviar={this.aoEnviarComentario}
+          textoInput={this.state.textoInput}
+          comentario={this.state.comentario}
+        />
       );
     }
 

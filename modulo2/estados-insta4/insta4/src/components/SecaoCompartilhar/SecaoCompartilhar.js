@@ -28,6 +28,11 @@ const LogoContainer = styled.div`
   gap: 16px;
 `;
 
+const SectionCompartilhar = styled.div`
+display: flex;
+flex-direction: column;
+`
+
 export class SecaoCompartilhar extends Component {
   render() {
     return (
@@ -37,6 +42,7 @@ export class SecaoCompartilhar extends Component {
           <Logo src={logoFacebook} onClick={this.props.facebook} />
           <Logo src={logoTwitter} onClick={this.props.twitter} />
         </LogoContainer>
+
       </SharedContainer>
     );
   }
