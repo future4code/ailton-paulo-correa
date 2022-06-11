@@ -34,11 +34,10 @@ const DivCard = styled.div`
 export default class CardMessage extends Component {
   render() {
     return (
-      <DivCard key={this.props.index}>
+      <DivCard key={this.props.index} onDoubleClick={this.props.onClickDelete}>
       <Card>
         <h3>{this.props.itens.user}:</h3>
         <p>{this.props.itens.message}</p>
-        <button onClick={this.props.onClickDelete}>X</button>
       </Card>
       </DivCard>
     );

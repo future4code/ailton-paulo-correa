@@ -10,7 +10,6 @@ const MainContainer = styled.div`
   height: 100vh;
   padding: 0;
   margin: 0 auto;
-  border: 1px solid gray;
 `;
 
 const Header = styled.header`
@@ -73,21 +72,24 @@ class App extends React.Component {
     ],
   };
 
-  onClickDelete = () =>{
-    if(window.confirm("Deseja deletar?")){
-
+  onClickDelete = (key) =>{
+    if(window.confirm("Deseja deletar a mensagem?")){
+      const arraySegura = this.state.messageUser.filter((mensagem, index)=>{
+        return key !== index
+      })
+      this.setState({
+        messageUser: [...arraySegura]
+      })
     }
   }
 
   onChangeUser = (event) => {
-    console.log(event.target.value);
     this.setState({
       valorInputUser: event.target.value,
     });
   };
 
   onChangeMessage = (event) => {
-    console.log(event.target.value);
     this.setState({
       valorInputMessage: event.target.value,
     });
@@ -139,9 +141,9 @@ class App extends React.Component {
   render() {
     const arrayCardMensagens = this.state.messageUser.map((item, index) => {
       if (item.user.toLowerCase() === "eu") {
-        return <CardMessageOnlyMe key={index} itens={item} index={index} onClickDelete={this.onClickDelete} />;
+        return <CardMessageOnlyMe key={index} itens={item} index={index} onClickDelete={()=> this.onClickDelete(index)} />;
       } else {
-        return <CardMessage key={index} itens={item} index={index} onClickDelete={this.onClickDelete}/>;
+        return <CardMessage key={index} itens={item} index={index} onClickDelete={()=> this.onClickDelete(index)}/>;
       }
     });
     return (

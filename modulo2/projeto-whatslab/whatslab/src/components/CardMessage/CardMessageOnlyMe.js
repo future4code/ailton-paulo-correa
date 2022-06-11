@@ -33,10 +33,9 @@ export default class CardMessageOnlyMe extends Component {
   render() {
     return (
         <DivCardOnlyMe>
-        <CardOnlyMe key={this.props.index}>
+        <CardOnlyMe key={this.props.index} onDoubleClick={this.props.onClickDelete}>
         <h3>{this.props.itens.user}:</h3>
         <p>{this.props.itens.message}</p>
-        <button onClick={this.props.onClickDelete}>X</button>
       </CardOnlyMe>
         </DivCardOnlyMe>
     )
