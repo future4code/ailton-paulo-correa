@@ -18,6 +18,9 @@ const InputUser = styled.input`
   padding: 0 8px;
   border-radius: 20px;
   border: 2px solid gray;
+  @media screen and (max-width: 480px) {
+    width: 80px;
+  }
 `;
 const InputText = styled.input`
   width: 360px;
@@ -26,6 +29,9 @@ const InputText = styled.input`
   padding: 0 8px;
   border-radius: 20px;
   border: 2px solid gray;
+  @media screen and (max-width: 480px) {
+    width: 320px;
+  }
 `;
 
 const ButtonSend = styled.button`
@@ -44,6 +50,9 @@ const ButtonSend = styled.button`
 const ImgSend = styled.img`
   user-select: none;
   width: 32px;
+  @media screen and (max-width: 480px) {
+    width: 24px;
+  }
 `;
 
 
