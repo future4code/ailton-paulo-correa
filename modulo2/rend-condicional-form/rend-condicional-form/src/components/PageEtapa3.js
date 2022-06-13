@@ -9,6 +9,14 @@ const ContainerPgE3 = styled.div`
   padding: 60px;
   border-radius: 28px;
   box-shadow: 0 0 16px 4px gray;
+  max-width: 80vw;
+  min-width: 80vw;
+  @media screen and (max-width: 600px){
+    padding: 20px;
+    Input, Select, Label, h2{
+      width: 90%;
+    }
+  }
 `;
 
 const Input = styled.input`

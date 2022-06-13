@@ -9,11 +9,13 @@ const ContainerFinal = styled.div`
   padding: 60px;
   border-radius: 28px;
   box-shadow: 0 0 16px 4px gray;
-  h3 {
-    padding: 0;
-    margin: 0;
-    margin-top: 12px;
-    font-size: 16px;
+  max-width: 80vw;
+  min-width: 80vw;
+  @media screen and (max-width: 600px){
+    padding: 20px;
+    Input, Select{
+      width: 90%;
+    }
   }
 `;
 
