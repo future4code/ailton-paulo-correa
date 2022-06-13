@@ -10,8 +10,8 @@ const ContainerPgE1 = styled.div`
   border-radius: 28px;
   box-shadow: 0 0 16px 4px gray;
   max-width: 80vw;
-  min-width: 80vw;
   @media screen and (max-width: 600px){
+    min-width: 80vw;
     padding: 20px;
     Input, Select, Label, h2{
       width: 90%;
