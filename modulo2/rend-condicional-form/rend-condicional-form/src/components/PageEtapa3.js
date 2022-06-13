@@ -44,16 +44,16 @@ class PageEtapa3 extends Component {
     return (
       <ContainerPgE3>
         <h2>ETAPA 2 - INFORMAÇÕES GERAIS DE ENSINO</h2>
-        <Label for="nome">
+        <Label for="graduacao">
           5. Por que você não terminou um curso de graduação?
         </Label>
         <Input
-          id="nome"
+          id="graduacao"
           value={this.props.valorGraduacao}
           onChange={this.props.onChangeGraduacao}
         />
         <AvisoErro>{this.props.aviso7}</AvisoErro>
-        <Label for="idade">6. Você fez algum curso complementar?</Label>
+        <Label>6. Você fez algum curso complementar?</Label>
         <Select onChange={this.props.onChangeCursoComplementar}>
           <option value={" "} />
           <option value={"Curso técnico"}>Curso técnico</option>

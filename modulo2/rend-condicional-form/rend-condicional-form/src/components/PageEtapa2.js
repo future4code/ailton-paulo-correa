@@ -39,14 +39,14 @@ class PageEtapa2 extends Component {
     return (
       <ContainerPgE2>
         <h2>ETAPA 2 - INFORMAÇÕES DO ENSINO SUPERIOR</h2>
-        <Label>5. Qual curso?</Label>
-        <Input
+        <Label for="curso">5. Qual curso?</Label>
+        <Input id="curso"
           value={this.props.valorCurso}
           onChange={this.props.onChangeCurso}
         />
         <AvisoErro>{this.props.aviso5}</AvisoErro>
-        <Label>6. Qual a unidade de ensino?</Label>
-        <Input
+        <Label for="ensino">6. Qual a unidade de ensino?</Label>
+        <Input id="ensino"
           value={this.props.valorUnidade}
           onChange={this.props.onChangeUnidade}
         />
