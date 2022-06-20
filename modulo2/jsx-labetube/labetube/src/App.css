@@ -1,0 +1,129 @@
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.tela-inteira {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 1fr 100px;
+  flex-direction: column;
+}
+
+header {
+  grid-area: 1/1/2/2;
+  border-bottom: #383838 solid 1px;
+  background-color: #202020;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+header h1 {
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+
+main {
+  grid-area: 2/1/3/2;
+  display: flex;
+  background-color: #181818;
+  color: #383838;
+}
+
+nav {
+  background-color: #212121;
+}
+
+.menu-vertical>ul {
+  padding: 0 4px;
+}
+
+.menu-vertical>ul>li {
+  padding-left: 20px;
+}
+
+.menu-vertical {
+  flex-basis: 200px;
+  border-right: #383838 solid 1px;
+  border-right-style: solid;
+  border-right-width: thin;
+  color: #ffffff;
+}
+
+.botoes-meunu-vertical {
+  list-style-type: none;
+  height: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.painel-de-videos {
+  color: #ffffff;
+  gap: 20px;
+  padding: 12px;
+  flex-grow: 1;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 320px));
+  grid-template-rows: repeat(auto-fill, minmax(200px, 264px));
+}
+
+.box-pagina-principal {
+  border: #383838 1px;
+  cursor: pointer;
+  user-select: none;
+  display: grid;
+  grid-template-rows: 3fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  border-style: solid;
+  border-width: thin;
+  align-items: start;
+  justify-items: stretch;
+}
+
+.box-pagina-principal>img {
+  width: 100%;
+  height: 180px;
+}
+
+.box-pagina-principal>h5 {
+  margin: 4px 0 0 20px;
+}
+
+.box-pagina-principal>h4 {
+  margin: 8px 0 0 20px;
+}
+
+.botoes-meunu-vertical:hover {
+  background-color: #383838;
+}
+
+footer {
+  grid-area: 3/1/4/2;
+  border-top: #383838 solid 1px;
+  background-color: #202020;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  justify-content: center;
+}
+
+@media screen and (max-width:480px) {
+  header {
+    flex-direction: column;
+    font-size: 12px;
+    justify-content: start;
+  }
+
+  .menu-vertical {
+    flex-basis: 100px;
+  }
+}
