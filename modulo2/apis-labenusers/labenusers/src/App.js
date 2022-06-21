@@ -88,6 +88,11 @@ const DivUsers = styled.div`
   }
 `;
 
+const AvisoCerto = styled.p`
+  padding: 0;
+  margin: 0;
+  color: green;
+`;
 const AvisoErro = styled.p`
   padding: 0;
   margin: 0;
@@ -212,11 +217,8 @@ export default class App extends Component {
         }
       )
       .then((response) => {
-        const arrayUsuarios = response.data.filter((item) => {
-          return item;
-        });
         this.setState({
-          usuarios: arrayUsuarios,
+          usuarios: response.data,
         });
       })
       .catch((error) => {
@@ -269,7 +271,7 @@ export default class App extends Component {
                 <AvisoErro>{this.state.avisoErro}</AvisoErro>
               )}
               {this.state.avisoCerto !== "" && (
-                <AvisoErro>{this.state.avisoCerto}</AvisoErro>
+                <AvisoCerto>{this.state.avisoCerto}</AvisoCerto>
               )}
             </Box>
           )}
@@ -298,7 +300,7 @@ export default class App extends Component {
           )}
         </Main>
         <Footer>
-          <p>Atividade de APIs</p>
+          <p>Atividade de APIsç</p>
         </Footer>
       </Container>
     );
