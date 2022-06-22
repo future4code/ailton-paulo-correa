@@ -3,26 +3,53 @@ import axios from "axios";
 import { Container, Header, Main, Footer } from "./components/styled";
 import RegisterUsers from "./components/pages/RegisterUsers";
 import ListUsers from "./components/pages/ListUsers";
+import UserDetail from "./components/pages/UserDetail";
 
 export default class App extends Component {
   state = {
-    page: "cadastro",
+    page: "register",
     valueInputName: "",
     valueInputEmail: "",
     usuarios: [],
+    infoUsuarios: [],
     avisoErro: "",
     avisoCerto: "",
+    valueInputEmailEdit: "",
+    valueInputNameEdit: "",
+    valueIdEdit: "",
+    valueBusca: "",
+    filterUsers: [],
   };
-  onClickMenu1 = () => {
+
+  onClickPageRegister = () => {
     this.setState({
-      page: "cadastro",
+      page: "register",
     });
   };
-  onClickMenu2 = () => {
+
+  onClickPageList = () => {
     this.setState({
-      page: "lista",
+      page: "list",
+      avisoErro: "",
+      avisoCerto: "",
+      valueInputEmailEdit: "",
+      valueInputNameEdit: "",
+    });
+    this.getAllUsers();
+  };
+
+  onClickPageDetail = (id) => {
+    this.setState({
+      page: "detail",
+      avisoErro: "",
+      avisoCerto: "",
+    });
+    this.getUserById(id);
+    this.setState({
+      valueIdEdit: id,
     });
   };
+
   onChangeName = (event) => {
     this.setState({
       valueInputName: event.target.value,
@@ -30,11 +57,42 @@ export default class App extends Component {
       avisoCerto: "",
     });
   };
+
   onChangeEmail = (event) => {
     this.setState({
       valueInputEmail: event.target.value,
       avisoErro: "",
       avisoCerto: "",
+    });
+  };
+
+  getUserById = async (id) => {
+    try {
+      const response = await axios.get(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
+        {
+          headers: {
+            Authorization: "paulo-silva-ailton",
+          },
+        }
+      );
+      this.setState({
+        infoUsuarios: response.data,
+        valueInputEmailEdit: response.data.email,
+        valueInputNameEdit: response.data.name,
+      });
+    } catch (error) {
+      alert(
+        `Erro ${error.response.request.status} - ${error.response.request.statusText}: ${error.response.data.message}`
+      );
+    }
+  };
+  deleteUserEdit = async (id) => {
+    await this.deleteUser(id);
+    this.onClickPageList();
+    this.setState({
+      valueInputEmailEdit: "",
+      valueInputNameEdit: "",
     });
   };
   deleteUser = async (id) => {
@@ -48,14 +106,46 @@ export default class App extends Component {
             },
           }
         );
-        this.getAllUsers();
       } catch (error) {
         alert(
           `Erro ${error.response.request.status} - ${error.response.request.statusText}: ${error.response.data.message}`
         );
       }
     }
+    await this.getAllUsers();
+    alert("Deletado com sucesso!");
   };
+
+  onChangeBusca = (event) => {
+    this.setState({
+      valueBusca: event.target.value,
+    });
+  };
+
+  editUser = async (id) => {
+    try {
+      const body = {
+        name: this.state.valueInputNameEdit,
+        email: this.state.valueInputEmailEdit,
+      };
+      axios.put(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
+        body,
+        {
+          headers: {
+            Authorization: "paulo-silva-ailton",
+          },
+        }
+      );
+    } catch (error) {
+      this.setState({
+        avisoErro: `Erro ${error.response.request.status} - ${error.response.request.statusText}: ${error.response.data.message}`,
+      });
+    }
+    alert("Usuário editado com sucesso!");
+    this.onClickPageList();
+  };
+
   createUser = async () => {
     if (this.state.valueInputName !== "" && this.state.valueInputName !== " ") {
       if (
@@ -109,6 +199,7 @@ export default class App extends Component {
       });
     }
   };
+
   getAllUsers = async () => {
     try {
       const response = await axios.get(
@@ -128,22 +219,36 @@ export default class App extends Component {
       });
     }
   };
+
   componentDidMount() {
     this.getAllUsers();
   }
+
+  onChangeNameEdit = (event) => {
+    this.setState({
+      valueInputNameEdit: event.target.value,
+    });
+  };
+
+  onChangeEmailEdit = (event) => {
+    this.setState({
+      valueInputEmailEdit: event.target.value,
+    });
+  };
+
   render() {
     return (
       <Container>
         <Header>
           <nav>
             <ul>
-              <li onClick={this.onClickMenu1}>Cadastrar Usuários</li>
-              <li onClick={this.onClickMenu2}>Lista de Usuários</li>
+              <li onClick={this.onClickPageRegister}>Cadastrar Usuários</li>
+              <li onClick={this.onClickPageList}>Lista de Usuários</li>
             </ul>
           </nav>
         </Header>
         <Main>
-          {this.state.page === "cadastro" && (
+          {this.state.page === "register" && (
             <RegisterUsers
               valueInputName={this.state.valueInputName}
               onChangeName={this.onChangeName}
@@ -154,10 +259,28 @@ export default class App extends Component {
               createUser={this.createUser}
             />
           )}
-          {this.state.page === "lista" && (
+          {this.state.page === "list" && (
             <ListUsers
-              usuarios={this.state.usuarios.filter((item) => item)}
+              valueBusca={this.state.valueBusca}
+              onChangeBusca={this.onChangeBusca}
+              onClickPageDetail={this.onClickPageDetail}
+              usuarios={this.state.usuarios}
+              usuariosFiltrados={this.state.filterUsers}
               deleteUser={this.deleteUser}
+            />
+          )}
+          {this.state.page === "detail" && (
+            <UserDetail
+              buscar={this.buscar}
+              editUser={this.editUser}
+              deleteUserEdit={this.deleteUserEdit}
+              onChangeEmailEdit={this.onChangeEmailEdit}
+              onChangeNameEdit={this.onChangeNameEdit}
+              valueInputEmailEdit={this.state.valueInputEmailEdit}
+              valueInputNameEdit={this.state.valueInputNameEdit}
+              onClickPageList={this.onClickPageList}
+              deleteUser={this.deleteUser}
+              valueIdEdit={this.state.valueIdEdit}
             />
           )}
         </Main>

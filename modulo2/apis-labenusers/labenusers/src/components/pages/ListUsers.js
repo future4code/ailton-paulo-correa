@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, DivUsers } from "../styled";
+import { Box, DivUsers, Input } from "../styled";
 
 const ListUsers = (props) => {
   return (
@@ -10,6 +10,7 @@ const ListUsers = (props) => {
           return (
             <DivUsers key={item.id}>
               <li>Nome: {item.name}</li>
+              <h5 onClick={() => props.onClickPageDetail(item.id)}>Editar</h5>
               <p
                 onClick={() => {
                   props.deleteUser(item.id);

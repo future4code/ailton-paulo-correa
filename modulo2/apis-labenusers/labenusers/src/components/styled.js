@@ -38,17 +38,41 @@ export const Main = styled.main`
   padding: 20px;
 `;
 export const Box = styled.div`
+  min-width: 300px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
   background-color: white;
   padding: 20px;
   gap: 12px;
   border: 1px solid gray;
   border-radius: 12px;
   box-shadow: 0 0 8px black;
+  button {
+    width: 180px;
+    margin: 0 auto;
+  }
   h3 {
+    margin: 0 auto;
+  }
+`;
+export const ButtonBox = styled.div`
+  display: flex;
+  gap: 20px;
+  h3 {
+    user-select: none;
+    width: min-content;
+    font-weight: 500;
+    padding: 0 8px;
+    border-radius: 12px;
+    box-shadow: 0 0 4px black;
     margin: 0;
+    word-wrap: normal;
+    word-break: normal;
+    :hover {
+      background-color: #c4c4c4;
+    }
   }
 `;
 export const Footer = styled.footer`
@@ -63,16 +87,40 @@ export const Input = styled.input`
   width: 320px;
 `;
 export const DivUsers = styled.div`
-  display: flex;
+  display: grid;
+  padding: 4px 12px;
+  grid-template-columns: 4fr 60px 30px;
+  grid-template-rows: 1fr;
   align-items: center;
   justify-content: center;
+  max-width: 70vw;
+  min-width: 300px;
+  word-wrap: break-word;
+  word-break: break-all;
   gap: 8px;
   p {
+    user-select: none;
+    width: min-content;
     color: red;
+    font-size: 13px;
     padding: 0 8px;
     border-radius: 12px;
-    box-shadow: 0 0 8px black;
+    box-shadow: 0 0 4px black;
     margin: 0;
+    :hover {
+      background-color: #c4c4c4;
+    }
+  }
+  h5 {
+    user-select: none;
+    width: min-content;
+    font-weight: 500;
+    padding: 0 8px;
+    border-radius: 12px;
+    box-shadow: 0 0 4px black;
+    margin: 0;
+    word-wrap: normal;
+    word-break: normal;
     :hover {
       background-color: #c4c4c4;
     }
