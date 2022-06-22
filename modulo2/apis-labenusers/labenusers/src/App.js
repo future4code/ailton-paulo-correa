@@ -146,8 +146,14 @@ export default class App extends Component {
             Authorization: "paulo-silva-ailton",
           },
         }
-      );
+      )      
     }
+    const arrayNovo = this.state.usuarios.filter((item)=>{
+      return item.id !== id
+    })
+    this.setState({
+      usuarios: arrayNovo
+    })
   };
 
   createUser = () => {
@@ -217,6 +223,7 @@ export default class App extends Component {
         }
       )
       .then((response) => {
+        console.log("teste")
         this.setState({
           usuarios: response.data,
         });
@@ -226,8 +233,8 @@ export default class App extends Component {
       });
   };
 
-  componentDidUpdate() {
-    this.getAllUsers();
+  componentDidUpdate() {    
+  //  this.getAllUsers()
   }
 
   componentDidMount() {
