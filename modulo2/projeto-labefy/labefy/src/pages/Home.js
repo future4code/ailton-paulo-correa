@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import CardsPlaylist from "../components/CardsPlaylist";
+import CardsPlaylistSugerido from "../components/CardsPlaylistSugerido";
 
 const HomeContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Fascinate&family=Kdam+Thmor+Pro&family=League+Gothic&display=swap");
@@ -39,6 +41,7 @@ const Main = styled.main`
   width: 84vw;
   height: 100%;
   margin: 60px 0 100px 0;
+  max-width: 1200px;
   gap: 20px;
   align-items: center;
   border-radius: 8px;
@@ -46,6 +49,14 @@ const Main = styled.main`
   h3 {
     color: #f2e3d5;
     text-shadow: 0.4px 0.4px 0.1px #f2e3d5, 1px 1px 1px black;
+  }
+`;
+
+const Button = styled.p`
+  color: #026773;
+  text-shadow: 1px 1px f2e3d5;
+  :hover {
+    text-decoration: underline;
   }
 `;
 
@@ -61,56 +72,86 @@ const Footer = styled.footer`
   bottom: 0;
 `;
 
-const ContainerMain = styled.div`
-  min-height: 216px;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 12px;
-  gap: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  background-color: #026773;
-  border-radius: 8px;
-`;
-
-const Box = styled.div`
-  min-width: 260px;
-  height: 200px;
-  background-color: #f2e3d5;
-  box-shadow: 2px 2px 0 2px #024959, 2px 2px 8px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  color: #026773;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  :active {
-    background-color: #026773;
-    color: #f2e3d5;
-    box-shadow: 2px 2px 0 2px #f2e3d5, 2px 2px 8px rgba(0, 0, 0, 0.5);
-  }
-`;
-
 export default class Home extends Component {
+  state = {
+    valueInputNameTrack: "",
+    valueInputArtistTrack: "",
+    valueInputUrlTrack: "",
+  };
+
+  onChangeInputNomeTrack = (event) => {
+    this.setState({
+      valueInputNameTrack: event.target.value,
+    });
+  };
+  onChangeInputArtistTrack = (event) => {
+    this.setState({
+      valueInputArtistTrack: event.target.value,
+    });
+  };
+  onChangeInputUrlTrack = (event) => {
+    this.setState({
+      valueInputUrlTrack: event.target.value,
+    });
+  };
+
   render() {
     return (
       <HomeContainer>
         <Header>
           <h1>LABEFY</h1>
         </Header>
-        <Main>
-          <h3>Playlists Sugeridas</h3>
-          <ContainerMain>
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-          </ContainerMain>
-          <h3>Suas Playlists</h3>
-          <ContainerMain>
-            <Box>+</Box>
-          </ContainerMain>
-        </Main>
+        {this.props.pageHome === "home" && (
+          <Main>
+            <h3>Playlists Sugeridas</h3>
+            <CardsPlaylistSugerido
+              playlistsSugeridas={this.props.playlistsSugeridas}
+            />
+            <h3>Suas Playlists</h3>
+            <CardsPlaylist
+              onClickPageCreatePL={this.props.onClickPageCreatePL}
+              playlists={this.props.playlists}
+            />
+          </Main>
+        )}
+        {this.props.pageHome === "createPL" && (
+          <Main>
+            <h3>Criar Playlist</h3>
+            <input
+              value={this.props.valueInputPlaylist}
+              onChange={this.props.onChangeInputPlaylist}
+            />
+            <Button onClick={this.props.createPlaylist}>Criar Playlist</Button>
+            <Button onClick={this.props.onClickPageHome}>Voltar</Button>
+          </Main>
+        )}
+        {this.props.pageHome === "detailsPL" && (
+          <Main>
+            <h3>Detalhes da Playlist</h3>
+            <Button onClick={this.props.addTrack}>Adicionar Playlist</Button>
+            <Button onClick={this.props.onClickPageHome}>Voltar</Button>
+          </Main>
+        )}
+        {this.props.pageHome === "addTrack" && (
+          <Main>
+            <h3>Adicionar nova múisica na Playlist</h3>
+            <input
+              value={this.state.valueInputNameTrack}
+              onChange={this.onChangeInputNomeTrack}
+            />
+            <input
+              value={this.state.valueInputArtistTrack}
+              onChange={this.onChangeInputArtistTrack}
+            />
+            <input
+              value={this.state.valueInputUrlTrack}
+              onChange={this.onChangeInputUrlTrack}
+            />
+            <Button onClick={this.props.addTrack}>Adicionar Playlist</Button>
+            <Button onClick={this.props.onClickPageHome}>Voltar</Button>
+          </Main>
+        )}
+
         <Footer></Footer>
       </HomeContainer>
     );
