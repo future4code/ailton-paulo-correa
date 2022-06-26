@@ -14,8 +14,10 @@ const ContainerMain = styled.div`
 `;
 
 const Box = styled.div`
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 140px;
   background-color: #f2e3d5;
   box-shadow: 2px 2px 0 2px #024959, 2px 2px 8px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
@@ -37,18 +39,21 @@ const Box = styled.div`
 
 export default class CardsPlaylist extends Component {
   render() {
-    let contador = 0;
     return (
       <ContainerMain>
-        {this.props.playlists.list?.map((item, index, array) => {
-          if (contador < 5) {
-            contador++;
-            return <Box key={item.id}>{item.name}</Box>;
-          }
-        })}
         <Box key={0} onClick={this.props.onClickPageCreatePL}>
           + Criar Playlist
         </Box>
+        {this.props.playlists.list?.map((item, index, array) => {
+          return (
+            <Box
+              onClick={() => this.props.onClickPageDetailsPL(item.id)}
+              key={item.id}
+            >
+              {item.name}
+            </Box>
+          );
+        })}
       </ContainerMain>
     );
   }

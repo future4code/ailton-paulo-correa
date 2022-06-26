@@ -14,8 +14,10 @@ const ContainerMain = styled.div`
 `;
 
 const Box = styled.div`
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;  
+  word-wrap: break-word;
+  word-break: break-all;
   background-color: #f2e3d5;
   box-shadow: 2px 2px 0 2px #024959, 2px 2px 8px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
@@ -40,7 +42,11 @@ export default class CardsPlaylistSugerido extends Component {
     return (
       <ContainerMain>
         {this.props.playlistsSugeridas.map((item) => {
-          return <Box key={item.id}>{item.name}</Box>;
+          return (
+            <Box onClick={()=>this.props.onClickPageDetailsPL(item.id)} key={item.id}>
+              {item.name}
+            </Box>
+          );
         })}
       </ContainerMain>
     );

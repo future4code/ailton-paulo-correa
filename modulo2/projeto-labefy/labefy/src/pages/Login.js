@@ -74,6 +74,11 @@ const ButtonRegister = styled.p`
   }
 `;
 
+const WarningError = styled.h4`
+  color: red;
+  text-align: center;
+`;
+
 export default class Login extends Component {
   render() {
     return (
@@ -99,6 +104,7 @@ export default class Login extends Component {
           <ButtonRegister onClick={this.props.onClickPageRigister}>
             Quero registrar!
           </ButtonRegister>
+          <WarningError>{this.props.warningError}</WarningError>
         </BoxRegistrar>
         <ButtonLogin onClick={this.props.onClickLogin}>Conectar</ButtonLogin>
       </RegisterContainer>
