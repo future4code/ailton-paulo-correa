@@ -55,21 +55,23 @@ const Post = (props) => {
         />
       </PostFooter>
       {comentando && (
-        <SecaoComentario
-          onChangeComentario={onChangeComentario}
-          inputComentario={inputComentario}
-          enviarComentario={enviarComentario}
-        />
+        <>
+          <SecaoComentario
+            onChangeComentario={onChangeComentario}
+            inputComentario={inputComentario}
+            enviarComentario={enviarComentario}
+          />
+          {comentarios.map((item, index) => {
+            return (
+              <Card key={index}>
+                <h4>Comentário Anônimo:</h4>
+                <p>{item}</p>
+                <hr />
+              </Card>
+            );
+          })}
+        </>
       )}
-      {comentarios.map((item, index) => {
-        return (
-          <Card key={index}>
-            <h4>Comentário Anônimo:</h4>
-            <p>{item}</p>
-            <hr />
-          </Card>
-        );
-      })}
     </PostContainer>
   );
 };
