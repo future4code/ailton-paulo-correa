@@ -20,13 +20,7 @@ const Post = (props) => {
   const [comentando, setComentando] = useState(false);
   const [comentarios, setComentarios] = useState([]);
   //useState
-  //Funções
-  const onClickCurtida = () => {
-    setCurtido(!curtido);
-  };
-  const onClickComentario = () => {
-    setComentando(!comentando);
-  };
+  //Funções  
   const enviarComentario = () => {
     setComentarios([...comentarios, inputComentario]);
     setInputComentario("");
@@ -45,12 +39,16 @@ const Post = (props) => {
       <PostFooter>
         <IconeComContador
           icone={curtido ? iconeCoracaoPreto : iconeCoracaoBranco}
-          onClickIcone={onClickCurtida}
+          onClickIcone={() => {
+            setCurtido(!curtido);
+          }}
           valorContador={curtido ? 1 : 0}
         />
         <IconeComContador
           icone={iconeComentario}
-          onClickIcone={onClickComentario}
+          onClickIcone={() => {
+            setComentando(!comentando);
+          }}
           valorContador={comentarios.length}
         />
       </PostFooter>
