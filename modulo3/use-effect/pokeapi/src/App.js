@@ -32,7 +32,7 @@ export default function App() {
           {pokeList?.map((pokemon,index) => {
             return (
               <option key={pokemon.name} value={pokemon.name}>
-                {`#${(index+1)} - `}{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}{` - #${(index+1)}`}
               </option>
             );
           })}
