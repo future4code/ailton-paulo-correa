@@ -71,13 +71,29 @@ export const Menu = styled.div`
 // ListMatches
 
 export const ContainerList = styled.div`
-
-`
+  overflow: auto;
+  scrollbar-color: #ffa2c9 #f5bfd6;
+`;
 
 export const CardList = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 16px;
+  gap: 12px;
+  border-radius: 8px;
+  color: #ec5569;
+  font-weight: 900;
+  font-size: 20px;
+  :hover{
+    background-color: #cfcfcf;
+  }
+`;
 
-`
-
-export const Photo = styled.img`
-  width: 100px;  
-`
+export const Photo = styled.div`
+  background-image: url(${(props)=> props.src});
+  background-size: cover;
+  box-shadow: 0 0 1px 2px #ffa2c9;
+  border-radius: 8px;
+  width: 100px;
+  height: 80px;
+`;

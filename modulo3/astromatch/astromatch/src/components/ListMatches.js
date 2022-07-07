@@ -2,7 +2,6 @@ import React from "react";
 import { ContainerList, CardList, Photo } from "../pages/Matches/MatchesStyled";
 
 export const ListMatches = (props) => {
-  console.log(props);
   return (
     <ContainerList>
       {props.arrayMatches?.map((item) => {

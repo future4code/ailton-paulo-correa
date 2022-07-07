@@ -16,7 +16,6 @@ export const getProfileToChoose = async (setPessoa, setLoading) => {
 export const getMatches = async (getMatches) => {
   try {
     const res = await axios.get(baseURL + "paulo/matches");
-    console.log(res.data.matches);
     getMatches(res.data.matches);
   } catch (error) {
     console.log(error);

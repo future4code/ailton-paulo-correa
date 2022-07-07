@@ -110,7 +110,8 @@ export const ContainerCard = styled.div`
   height: 580px;
   background-image: url(${(props) => props.photo});
   background-size: cover;
-  background-position: center top;
+  background-position: ${(props) =>
+    props.name.toLowerCase() === "joker" ? "center top left" : "center top"};
   justify-content: end;
   color: #fff;
   text-shadow: 1px 1px 2px black;
@@ -138,6 +139,13 @@ export const LoadingImg = styled.img`
       transform: rotate(360deg);
     }
   }
+`;
+
+export const EndCard = styled.div`
+  height: 300px;
+  width: 200px;
+  background-size: cover;
+  background-image: url();
 `;
 
 export const Load = styled.div`

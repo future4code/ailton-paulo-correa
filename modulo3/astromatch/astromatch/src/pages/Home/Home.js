@@ -21,7 +21,6 @@ export default function Home(props) {
   useEffect(() => {
     getProfileToChoose(setPessoa, setLoading);
   }, []);
-  console.log(pessoa);
   return (
     <ContainerHome>
       <Header>
