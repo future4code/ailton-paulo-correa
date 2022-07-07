@@ -13,10 +13,13 @@ export const getProfileToChoose = async (setPessoa, setLoading) => {
   }
 };
 
-export const getMatches = async (getMatches) => {
-  try {
+export const getMatches = async (getMatches,setLoading) => {
+  try {    
+    getMatches([]);
+    setLoading(true);
     const res = await axios.get(baseURL + "paulo/matches");
     getMatches(res.data.matches);
+    setLoading(false);
   } catch (error) {
     console.log(error);
   }
@@ -35,10 +38,10 @@ export const choosePerson = async (id, choice, setPessoa, setLoading) => {
   }
 };
 
-export const clear = async (setPage) => {
+export const clear = async (setAuxClear) => {
   try {
     await axios.put(baseURL + "paulo/clear");
-    setPage("home")
+    setAuxClear(Date.now())
   } catch (error) {
     console.log(error);
   }

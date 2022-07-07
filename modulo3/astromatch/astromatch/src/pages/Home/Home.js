@@ -13,6 +13,7 @@ import iconConfirm from "../../assets/confirme.png";
 import iconCancel from "../../assets/cancel.png";
 import { Card } from "../../components/Card";
 import { getProfileToChoose, choosePerson } from "../../services/astroAPI";
+import doguinho from "../../assets/doguinho.jpg";
 
 export default function Home(props) {
   const [pessoa, setPessoa] = useState({});
@@ -20,7 +21,8 @@ export default function Home(props) {
 
   useEffect(() => {
     getProfileToChoose(setPessoa, setLoading);
-  }, []);
+  }, [props.auxClear]);
+
   return (
     <ContainerHome>
       <Header>
@@ -34,16 +36,28 @@ export default function Home(props) {
         </Menu>
       </Header>
       <Card pessoa={pessoa} loading={loading} />
-      <Footer>
-        <Button
-          icon={iconCancel}
-          onClick={() => choosePerson(pessoa.id, false, setPessoa, setLoading)}
-        />
-        <Button
-          icon={iconConfirm}
-          onClick={() => choosePerson(pessoa.id, true, setPessoa, setLoading)}
-        />
-      </Footer>
+      {pessoa ? (
+        loading || (
+          <Footer>
+            <Button
+              icon={iconCancel}
+              onClick={() =>
+                choosePerson(pessoa.id, false, setPessoa, setLoading)
+              }
+            />
+            <Button
+              icon={iconConfirm}
+              onClick={() =>
+                choosePerson(pessoa.id, true, setPessoa, setLoading)
+              }
+            />
+          </Footer>
+        )
+      ) : (
+        <Footer>
+          <Button icon={doguinho} />
+        </Footer>
+      )}
     </ContainerHome>
   );
 }

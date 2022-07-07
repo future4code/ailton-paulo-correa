@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerMatches = styled.div`
+export const ContainerMatches = styled.main`
   width: 440px;
   min-height: 600px;
   height: 84vh;
@@ -96,4 +96,24 @@ export const Photo = styled.div`
   border-radius: 8px;
   width: 100px;
   height: 80px;
+`;
+
+export const LoadingImgMatches = styled.img`
+  width: 80px;
+  animation: rotateLoad 2s infinite linear;
+  @keyframes rotateLoad {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+export const LoadMatches = styled.div`
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

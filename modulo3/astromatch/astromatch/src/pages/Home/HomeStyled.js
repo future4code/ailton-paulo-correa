@@ -100,7 +100,7 @@ export const Button = styled.p`
 `;
 
 // styled Card.js
-export const ContainerCard = styled.div`
+export const ContainerCard = styled.main`
   margin: 0 auto;
   margin-top: 20px;
   border: solid 1px #252422;
@@ -141,19 +141,13 @@ export const LoadingImg = styled.img`
   }
 `;
 
-export const EndCard = styled.div`
-  height: 300px;
-  width: 200px;
-  background-size: cover;
-  background-image: url();
-`;
-
 export const Load = styled.div`
   flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 export const Bio = styled.div`
   padding: 40px 0 12px 0;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
