@@ -1,22 +1,42 @@
 import React from "react";
-import { AdminHomeContainer, Button } from "./styled";
+import {
+  AdminHomeContainer,
+  Button,
+  Header,
+  LineDiv,
+  TittleAdmin,
+} from "./styled";
 import CardAdmin from "../../components/CardAdmin";
+import { goToPage } from "../../routes/coordinator";
+import { useNavigate } from "react-router-dom";
 
-export default function AdminHome(props) {
+export default function AdminHome() {
+  const navigate = useNavigate();
   return (
     <AdminHomeContainer>
-      AdminHome
-      <Button onClick={() => props.setPage("home")}>Voltar home</Button>
-      <Button onClick={() => props.setPage("createTrips")}>Criar viagem</Button>
-      <Button
-        onClick={() => {
-          props.setPage("login");
-          /* vai ter função de deslogar */
-        }}
-      >
-        Desconectar
-      </Button>
-      <CardAdmin setPage={props.setPage}/>
+      <Header>
+        <TittleAdmin>AdminHome</TittleAdmin>
+        <Button onClick={() => goToPage(navigate, "")}>Voltar</Button>
+        <Button onClick={() => goToPage(navigate, "admin/create_trips/")}>
+          Criar viagem
+        </Button>
+        <Button
+          onClick={() => {
+            goToPage(navigate, "login/");
+            /* vai ter função de deslogar */
+          }}
+        >
+          Desconectar
+        </Button>
+      </Header>
+      <LineDiv />
+      <CardAdmin />
+      <CardAdmin />
+      <CardAdmin />
+      <CardAdmin />
+      <CardAdmin />
+      <CardAdmin />
+      <CardAdmin />
     </AdminHomeContainer>
   );
 }

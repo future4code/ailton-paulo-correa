@@ -52,17 +52,20 @@ export const Logo = styled.h1`
   text-shadow: -2px -2px #3b233f, 2px 2px #3b233f, -2px 2px #3b233f,
     2px -2px #3b233f, 3px -4px #af7eaf, -3px -4px #af7eaf, 4px -6px #332c33,
     -4px -6px #332c33;
-    @media screen and (max-width: 480px) {
-     scale: 0.8 ;
-    }
+  @media screen and (max-width: 480px) {
+    scale: 0.8;
+  }
 `;
 
 export const DivButton = styled.div`
   display: flex;
   justify-content: space-between;
-  gap: 80px;
+  gap: 180px;
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
   justify-content: center;
+  @media screen and (max-width: 480px) {
+    gap: 40px;
+  }
 `;

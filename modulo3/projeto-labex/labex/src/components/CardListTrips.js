@@ -1,10 +1,10 @@
 import React from 'react'
-import { ContainerCardLT } from '../pages/ListTrips/styled'
+import { ContainerCardLT, TitleCardLT } from '../pages/ListTrips/styled'
 
 export default function CardListTrips() {
   return (
     <ContainerCardLT>
-        <h2>#########</h2>
+        <TitleCardLT>#########</TitleCardLT>
         <p>Nome: #########</p>
         <p>Descrição: #########</p>
         <p>Planet: #########</p>

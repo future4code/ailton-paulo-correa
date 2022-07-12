@@ -1,14 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import CardListTrips from "../../components/CardListTrips";
+import { goToPage } from "../../routes/coordinator";
 import { TripsContainer, Button, Header, TitleListTrips, LineDiv, BoxCards } from "./styled";
 
-export default function ListTrips(props) {
+export default function ListTrips() {
+  const navigate = useNavigate();
   return (
     <TripsContainer>
       <Header>        
-        <Button onClick={() => props.setPage("home")}>LabeX</Button>
         <TitleListTrips>List Trips</TitleListTrips>
-        <Button onClick={() => props.setPage("formTrips")}>Inscrição</Button>
+        <Button onClick={() => goToPage(navigate,"")}>Voltar</Button>
+        <Button onClick={() => goToPage(navigate,"trips/form_trips/")}>Inscrição</Button>
       </Header>
       <LineDiv />
       <BoxCards>

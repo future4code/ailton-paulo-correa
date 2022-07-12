@@ -13,31 +13,39 @@ export const TripsContainer = styled.main`
 `;
 
 export const Header = styled.header`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
   align-items: center;
   user-select: none;
+  @media screen and (max-width: 800px) {
+    display: grid;
+    justify-content: center;
+    gap: 12px;
+  }
 `;
 
 export const TitleListTrips = styled.h2`
   font-size: 42px;
   text-align: center;
-  width: 180px;
   text-shadow: 2px 2px #373147;
   user-select: none;
   text-align: center;
   font-weight: 900;
   color: #cfc9df;
+  grid-area: 1/1/2/3;
   text-shadow: -0.5px -0.5px #3b233f, 0.5px 0.5px #3b233f, -0.5px 0.5px #3b233f,
     0.5px -0.5px #3b233f, 1px -1px #af7eaf, -1px -1px #af7eaf, 2px -2px #332c33,
     -2px -2px #332c33;
+  @media screen and (max-width: 800px) {
+    font-size: 32px;
+  }
 `;
 
 export const Button = styled.h2`
   cursor: pointer;
   padding: 4px 8px;
   text-align: center;
-  width: 180px;
   text-shadow: 2px 2px #373147;
   user-select: none;
   text-align: center;
@@ -48,6 +56,10 @@ export const Button = styled.h2`
     0.5px -0.5px #3b233f, 1px -1px #af7eaf, -1px -1px #af7eaf, 2px -2px #332c33,
     -2px -2px #332c33;
   :hover {
+    text-decoration: underline;
+  }
+  @media screen and (max-width: 800px) {
+    font-size: 24px;
     text-decoration: underline;
   }
 `;
@@ -98,13 +110,30 @@ export const BoxCards = styled.div`
 /////// CardListTrip
 
 export const ContainerCardLT = styled.div`
-  background-color: rgba(35, 35, 35, 0.8);
-  height: 200px;
+  background-color: rgba(35, 35, 35, 0.7);
+  min-height: 200px;
   width: 320px;
   padding: 8px;
   border-radius: 8px;
-  transition: 1s;
+  word-wrap: break-word;
+  word-break: break-all;
+  color: #cfc9df;
+  font-weight: 500;
   :hover {
+    font-weight: 900;
     background-color: rgba(35, 35, 35, 0.98);
   }
+`;
+
+export const TitleCardLT = styled.h2`
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+  text-shadow: 2px 2px #373147;
+  text-align: center;
+  font-weight: 900;
+  color: #cfc9df;
+  text-shadow: -0.5px -0.5px #3b233f, 0.5px 0.5px #3b233f, -0.5px 0.5px #3b233f,
+    0.5px -0.5px #3b233f, 1px -1px #af7eaf, -1px -1px #af7eaf,
+    1.5px -1.5px #332c33, -1.5px -1.5px #332c33;
 `;
