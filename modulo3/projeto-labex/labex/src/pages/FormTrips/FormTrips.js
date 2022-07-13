@@ -47,7 +47,7 @@ export default function FormTrips() {
         </Select2>
       </Form>
       <DivButton>
-        <Button onClick={() => goToPage(navigate, "trips/")}>
+        <Button onClick={() => goToPage(navigate, "trips/list/")}>
           Voltar
         </Button>
         <Button

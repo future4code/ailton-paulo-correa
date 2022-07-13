@@ -11,7 +11,7 @@ export default function ListTrips() {
       <Header>        
         <TitleListTrips>List Trips</TitleListTrips>
         <Button onClick={() => goToPage(navigate,"")}>Voltar</Button>
-        <Button onClick={() => goToPage(navigate,"trips/form_trips/")}>Inscrição</Button>
+        <Button onClick={() => goToPage(navigate,"trips/application/")}>Inscrição</Button>
       </Header>
       <LineDiv />
       <BoxCards>

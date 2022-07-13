@@ -8,17 +8,17 @@ import ListTrips from "../pages/ListTrips/ListTrips";
 import FormTrips from "../pages/FormTrips/FormTrips";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
-export const Router = () => {
+export const Router = () => {  
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="trips" element={<ListTrips />} />
-        <Route path="trips/form_trips" element={<FormTrips />} />
+        <Route path="trips/list" element={<ListTrips />} />
+        <Route path="trips/application" element={<FormTrips />} />
         <Route path="login" element={<Login />} />
-        <Route path="admin" element={<AdminHome />} />
-        <Route path="admin/create_trips" element={<CreateTrips />} />
-        <Route path="admin/trip_details" element={<TripDetails />} />
+        <Route path="admin/trips/list" element={<AdminHome />} />
+        <Route path="admin/trips/create" element={<CreateTrips />} />
+        <Route path="admin/trips/:id" element={<TripDetails />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

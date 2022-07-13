@@ -89,7 +89,6 @@ export const BoxCards = styled.div`
   background-color: rgba(87, 77, 75, 0.2);
   border-radius: 8px;
   gap: 20px;
-  height: 98%;
   width: 98%;
   margin: 0 auto;
   overflow: auto;

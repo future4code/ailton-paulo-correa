@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { goToPage } from "../../routes/coordinator";
 
 export default function Home() {
-  const navigate = useNavigate();  
+  const navigate = useNavigate();
   return (
     <HomeContainer>
       <Logo>LabeX</Logo>
@@ -18,7 +18,7 @@ export default function Home() {
         <ButtonLeft onClick={() => goToPage(navigate, "login/")}>
           Botão Admin
         </ButtonLeft>
-        <ButtonRight onClick={() => goToPage(navigate, "trips/")}>
+        <ButtonRight onClick={() => goToPage(navigate, "trips/list/")}>
           Botão Viagens
         </ButtonRight>
       </DivButton>

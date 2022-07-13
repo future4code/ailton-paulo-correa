@@ -26,7 +26,7 @@ export const Button = styled.h2`
   }
 `;
 
-export const TittleLogin = styled.h2`
+export const TitleLogin = styled.h2`
   font-size: 42px;
   text-align: center;
   margin-bottom: 16px;

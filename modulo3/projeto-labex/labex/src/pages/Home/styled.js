@@ -21,8 +21,7 @@ export const ButtonLeft = styled.h2`
   :hover {
     border: #3b2340 solid 4px;
     background-color: #b579b7;
-    scale: 1.3;
-    transform: rotate(3deg);
+    transform: rotate(3deg) scale(1.3);
   }
 `;
 
@@ -38,8 +37,7 @@ export const ButtonRight = styled.h2`
   :hover {
     border: #3b2340 solid 4px;
     background-color: #b579b7;
-    scale: 1.3;
-    transform: rotate(-3deg);
+    transform: rotate(-3deg) scale(1.3);
   }
 `;
 
@@ -53,7 +51,7 @@ export const Logo = styled.h1`
     2px -2px #3b233f, 3px -4px #af7eaf, -3px -4px #af7eaf, 4px -6px #332c33,
     -4px -6px #332c33;
   @media screen and (max-width: 480px) {
-    scale: 0.8;
+    transform: scale(0.8);
   }
 `;
 
