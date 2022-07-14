@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { listCountries } from "../../constants/listCountries";
+import { useForm } from "../../hooks/useForm";
 import { goToPage } from "../../routes/coordinator";
+import { getApi, postApi } from "../../services/api";
 import {
   Button,
   DivButton,
@@ -16,46 +19,103 @@ import {
 } from "./styled";
 
 export default function FormTrips() {
-  const [selectColor, setSelectColor] = useState("change");
-  const [selectColor2, setSelectColor2] = useState("change");
   const navigate = useNavigate();
+  const [trips, setTrips] = useState([]);
+  const { form, onChange, clearForm } = useForm({
+    trip: "",
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+    country: "",
+  });
+
+  useEffect(() => {
+    const getTrips = async () => {
+      const res = await getApi("trips");
+      setTrips(res.trips);
+    };
+    getTrips();
+  }, []);
+
+  const submitForm = async (e) => {
+    e.preventDefault();
+    await postApi(`trips/${form.trip}/apply`, form);
+    alert("Inscrição feita com sucesso!")
+    clearForm();
+  };
   return (
     <FormTripsContainer>
       <TitleForm>Inscrição para a viagem</TitleForm>
-      <Form>
-        <Input placeholder="Nome" />
-        <Input placeholder="Idade" min={0} type={"number"} />
-        <Input placeholder="Profissão" />
-        <InputText minLength={30} maxLength={400} placeholder="Descrição" />
+      <Form onSubmit={submitForm}>
+        <Input
+          name="name"
+          value={form.name}
+          onChange={onChange}
+          placeholder="Nome"
+          required
+          pattern="^.{3,}"
+          title={"Mínimo 3 caracteres"}
+        />
+        <Input
+          name="age"
+          type={"number"}
+          value={form.age}
+          onChange={onChange}
+          placeholder="Idade"
+          min={18}
+          required
+        />
+        <Input
+          placeholder="Profissão"
+          name="profession"
+          value={form.profession}
+          onChange={onChange}
+          required
+          pattern="^.{10,}"
+          title={"Mínimo 10 caracteres"}
+        />
+        <Input
+          name="applicationText"
+          value={form.applicationText}
+          onChange={onChange}
+          placeholder="Descrição do Candidato"
+          pattern="^.{30,}"
+          title={"Mínimo 30 caracteres"}
+        />
         <Select
-          onChange={(e) => setSelectColor(e.target.value)}
-          color={selectColor}
+          name="country"
+          onChange={onChange}
+          color={form.country}
+          defaultValue={form.country}
+          required
         >
-          <OptionEpt value={"change"}>Escolha um País</OptionEpt>
-          <Option>teste1</Option>
-          <Option>teste2</Option>
-          <Option>teste3</Option>
+          <OptionEpt selected={undefined} label="Escolha um País" disabled />
+          {listCountries.map((item, index) => {
+            return <Option key={index}>{item}</Option>;
+          })}
         </Select>
         <Select2
-          onChange={(e) => setSelectColor2(e.target.value)}
-          color={selectColor2}
+          defaultValue={form.country}
+          name="trip"
+          onChange={onChange}
+          color={form.trip}
+          required
         >
-          <OptionEpt value={"change"}>Escolha uma Viagem</OptionEpt>
-          <Option>teste1</Option>
-          <Option>teste2</Option>
-          <Option>teste3</Option>
+          <OptionEpt selected={undefined} label="Escolha uma Viagem" disabled />
+          {trips?.map((item) => {
+            return (
+              <Option key={item.id} value={item.id}>
+                {item.name}
+              </Option>
+            );
+          })}
         </Select2>
+        <Button>Enviar</Button>
       </Form>
       <DivButton>
         <Button onClick={() => goToPage(navigate, "trips/list/")}>
           Voltar
-        </Button>
-        <Button
-          onClick={() => {
-            "função de enviar";
-          }}
-        >
-          Enviar
         </Button>
       </DivButton>
     </FormTripsContainer>

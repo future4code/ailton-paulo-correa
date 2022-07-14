@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TripsContainer = styled.main`
   display: flex;
   flex-direction: column;
-  height: 96vh;
+  max-height: 96vh;
   width: 96vw;
   padding: 8px 0px;
   box-shadow: 0 0 0 4px rgba(252, 252, 253, 0.3),
@@ -125,7 +125,7 @@ export const ContainerCardLT = styled.div`
 `;
 
 export const TitleCardLT = styled.h2`
-  font-size: 24px;
+  font-size: 22px;
   text-align: center;
   margin-bottom: 16px;
   text-shadow: 2px 2px #373147;

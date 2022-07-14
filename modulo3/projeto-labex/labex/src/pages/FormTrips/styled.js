@@ -12,9 +12,11 @@ export const FormTripsContainer = styled.main`
   background-color: rgba(36, 36, 36, 0.8);
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 16px;
 `;
 
@@ -32,22 +34,7 @@ export const Input = styled.input`
     background-color: #cfc9df;
   }
 `;
-export const InputText = styled.textarea`
-  box-shadow: 0 0 0 1px rgba(252, 252, 253, 0.3),
-    0 0 0 2px rgba(194, 78, 162, 0.3), 0 0 0 4px rgba(105, 83, 157, 0.3);
-  min-height: 120px;
-  text-align: center;
-  border-radius: 8px;
-  font-size: 20px;
-  min-width: 92%;
-  max-height: 200px;
-  margin: 0 auto;
-  max-width: 92%;
-  padding: 8px;
-  :hover {
-    background-color: #cfc9df;
-  }
-`;
+
 export const Select = styled.select`
   box-shadow: 0 0 0 2px rgba(252, 252, 253, 0.3),
     0 0 0 4px rgba(194, 78, 162, 0.3), 0 0 0 6px rgba(105, 83, 157, 0.3);
@@ -58,7 +45,7 @@ export const Select = styled.select`
   margin: 0 auto;
   max-width: 680px;
   text-align: center;
-  color: ${(props) => (props.color === "change" ? "gray" : "unset")};
+  color: ${(props) => (props.color === "" ? "gray" : "unset")};
   :hover {
     cursor: pointer;
     background-color: #cfc9df;
@@ -67,14 +54,14 @@ export const Select = styled.select`
 export const Select2 = styled.select`
   box-shadow: 0 0 0 2px rgba(252, 252, 253, 0.3),
     0 0 0 4px rgba(194, 78, 162, 0.3), 0 0 0 6px rgba(105, 83, 157, 0.3);
-  height: 32px;
+  height: 32px; 
   border-radius: 8px;
   font-size: 20px;
   width: 92%;
   margin: 0 auto;
   max-width: 680px;
   text-align: center;
-  color: ${(props) => (props.color === "change" ? "gray" : "unset")};
+  color: ${(props) => (props.color === "" ? "gray" : "unset")};
   :hover {
     cursor: pointer;
     background-color: #cfc9df;
@@ -105,13 +92,18 @@ export const DivButton = styled.div`
 `;
 
 export const OptionEpt = styled.option`
-  color: gray;
+  color: #747474;
 `;
 export const Option = styled.option`
   color: black;
+  max-width: 640px;
+  word-wrap: break-word;
+  word-break: break-all;
 `;
 
-export const Button = styled.h2`
+export const Button = styled.button`
+  font-size: 24px;
+  font-weight: 900;
   width: 160px;
   user-select: none;
   background-color: #c8a6cc;

@@ -3,16 +3,18 @@ import styled from "styled-components";
 export const LoginContainer = styled.main`
   display: flex;
   flex-direction: column;
-  width: 96vw;
+  width: 96vw;  
   max-width: 700px;
-  padding: 8px 0px;
+  padding: 16px 0px;
   box-shadow: 0 0 0 4px rgba(252, 252, 253, 0.3),
     0 0 0 8px rgba(194, 78, 162, 0.3), 0 0 0 12px rgba(105, 83, 157, 0.3);
   border-radius: 8px;
   background-color: rgba(36, 36, 36, 0.8);
 `;
 
-export const Button = styled.h2`
+export const Button = styled.button`
+  font-size: 24px;
+  font-weight: 900;
   width: 160px;
   user-select: none;
   background-color: #c8a6cc;
@@ -40,14 +42,15 @@ export const TitleLogin = styled.h2`
     -2px -2px #332c33;
 `;
 
-export const DivInputs = styled.div`
+export const DivInputs = styled.form`
   display: flex;
   flex-direction: column;
   gap: 12px;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const DivButton = styled.div`
-  padding-bottom: 16px;
   display: flex;
   justify-content: space-around;
 `;

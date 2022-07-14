@@ -27,7 +27,7 @@ export default function AdminHome() {
   return (
     <AdminHomeContainer>
       <Header>
-        <TitleAdmin>AdminHome</TitleAdmin>
+        <TitleAdmin>Administrativo</TitleAdmin>
         <Button onClick={() => goToPage(navigate, "")}>Voltar</Button>
         <Button onClick={() => goToPage(navigate, "admin/trips/create/")}>
           Criar viagem
@@ -38,13 +38,13 @@ export default function AdminHome() {
             goToPage(navigate, "login/");
           }}
         >
-          Desconectar
+          Logout
         </Button>
       </Header>
       <LineDiv />
       <BoxCardAdmin>
         {trips?.map((item) => {
-          return <CardAdmin key={item.id} name={item.name} id={item.id} />;
+          return <CardAdmin setTrips={setTrips} key={item.id} name={item.name} id={item.id} />;
         })}
       </BoxCardAdmin>
     </AdminHomeContainer>

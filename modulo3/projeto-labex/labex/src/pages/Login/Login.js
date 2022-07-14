@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "../../hooks/useForm";
 import { goToPage } from "../../routes/coordinator";
 import { postApi } from "../../services/api";
 import {
@@ -13,25 +14,14 @@ import {
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { form, onChange, clearForm } = useForm({ email: "", password: "" });
 
   const onClickLogin = async () => {
-    if (email.trim()) {
-      if (password.trim()) {
-        let body = {
-          email: email,
-          password: password,
-        };
-        const res = await postApi("login", body, undefined);
-        res === "successfully" && goToPage(navigate, "admin/trips/list/");
-      } else {
-        alert("informe senha");
-      }
-    } else {
-      alert("informe email");
-    }
+    const res = await postApi("login", form, undefined);
+    window.localStorage.setItem("token", res.token);
+    res && goToPage(navigate, "admin/trips/list/");
   };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     token && goToPage(navigate, "admin/trips/list/");
@@ -41,14 +31,16 @@ export default function Login() {
       <TitleLogin>Login</TitleLogin>
       <DivInputs>
         <Input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          value={form.email}
+          onChange={onChange}
           placeholder="E-Mail"
           type={"email"}
         />
         <Input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          name="password"
+          value={form.password}
+          onChange={onChange}
           placeholder="Senha"
           type={"password"}
         />

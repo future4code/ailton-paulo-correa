@@ -20,33 +20,35 @@ export default function TripDetails() {
   }, []);
   return (
     <>
-      <TripDetailsContainer>
-        <TitleTD>{trip.name}</TitleTD>
-        <p>{"Nome: " + trip.name}</p>
-        <p>{"Planeta: " + trip.planet}</p>
-        <p>{"Data: " + trip.date}</p>
-        <p>{trip.durationInDays + " Dias"}</p>
-        <p>{trip.description}</p>
-        Candidatos Pendentes
-        {trip.candidates?.map((item) => {
-          return (
-            <div>
-              <p>{item.name}</p>
-            </div>
-          );
-        })}
-        Candidatos Arpovados
-        {trip.approved?.map((item) => {
-          return (
-            <div>
-              <p>{item.name}</p>
-            </div>
-          );
-        })}
-        <Button onClick={() => goToPage(navigate, "admin/trips/list/")}>
-          Voltar AdminHome
-        </Button>
-      </TripDetailsContainer>
+      {trip && (
+        <TripDetailsContainer>
+          <TitleTD>{trip.name}</TitleTD>
+          <p>{"Nome: " + trip.name}</p>
+          <p>{"Planeta: " + trip.planet}</p>
+          <p>{"Data: " + trip.date}</p>
+          <p>{trip.durationInDays + " Dias"}</p>
+          <p>{trip.description}</p>
+          Candidatos Pendentes
+          {trip.candidates?.map((item) => {
+            return (
+              <div key={item.id}>
+                <p>{item.name}</p>
+              </div>
+            );
+          })}
+          Candidatos Arpovados
+          {trip.approved?.map((item) => {
+            return (
+              <div key={item.id}>
+                <p>{item.name}</p>
+              </div>
+            );
+          })}
+          <Button onClick={() => goToPage(navigate, "admin/trips/list/")}>
+            Voltar AdminHome
+          </Button>
+        </TripDetailsContainer>
+      )}
     </>
   );
 }
