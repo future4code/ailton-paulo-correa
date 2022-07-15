@@ -11,16 +11,20 @@ import CardAdmin from "../../components/CardAdmin";
 import { goToPage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 import { getApi } from "../../services/api";
+import Loading from "../../components/Loading"
 
 export default function AdminHome() {
   const [trips, setTrips] = useState([]);
+  const [load, setLoad] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
+    setLoad(true);
     const token = localStorage.getItem("token");
     token || goToPage(navigate, "login/");
     const getTrips = async () => {
       const res = await getApi("trips");
       setTrips(res.trips);
+      setLoad(false);
     };
     token && getTrips();
   }, []);
@@ -43,8 +47,16 @@ export default function AdminHome() {
       </Header>
       <LineDiv />
       <BoxCardAdmin>
-        {trips?.map((item) => {
-          return <CardAdmin setTrips={setTrips} key={item.id} name={item.name} id={item.id} />;
+        {load && <Loading/>}        
+        {!load && trips?.map((item) => {
+          return (
+            <CardAdmin
+              setTrips={setTrips}
+              key={item.id}
+              name={item.name}
+              id={item.id}
+            />
+          );
         })}
       </BoxCardAdmin>
     </AdminHomeContainer>

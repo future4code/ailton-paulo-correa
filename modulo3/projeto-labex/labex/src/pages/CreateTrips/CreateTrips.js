@@ -45,8 +45,8 @@ export default function CreateTrips() {
           value={form.name}
           onChange={onChange}
           required
-          pattern="^.{5,}"
-          title={"Mínimo 5 caracteres"}
+          pattern="^.{5,50}"
+          title={"Mínimo 5 caracteres e no máximo 50 caracteres"}
         />
         <Select
           name="planet"

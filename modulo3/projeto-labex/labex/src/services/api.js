@@ -46,8 +46,8 @@ export const deleteTrip = async (endPoint, auth, setTrips) => {
   try {
     await axios.delete(`${BaseUrl}${endPoint}`, { headers: { auth: auth } });
     const res = await getApi("trips/", auth);
-    setTrips(res.trips)
-    console.log("Deletado");
+    setTrips(res.trips);
+    alert("Viagem Deletada");
     return "Deletado com sucesso!";
   } catch (error) {
     return error;
@@ -56,10 +56,9 @@ export const deleteTrip = async (endPoint, auth, setTrips) => {
 
 ///// End Point Put
 // trips/:tripId/candidates/:candidateId/decide
-export const decideCandidate = async (endPoint, auth) => {
+export const decideCandidate = async (endPoint, auth, body) => {
   try {
-    await axios.put(`${BaseUrl}${endPoint}`, { headers: { auth: auth } });
-    console.log("Feito");
+    await axios.put(`${BaseUrl}${endPoint}`, body, { headers: { auth: auth } });
   } catch (error) {
     return error;
   }

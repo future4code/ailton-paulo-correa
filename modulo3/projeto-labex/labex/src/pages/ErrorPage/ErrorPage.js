@@ -1,14 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { goToPage } from '../../routes/coordinator';
-import { Button } from './styled';
+import { Logo } from '../Home/styled';
+import { Button, ErrorContainer, TitleError } from './styled';
 
 export default function ErrorPage() {
   const navigate = useNavigate();
   return (
-    <div>
-      ErrorPage
+    <ErrorContainer>
+      <Logo>LabeX</Logo>
+      <TitleError>PÁGINA NÃO ENCONTRADA</TitleError>
       <Button onClick={() => goToPage(navigate,"") }>Home</Button>
-    </div>
+    </ErrorContainer>
   )
 }

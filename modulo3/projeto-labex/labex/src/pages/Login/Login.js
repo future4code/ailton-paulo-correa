@@ -16,10 +16,12 @@ export default function Login() {
   const navigate = useNavigate();
   const { form, onChange, clearForm } = useForm({ email: "", password: "" });
 
-  const onClickLogin = async () => {
+  const onClickLogin = async (e) => {
+    e.preventDefault();
     const res = await postApi("login", form, undefined);
-    window.localStorage.setItem("token", res.token);
-    res && goToPage(navigate, "admin/trips/list/");
+    !res.token && alert(res.response.data.message);
+    res.token && window.localStorage.setItem("token", res.token);
+    res.token && goToPage(navigate, "admin/trips/list/");
   };
 
   useEffect(() => {
@@ -29,13 +31,14 @@ export default function Login() {
   return (
     <LoginContainer>
       <TitleLogin>Login</TitleLogin>
-      <DivInputs>
+      <DivInputs onSubmit={onClickLogin}>
         <Input
           name="email"
           value={form.email}
           onChange={onChange}
           placeholder="E-Mail"
           type={"email"}
+          required
         />
         <Input
           name="password"
@@ -43,11 +46,12 @@ export default function Login() {
           onChange={onChange}
           placeholder="Senha"
           type={"password"}
+          required
         />
+        <Button>Conectar</Button>
       </DivInputs>
       <DivButton>
         <Button onClick={() => goToPage(navigate, "")}>Voltar</Button>
-        <Button onClick={onClickLogin}>Conectar</Button>
       </DivButton>
     </LoginContainer>
   );

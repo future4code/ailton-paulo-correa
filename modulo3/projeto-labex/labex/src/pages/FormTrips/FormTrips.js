@@ -41,7 +41,7 @@ export default function FormTrips() {
   const submitForm = async (e) => {
     e.preventDefault();
     await postApi(`trips/${form.trip}/apply`, form);
-    alert("Inscrição feita com sucesso!")
+    alert("Inscrição feita com sucesso!");
     clearForm();
   };
   return (
@@ -90,7 +90,7 @@ export default function FormTrips() {
           defaultValue={form.country}
           required
         >
-          <OptionEpt selected={undefined} label="Escolha um País" disabled />
+          <OptionEpt selected={undefined} label="Escolha seu País" disabled />
           {listCountries.map((item, index) => {
             return <Option key={index}>{item}</Option>;
           })}
