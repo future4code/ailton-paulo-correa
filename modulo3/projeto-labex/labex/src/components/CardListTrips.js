@@ -8,7 +8,7 @@ export default function CardListTrips(props) {
       <p>Nome: {props.trip.name}</p>
       <p>Descrição: {props.trip.description}</p>
       <p>Planeta: {props.trip.planet}</p>
-      <p>Duração: {props.trip.durationInDays}</p>
+      <p>Duração: {props.trip.durationInDays+" Dias"}</p>
       <p>Data: {props.trip.date}</p>
     </ContainerCardLT>
   );

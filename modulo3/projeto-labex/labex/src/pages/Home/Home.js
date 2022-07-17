@@ -16,10 +16,10 @@ export default function Home() {
       <Logo>LabeX</Logo>
       <DivButton>
         <ButtonLeft onClick={() => goToPage(navigate, "login/")}>
-          Botão Admin
+          Administração
         </ButtonLeft>
         <ButtonRight onClick={() => goToPage(navigate, "trips/list/")}>
-          Botão Viagens
+          Viagens
         </ButtonRight>
       </DivButton>
     </HomeContainer>

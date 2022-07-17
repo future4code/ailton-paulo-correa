@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const ErrorContainer = styled.main`
+
+`
+
+export const ErrorDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 96vw;  

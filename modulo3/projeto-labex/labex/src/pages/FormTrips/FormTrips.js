@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { listCountries } from "../../constants/listCountries";
+import { listCountries } from "../../constants/constants";
 import { useForm } from "../../hooks/useForm";
 import { goToPage } from "../../routes/coordinator";
 import { getApi, postApi } from "../../services/api";
@@ -79,6 +79,7 @@ export default function FormTrips() {
           name="applicationText"
           value={form.applicationText}
           onChange={onChange}
+          required
           placeholder="Descrição do Candidato"
           pattern="^.{30,}"
           title={"Mínimo 30 caracteres"}

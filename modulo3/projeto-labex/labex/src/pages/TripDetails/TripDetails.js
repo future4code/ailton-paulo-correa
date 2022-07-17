@@ -30,14 +30,21 @@ export default function TripDetails() {
 
   useEffect(() => {
     setLoad(true);
-    token === null && goToPage(navigate, "login/");
     const getTrips = async () => {
+      const res = await getApi(`trips/`);
+      const allTripsId = res.trips?.map((item) => {
+        return item.id;
+      });
+      allTripsId.includes(params.id) || goToPage(navigate, "admin/trips/list/");
+    };
+    getTrips();
+    !token && goToPage(navigate, "login/");
+    const getTrip = async () => {
       const res = await getApi(`trip/${params.id}`, token);
       setTrip(res.trip);
-      trip || goToPage(navigate, "admin/trips/list/");
       setLoad(false);
     };
-    token && getTrips();
+    token && getTrip();
   }, []);
 
   useEffect(() => {

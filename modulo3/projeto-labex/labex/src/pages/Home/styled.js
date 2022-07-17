@@ -41,6 +41,12 @@ export const ButtonRight = styled.h2`
   }
 `;
 
+export const ImgError = styled.img`
+  width: 340px;
+  margin: 20px auto;
+  border-radius: 50%;
+`
+
 export const Logo = styled.h1`
   user-select: none;
   text-align: center;
