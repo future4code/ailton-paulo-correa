@@ -81,15 +81,15 @@ export const BoxCandidates = styled.div`
 `;
 
 export const Box = styled.div`
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   justify-content: center;
   gap: 6px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   background-color: #222222;
   width: 100%;
   min-height: 36px;
-  margin: 0 auto;
+  margin: 0px auto;
   overflow: auto;
   padding: 12px;
   max-height: 280px;
@@ -201,6 +201,7 @@ export const Show = styled.p`
 
 export const Candidate = styled.div`
   width: 100%;
+  margin: 8px 0;
   display: flex;
   box-shadow: 0 0 4px black;
   padding: 8px 4px;
