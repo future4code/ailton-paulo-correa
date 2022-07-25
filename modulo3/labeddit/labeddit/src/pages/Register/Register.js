@@ -33,7 +33,7 @@ export default function Register() {
 
   function submitRegister(e) {
     e.preventDefault();
-    // goTo(navigate, "feed");
+    goTo(navigate, "feed");
     clearForm();
   }
   return (

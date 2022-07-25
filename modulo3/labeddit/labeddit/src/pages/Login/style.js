@@ -64,12 +64,6 @@ export const PlaceHolderPW = styled(Label)``;
 
 export const ButtonLogin = styled(Button1)``;
 
-export const LineDivisor = styled.div`
-  background-image: linear-gradient(90deg, #ff6489, #f9b24e);
-  height: 1.7px;
-  margin: 18px 0;
-`;
-
 export const ButtonNewRegister = styled(Button1)`
   background-image: unset;
   background-color: #ffffff;

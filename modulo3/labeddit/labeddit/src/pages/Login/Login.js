@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { goTo } from "../../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
-import { Form, Input, DivInput } from "../../components/Global/GeneralStyle";
+import { Form, Input, DivInput, LineDivisor } from "../../components/Global/GeneralStyle";
 import {
   ContainerLogin,
   DivLogo,
@@ -15,7 +15,6 @@ import {
   PlaceHolderName,
   PlaceHolderPW,
   ButtonLogin,
-  LineDivisor,
   ButtonNewRegister,
 } from "./style";
 

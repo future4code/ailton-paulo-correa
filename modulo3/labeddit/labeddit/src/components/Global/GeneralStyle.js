@@ -49,3 +49,9 @@ export const Button1 = styled.button`
   line-height: 24.5px;
   margin-top: 48px;
 `
+
+export const LineDivisor = styled.div`
+  background-image: linear-gradient(90deg, #ff6489, #f9b24e);
+  height: 1.7px;
+  margin: 18px 0;
+`;
