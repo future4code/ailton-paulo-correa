@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { goTo } from "../../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
+import { Form, Input, DivInput } from "../../components/Global/GeneralStyle";
 import {
   ContainerLogin,
   DivLogo,
@@ -9,11 +10,8 @@ import {
   Logo2,
   Logo3,
   Logo4,
-  Form,
-  Input,
   SubTitleLogin,
   TitleLogin,
-  DivInput,
   PlaceHolderName,
   PlaceHolderPW,
   ButtonLogin,
@@ -33,6 +31,7 @@ export default function Login() {
   function submitLogin(e) {
     e.preventDefault();
     goTo(navigate, "feed");
+    clearForm();
   }
   return (
     <ContainerLogin>
@@ -50,7 +49,7 @@ export default function Login() {
           onBlur={() => setFocusName(form.name ? true : false)}
         >
           <PlaceHolderName focusInput={focusName}>Nome</PlaceHolderName>
-          <Input name="name" onChange={onChange} value={form.name} />
+          <Input name="name" onChange={onChange} value={form.name} required />
         </DivInput>
         <DivInput
           onFocus={() => setFocusPW(true)}
@@ -62,6 +61,7 @@ export default function Login() {
             onChange={onChange}
             value={form.password}
             type="password"
+            required
           />
         </DivInput>
         <ButtonLogin>Continuar</ButtonLogin>
