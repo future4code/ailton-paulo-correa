@@ -21,17 +21,6 @@ export default function Feed() {
         <Posts>
           <MiracleDiv size={"50px"} />
           <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
-          <CardFeed />
           <MiracleDiv size={"50px"} />
         </Posts>
       </ContarinerFeed>

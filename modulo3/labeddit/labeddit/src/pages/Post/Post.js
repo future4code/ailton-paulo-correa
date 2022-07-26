@@ -23,9 +23,6 @@ export default function Post() {
         <Comments>
           <MiracleDiv size={"36px"} />
           <CardComment />
-          <CardComment />
-          <CardComment />
-          <CardComment />
           <MiracleDiv size={"36px"} />
         </Comments>
       </ContainerPost>
