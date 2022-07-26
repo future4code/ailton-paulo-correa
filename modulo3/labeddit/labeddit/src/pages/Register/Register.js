@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import {
@@ -19,10 +19,12 @@ import {
 import { Input } from "../../components/Global/GeneralStyle";
 import { useForm } from "../../hooks/useForm";
 import { goTo } from "../../routes/Coordinator";
+import { requestData } from "../../services/requestApi";
 
 export default function Register() {
+  const [data, setData] = useState("");
   const { form, onChange, clearForm } = useForm({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -31,11 +33,25 @@ export default function Register() {
   const [focusPW, setFocusPW] = useState(false);
   const navigate = useNavigate();
 
-  function submitRegister(e) {
+  useEffect(() => {
+    if (!!data) {
+      if (data.status >= 400) {
+        alert(data.data.message ? `Email invalido` : data.data);
+      } else if (data.data.token) {
+        alert(`${data.statusText}, ${data.data.token}`);
+        localStorage.setItem("token", data.data.token);
+        goTo(navigate, "feed");
+        clearForm();
+      } else {
+        console.log("Erro não identicado,errp abaixo de 400");
+      }
+    }
+  }, [data]);
+
+  const submitRegister = async (e) => {
     e.preventDefault();
-    goTo(navigate, "feed");
-    clearForm();
-  }
+    await requestData("post", "users/signup", form, "", setData);
+  };
   return (
     <>
       <Header />
@@ -45,12 +61,17 @@ export default function Register() {
         <FormRegister onSubmit={submitRegister}>
           <DivInputRegister
             onFocus={() => setFocusName(true)}
-            onBlur={() => setFocusName(form.name ? true : false)}
+            onBlur={() => setFocusName(form.username ? true : false)}
           >
             <PlaceHolderName focusInput={focusName}>
               Nome de usuário
             </PlaceHolderName>
-            <Input name="name" onChange={onChange} value={form.name} required />
+            <Input
+              name="username"
+              onChange={onChange}
+              value={form.username}
+              required
+            />
           </DivInputRegister>
           <DivInputRegister
             onFocus={() => setFocusEmail(true)}
@@ -75,6 +96,8 @@ export default function Register() {
               onChange={onChange}
               value={form.password}
               type="password"
+              pattern="[0-9a-zA-Z]{8,30}"
+              title="Senha deve conter entre 8 e 30 caracteres!"
               required
             />
           </DivInputRegister>
@@ -89,7 +112,6 @@ export default function Register() {
               name="checkTerm"
               onChange={onChange}
               type="checkbox"
-              required
             />
             <TermAccept htmlFor="checkTerm">
               Eu concordo em receber emails sobre coisas legais no Labeddit.

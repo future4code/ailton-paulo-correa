@@ -14,7 +14,7 @@ import CardComment from "../../components/Cards/CardComment";
 export default function Post() {
   return (
     <PostPage>
-      <Header page={"post"}/>
+      <Header page={"post"} />
       <ContainerPost>
         <CardFeed />
         <TextBoxComment placeholder="Adicionar comentário" />

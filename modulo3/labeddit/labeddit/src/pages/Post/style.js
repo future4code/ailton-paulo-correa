@@ -9,11 +9,11 @@ export const PostPage = styled.main`
 `;
 
 export const ContainerPost = styled(ContarinerFeed)`
-    padding-top: 28px;
+  padding-top: 28px;
 `;
 
 export const TextBoxComment = styled(TextBoxPost)`
-margin-top: 2px;
+  margin-top: 2px;
 `;
 
 export const ButtonNewComment = styled(Button1)`
@@ -26,7 +26,4 @@ export const ButtonNewComment = styled(Button1)`
   margin-top: 8px;
 `;
 
-export const Comments = styled(Posts)`
-    
-`
-
+export const Comments = styled(Posts)``;

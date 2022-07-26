@@ -4,6 +4,7 @@ import {
   ButtonNewPost,
   ContarinerFeed,
   FeedPage,
+  InputTitle,
   Posts,
   TextBoxPost,
 } from "./style";
@@ -15,9 +16,11 @@ export default function Feed() {
     <FeedPage>
       <Header />
       <ContarinerFeed>
+        <InputTitle placeholder="Título"/>
+          <MiracleDiv size={"8px"} />
         <TextBoxPost placeholder="Escreva seu post..." />
         <ButtonNewPost>Postar</ButtonNewPost>
-        <LineDivisor top={"12px"} bottom={"0px"}/>
+        <LineDivisor top={"12px"} bottom={"0px"} />
         <Posts>
           <MiracleDiv size={"50px"} />
           <CardFeed />

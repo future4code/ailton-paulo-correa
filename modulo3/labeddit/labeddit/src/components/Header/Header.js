@@ -15,6 +15,7 @@ import back from "../../assets/postBack.png";
 
 export default function Header({ page }) {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   return (
     <ContainerHeader>
       {page && page === "post" && (
@@ -26,11 +27,18 @@ export default function Header({ page }) {
         <Logo3 />
         <Logo4 />
       </DivLogo>
-      {true && (
+      {!token && (
         <ButtonHeader onClick={() => goTo(navigate, "")}>Entrar</ButtonHeader>
       )}
-      {!true && (
-        <ButtonHeader onClick={() => goTo(navigate, "")}>Logout</ButtonHeader>
+      {token && (
+        <ButtonHeader
+          onClick={() => {
+            goTo(navigate, "");
+            localStorage.setItem("token", "");
+          }}
+        >
+          Logout
+        </ButtonHeader>
       )}
     </ContainerHeader>
   );

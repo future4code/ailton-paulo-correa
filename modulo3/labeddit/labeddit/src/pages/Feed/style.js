@@ -26,8 +26,8 @@ export const TextBoxPost = styled.textarea`
   height: 132px;
   min-height: 132px;
   padding: 15px 17px 0 17px;
-  width: 100%;
   resize: none;
+  width: 100%;
 `;
 
 export const ButtonNewPost = styled(Button1)`
@@ -64,3 +64,15 @@ export const Posts = styled.div`
   }
 `;
 
+export const InputTitle = styled.input`
+  background: #ededed;
+  border-radius: 12px;
+  color: #000;
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  height: 38px;
+  line-height: 23px;
+  padding-left: 17px;
+`;

@@ -17,7 +17,7 @@ export const DivLogo = styled.div`
   height: 84px;
   margin: 0 auto;
   margin-bottom: 12px;
-  margin-top: 100px;
+  margin-top: 90px;
   width: 84px;
 `;
 

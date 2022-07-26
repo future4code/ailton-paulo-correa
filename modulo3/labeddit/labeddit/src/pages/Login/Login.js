@@ -76,7 +76,7 @@ export default function Login() {
         </DivInput>
         <ButtonLogin>Continuar</ButtonLogin>
       </Form>
-        <LineDivisor top={"18px"} bottom={"18px"}/>
+      <LineDivisor top={"18px"} bottom={"18px"} />
       <ButtonNewRegister onClick={() => goTo(navigate, "register")}>
         Crie uma conta!
       </ButtonNewRegister>
