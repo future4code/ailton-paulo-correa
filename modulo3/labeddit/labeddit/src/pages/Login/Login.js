@@ -50,7 +50,7 @@ export default function Login() {
       <Form onSubmit={submitLogin}>
         <DivInput
           onFocus={() => setFocusName(true)}
-          onBlur={() => setFocusName(form.name ? true : false)}
+          onBlur={() => setFocusName(form.email ? true : false)}
         >
           <PlaceHolderName focusInput={focusName}>E-mail</PlaceHolderName>
           <Input
@@ -76,7 +76,7 @@ export default function Login() {
         </DivInput>
         <ButtonLogin>Continuar</ButtonLogin>
       </Form>
-      <LineDivisor />
+        <LineDivisor top={"18px"} bottom={"18px"}/>
       <ButtonNewRegister onClick={() => goTo(navigate, "register")}>
         Crie uma conta!
       </ButtonNewRegister>

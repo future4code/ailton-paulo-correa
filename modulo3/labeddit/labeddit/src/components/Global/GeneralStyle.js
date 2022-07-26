@@ -52,6 +52,11 @@ export const Button1 = styled.button`
 
 export const LineDivisor = styled.div`
   background-image: linear-gradient(90deg, #ff6489, #f9b24e);
-  height: 1.7px;
-  margin: 18px 0;
+  min-height: 1.7px;
+  margin-top: ${({ top }) => top};
+  margin-bottom: ${({ bottom }) => bottom};
+`;
+
+export const MiracleDiv = styled.div`
+  min-height: ${({ size }) => size};
 `;

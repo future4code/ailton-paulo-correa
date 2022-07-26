@@ -3,13 +3,12 @@ import Header from "../../components/Header/Header";
 import {
   ButtonNewPost,
   ContarinerFeed,
-  Divisor50,
   FeedPage,
-  LineDivisorPost,
   Posts,
   TextBoxPost,
 } from "./style";
 import CardFeed from "../../components/Cards/CardFeed";
+import { LineDivisor, MiracleDiv } from "../../components/Global/GeneralStyle";
 
 export default function Feed() {
   return (
@@ -18,9 +17,9 @@ export default function Feed() {
       <ContarinerFeed>
         <TextBoxPost placeholder="Escreva seu post..." />
         <ButtonNewPost>Postar</ButtonNewPost>
-        <LineDivisorPost />
+        <LineDivisor top={"12px"} bottom={"0px"}/>
         <Posts>
-          <Divisor50 />
+          <MiracleDiv size={"50px"} />
           <CardFeed />
           <CardFeed />
           <CardFeed />
@@ -33,7 +32,7 @@ export default function Feed() {
           <CardFeed />
           <CardFeed />
           <CardFeed />
-          <Divisor50 />
+          <MiracleDiv size={"50px"} />
         </Posts>
       </ContarinerFeed>
     </FeedPage>

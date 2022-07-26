@@ -64,6 +64,3 @@ export const Posts = styled.div`
   }
 `;
 
-export const Divisor50 = styled.div`
-  min-height: 50px;
-`;

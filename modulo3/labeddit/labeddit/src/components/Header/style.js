@@ -6,7 +6,14 @@ export const ContainerHeader = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 29px;
+  padding: 29px 0;
+`;
+
+export const IconBack = styled.img`
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: 34px;
 `;
 
 export const DivLogo = styled.div`

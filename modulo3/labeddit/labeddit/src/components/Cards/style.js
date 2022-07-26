@@ -9,7 +9,6 @@ export const BoxPost = styled.div`
   flex-direction: column;
   gap: 18px;
   padding: 9px 10px;
-  margin-bottom: 10px;
 `;
 
 export const SentBy = styled.p`
