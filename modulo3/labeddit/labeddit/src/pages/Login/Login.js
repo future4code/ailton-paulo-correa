@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { goTo } from "../../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
-import { Form, Input, DivInput, LineDivisor } from "../../components/Global/GeneralStyle";
+import {
+  Form,
+  Input,
+  DivInput,
+  LineDivisor,
+} from "../../components/Global/GeneralStyle";
 import {
   ContainerLogin,
   DivLogo,
@@ -20,7 +25,7 @@ import {
 
 export default function Login() {
   const { form, onChange, clearForm } = useForm({
-    name: "",
+    email: "",
     password: "",
   });
   const [focusName, setFocusName] = useState(false);
@@ -47,8 +52,14 @@ export default function Login() {
           onFocus={() => setFocusName(true)}
           onBlur={() => setFocusName(form.name ? true : false)}
         >
-          <PlaceHolderName focusInput={focusName}>Nome</PlaceHolderName>
-          <Input name="name" onChange={onChange} value={form.name} required />
+          <PlaceHolderName focusInput={focusName}>E-mail</PlaceHolderName>
+          <Input
+            name="email"
+            onChange={onChange}
+            value={form.email}
+            type="email"
+            required
+          />
         </DivInput>
         <DivInput
           onFocus={() => setFocusPW(true)}

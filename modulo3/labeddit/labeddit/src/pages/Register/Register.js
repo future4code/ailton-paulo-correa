@@ -85,12 +85,13 @@ export default function Register() {
           </TermText>
           <DivTermAccept>
             <CheckBoxTerm
-              name=""
+              id="checkTerm"
+              name="checkTerm"
               onChange={onChange}
               type="checkbox"
               required
             />
-            <TermAccept>
+            <TermAccept htmlFor="checkTerm">
               Eu concordo em receber emails sobre coisas legais no Labeddit.
             </TermAccept>
           </DivTermAccept>

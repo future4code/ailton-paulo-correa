@@ -11,6 +11,10 @@ export const ContarinerRegister = styled.main`
   display: flex;
   flex-direction: column;
   padding: 0 32px;
+  @media screen and (min-width: 600px) {
+    width: 600px;
+    margin: 0 auto;
+  }
 `;
 
 export const TitleRegister = styled.h2`
@@ -56,15 +60,20 @@ export const HyperText = styled.strong`
 export const DivTermAccept = styled.div`
   display: flex;
   align-items: center;
-  gap:11px;
+  gap: 11px;
   margin-top: 17px;
-`
+`;
 
-export const TermAccept = styled(TermText)`
+export const TermAccept = styled.label`
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
   margin-top: 0;
-`
+`;
 
 export const CheckBoxTerm = styled(Input)`
   width: 18px;
   height: 18px;
-`
+`;
