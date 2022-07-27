@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
 import { goTo } from "../../routes/Coordinator";
 import { useNavigate } from "react-router-dom";
@@ -22,8 +22,10 @@ import {
   ButtonLogin,
   ButtonNewRegister,
 } from "./style";
+import { requestData } from "../../services/requestApi";
 
 export default function Login() {
+  const [data, setData] = useState("");
   const { form, onChange, clearForm } = useForm({
     email: "",
     password: "",
@@ -32,11 +34,26 @@ export default function Login() {
   const [focusPW, setFocusPW] = useState(false);
   const navigate = useNavigate();
 
-  function submitLogin(e) {
+  useEffect(() => {
+    if (!!data) {
+      if (data.status >= 400) {
+        // alert(data.data.message ? `Email invalido` : data.data);
+        alert(data.data);
+      } else if (data.data.token) {
+        localStorage.setItem("token", data.data.token);
+        goTo(navigate, "feed");
+        clearForm();
+      } else {
+        console.log("Erro não identicado,erro abaixo de 400");
+      }
+    }
+  }, [data]);
+
+  const submitLogin = async (e) => {
     e.preventDefault();
-    goTo(navigate, "feed");
-    clearForm();
-  }
+    await requestData("post", "users/login", form, "", setData);
+  };
+
   return (
     <ContainerLogin>
       <DivLogo>
@@ -71,6 +88,8 @@ export default function Login() {
             onChange={onChange}
             value={form.password}
             type="password"
+            pattern="[0-9a-zA-Z]{8,30}"
+            title="Senha deve conter entre 8 e 30 caracteres!"
             required
           />
         </DivInput>

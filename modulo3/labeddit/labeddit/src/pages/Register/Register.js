@@ -36,9 +36,9 @@ export default function Register() {
   useEffect(() => {
     if (!!data) {
       if (data.status >= 400) {
-        alert(data.data.message ? `Email invalido` : data.data);
+        // alert(data.data.message ? `Email invalido` : data.data);
+        alert(data.data);
       } else if (data.data.token) {
-        alert(`${data.statusText}, ${data.data.token}`);
         localStorage.setItem("token", data.data.token);
         goTo(navigate, "feed");
         clearForm();
@@ -52,6 +52,7 @@ export default function Register() {
     e.preventDefault();
     await requestData("post", "users/signup", form, "", setData);
   };
+
   return (
     <>
       <Header />

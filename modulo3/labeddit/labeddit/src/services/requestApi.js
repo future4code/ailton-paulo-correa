@@ -3,14 +3,16 @@ import { baseUrl } from "../constants/baseUrl";
 
 export const requestData = async (type, path, body, token, setData) => {
   try {
-    console.log(type, path, body, token);
-    const res = await axios[type](
-      `${baseUrl}${path}`,
-      body && body,
-      token && {
-        headers: { Authorization: token },
-      }
-    );
+    setData("")
+    let res;
+    if (!body)
+      res = await axios[type](`${baseUrl}${path}`, {
+        headers: { authorization: token },
+      });
+    else
+      res = await axios[type](`${baseUrl}${path}`, body, {
+        headers: { authorization: token },
+      });
     console.log(res);
     setData(res);
   } catch (error) {

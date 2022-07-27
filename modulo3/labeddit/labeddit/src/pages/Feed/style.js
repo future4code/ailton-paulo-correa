@@ -3,15 +3,22 @@ import { Button1, LineDivisor } from "../../components/Global/GeneralStyle";
 
 export const FeedPage = styled.main`
   height: 100vh;
-  max-height: 100vh;
   overflow: hidden;
+  @media screen and (max-height: 720px) {
+    height: auto;
+  }
 `;
 
 export const ContarinerFeed = styled.div`
   display: flex;
   flex-direction: column;
   padding: 32px 32px 32px 32px;
-  height: 100%;
+  max-height: 100%;
+`;
+
+export const FormFeed = styled.form`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const TextBoxPost = styled.textarea`
@@ -38,6 +45,10 @@ export const ButtonNewPost = styled(Button1)`
   font-size: 18px;
   line-height: 23px;
   margin-top: 12px;
+`;
+
+export const ButtonNewPostOFF = styled(ButtonNewPost)`
+  background-image: linear-gradient(90deg, #555555, gray);
 `;
 
 export const LineDivisorPost = styled(LineDivisor)`
@@ -75,4 +86,14 @@ export const InputTitle = styled.input`
   height: 38px;
   line-height: 23px;
   padding-left: 17px;
+`;
+
+export const Pagination = styled.nav`
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  height: 38px;
+  line-height: 23px;
+  margin: 12px auto;
 `;
