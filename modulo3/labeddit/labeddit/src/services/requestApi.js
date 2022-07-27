@@ -3,7 +3,7 @@ import { baseUrl } from "../constants/baseUrl";
 
 export const requestData = async (type, path, body, token, setData) => {
   try {
-    setData("")
+    setData("");
     let res;
     if (!body)
       res = await axios[type](`${baseUrl}${path}`, {

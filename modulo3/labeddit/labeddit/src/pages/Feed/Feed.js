@@ -17,6 +17,7 @@ import { LineDivisor, MiracleDiv } from "../../components/Global/GeneralStyle";
 import { GlobalContext } from "../../components/Global/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { requestData } from "../../services/requestApi";
+import { goTo } from "../../routes/Coordinator";
 
 export default function Feed() {
   const token = localStorage.getItem("token");
@@ -24,7 +25,7 @@ export default function Feed() {
   const navigate = useNavigate();
   const { dataPosts, updatePost, setUpdatePost } = useContext(GlobalContext);
   const { form, onChange, clearForm } = useForm({ title: "", body: "" });
-
+  
   useEffect(() => {
     if (!!data && token) {
       if (data.status >= 400) {
@@ -37,11 +38,14 @@ export default function Feed() {
       }
     }
   }, [data]);
-
+  
   const newPost = async (e) => {
     await requestData("post", "posts", form, token, setData);
   };
-
+  
+  if(!token){
+    goTo(navigate,"")
+  }
   return (
     <FeedPage>
       <Header />
@@ -76,7 +80,14 @@ export default function Feed() {
           <Posts>
             <MiracleDiv size={"50px"} />
             {dataPosts.data.map((item) => {
-              return <CardFeed key={item.id} post={item} />;
+              return (
+                <CardFeed
+                  key={item.id}
+                  post={item}
+                  setUpdatePost={setUpdatePost}
+                  updatePost={updatePost}
+                />
+              );
             })}
             <Pagination>1 2 3</Pagination>
             <MiracleDiv size={"28px"} />

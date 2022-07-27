@@ -80,7 +80,11 @@ export default function Post() {
       {!currentPost && <p>Carregando...</p>}
       {currentPost && (
         <ContainerPost>
-          <CardFeed post={currentPost[0]} />
+          <CardFeed
+            post={currentPost[0]}
+            updatePost={updatePost}
+            setUpdatePost={setUpdatePost}
+          />
           <TextBoxComment
             name="body"
             value={form.body}
@@ -99,7 +103,14 @@ export default function Post() {
             <Comments>
               <MiracleDiv size={"36px"} />
               {comments.data?.map((item) => {
-                return <CardComment key={item.id} comment={item} />;
+                return (
+                  <CardComment
+                    key={item.id}
+                    comment={item}
+                    updatePost={updatePost}
+                    setUpdatePost={setUpdatePost}
+                  />
+                );
               })}
               <MiracleDiv size={"36px"} />
             </Comments>
