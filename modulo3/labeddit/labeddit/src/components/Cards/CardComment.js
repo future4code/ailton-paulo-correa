@@ -12,19 +12,16 @@ import {
   SentBy,
 } from "./style";
 
-export default function CardComment() {
+export default function CardComment({ comment }) {
   return (
     <>
       <BoxPost>
-        <SentBy>{`Enviado por: ${"User"}`}</SentBy>
-        <PostText>
-          Porque a maioria dos desenvolvedores usam Linux? ou as empresas de
-          tecnologia usam Linux?
-        </PostText>
+        <SentBy>{`Enviado por: ${comment.username}`}</SentBy>
+        <PostText>{comment.body}</PostText>
         <DivBoxs>
           <BoxInteraction>
             <IconInteraction src={IconLike} />
-            <CountPost>0</CountPost>
+            <CountPost>{comment.voteSum}</CountPost>
             <IconInteraction src={IconUnlike} />
           </BoxInteraction>
         </DivBoxs>

@@ -16,7 +16,7 @@ export const ContarinerFeed = styled.div`
   max-height: 100%;
 `;
 
-export const FormFeed = styled.form`
+export const FormFeed = styled.div`
   display: flex;
   flex-direction: column;
 `;

@@ -39,17 +39,14 @@ export default function Feed() {
   }, [data]);
 
   const newPost = async (e) => {
-    e.preventDefault();
-    if (dataPosts && form.title && form.body) {
-      await requestData("post", "posts", form, token, setData);
-    }
+    await requestData("post", "posts", form, token, setData);
   };
 
   return (
     <FeedPage>
       <Header />
       <ContarinerFeed>
-        <FormFeed onSubmit={newPost}>
+        <FormFeed>
           <InputTitle
             name="title"
             onChange={onChange}
@@ -67,7 +64,7 @@ export default function Feed() {
             <ButtonNewPostOFF>Postar</ButtonNewPostOFF>
           )}
           {!!(dataPosts && form.title && form.body) && (
-            <ButtonNewPost>Postar</ButtonNewPost>
+            <ButtonNewPost onClick={newPost}>Postar</ButtonNewPost>
           )}
         </FormFeed>
         <LineDivisor top={"12px"} bottom={"0px"} />

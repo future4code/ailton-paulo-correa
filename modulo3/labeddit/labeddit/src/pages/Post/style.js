@@ -25,5 +25,8 @@ export const ButtonNewComment = styled(Button1)`
   line-height: 23px;
   margin-top: 8px;
 `;
+export const ButtonNewCommentOFF = styled(ButtonNewComment)`
+  background-image: linear-gradient(90deg, #555555, gray);
+`;
 
 export const Comments = styled(Posts)``;
