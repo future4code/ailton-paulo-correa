@@ -15,6 +15,7 @@ import {
 } from "./style";
 import { useForm } from "../../hooks/useForm";
 import { requestData } from "../../services/requestApi";
+import Loading from "../../components/Loading/Loading";
 
 export default function Post() {
   const token = localStorage.getItem("token");
@@ -25,40 +26,34 @@ export default function Post() {
   const { form, onChange, clearForm } = useForm({ body: "" });
   const params = useParams();
 
-  if (dataPosts && !currentPost) {
-    const res = dataPosts?.data?.filter((item) => {
-      return item.id === params.id;
-    });
-    setCurrentPost(res);
-    //talvez aqui vai um else para caso o cara pesquisou uma id não existente
-  }
-
   useEffect(() => {
-    if (currentPost) {
-      const getComments = async () => {
-        await requestData(
-          "get",
-          `posts/${params.id}/comments`,
-          "",
-          token,
-          setComments
-        );
-      };
-      getComments();
+    if (dataPosts) {
+      if (dataPosts && !currentPost) {
+        const res = dataPosts?.data?.filter((item) => {
+          return item.id === params.id;
+        });
+        setCurrentPost(res);
+        //talvez aqui vai um else para caso o cara pesquisou uma id não existente
+      }
+      if (currentPost) {
+        const getComments = async () => {
+          await requestData(
+            "get",
+            `posts/${params.id}/comments`,
+            "",
+            token,
+            setComments
+          );
+        };
+        getComments();
+      }
     }
-    console.log("entrou");
-  }, [currentPost, updatePost]);
+  }, [currentPost, dataPosts]);
 
   useEffect(() => {
     if (!!data && token) {
-      if (data.status >= 400) {
-        alert(data.data);
-      } else if (data.data) {
-        setUpdatePost(!updatePost);
-        clearForm();
-      } else {
-        console.log("Erro não identicado,erro abaixo de 400");
-      }
+      setUpdatePost(!updatePost);
+      clearForm();
     }
   }, [data]);
 
@@ -73,17 +68,17 @@ export default function Post() {
       );
     }
   };
-
   return (
     <PostPage>
       <Header page={"post"} />
-      {!currentPost && <p>Carregando...</p>}
+      {!currentPost && <Loading />}
       {currentPost && (
         <ContainerPost>
           <CardFeed
             post={currentPost[0]}
             updatePost={updatePost}
             setUpdatePost={setUpdatePost}
+            setCurrentPost={setCurrentPost}
           />
           <TextBoxComment
             name="body"
@@ -98,7 +93,7 @@ export default function Post() {
             <ButtonNewComment onClick={newPost}>Responder</ButtonNewComment>
           )}
           <LineDivisor top={"18px"} bottom={"0px"} />
-          {!comments && <p>Carregando...</p>}
+          {!comments && <Loading />}
           {comments && (
             <Comments>
               <MiracleDiv size={"36px"} />

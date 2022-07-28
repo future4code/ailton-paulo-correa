@@ -17,35 +17,25 @@ import { LineDivisor, MiracleDiv } from "../../components/Global/GeneralStyle";
 import { GlobalContext } from "../../components/Global/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { requestData } from "../../services/requestApi";
-import { goTo } from "../../routes/Coordinator";
+import Loading from "../../components/Loading/Loading";
 
 export default function Feed() {
   const token = localStorage.getItem("token");
-  const [data, setData] = useState("");
+  const [data, setData] = useState(undefined);
   const navigate = useNavigate();
   const { dataPosts, updatePost, setUpdatePost } = useContext(GlobalContext);
   const { form, onChange, clearForm } = useForm({ title: "", body: "" });
-  
+
   useEffect(() => {
-    if (!!data && token) {
-      if (data.status >= 400) {
-        alert(data.data);
-      } else if (data.data) {
-        setUpdatePost(!updatePost);
-        clearForm();
-      } else {
-        console.log("Erro não identicado,erro abaixo de 400");
-      }
+    if (token && data) {
+      setUpdatePost(!updatePost);
+      clearForm();
     }
   }, [data]);
-  
-  const newPost = async (e) => {
+
+  const newPost = async () => {
     await requestData("post", "posts", form, token, setData);
   };
-  
-  if(!token){
-    goTo(navigate,"")
-  }
   return (
     <FeedPage>
       <Header />
@@ -64,17 +54,17 @@ export default function Feed() {
             value={form.body}
             placeholder="Escreva seu post..."
           />
-          {!!(dataPosts && form.title && form.body) || (
+          {!!(dataPosts && form.title && form.body && token) || (
             <ButtonNewPostOFF>Postar</ButtonNewPostOFF>
           )}
-          {!!(dataPosts && form.title && form.body) && (
+          {!!(dataPosts && form.title && form.body && token) && (
             <ButtonNewPost onClick={newPost}>Postar</ButtonNewPost>
           )}
         </FormFeed>
         <LineDivisor top={"12px"} bottom={"0px"} />
-        {!dataPosts && <p>Carregando...</p>}
-        {!dataPosts && dataPosts.status >= 300 && (
-          <p>Erro encontrado...Error {dataPosts.status}</p>
+        {!dataPosts && <Loading/>}
+        {dataPosts && dataPosts.status >= 300 && (
+          <p>Erro encontrado... Error {dataPosts.status}</p>
         )}
         {dataPosts && dataPosts.status < 300 && (
           <Posts>

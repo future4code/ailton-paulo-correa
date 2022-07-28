@@ -1,7 +1,14 @@
 import axios from "axios";
 import { baseUrl } from "../constants/baseUrl";
 
-export const requestData = async (type, path, body, token, setData) => {
+export const requestData = async (
+  type,
+  path,
+  body,
+  token,
+  setData,
+  setErro
+) => {
   try {
     setData("");
     let res;
@@ -13,10 +20,10 @@ export const requestData = async (type, path, body, token, setData) => {
       res = await axios[type](`${baseUrl}${path}`, body, {
         headers: { authorization: token },
       });
-    console.log(res);
     setData(res);
   } catch (error) {
-    console.log(error.response);
-    setData(error.response);
+    if (setErro) {
+      setErro(error.response);
+    }
   }
 };

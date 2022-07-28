@@ -17,7 +17,6 @@ import { useNavigate } from "react-router-dom";
 import { requestData } from "../../services/requestApi";
 
 export default function CardComment({ comment, updatePost, setUpdatePost }) {
-  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const [data, setData] = useState("");
 
