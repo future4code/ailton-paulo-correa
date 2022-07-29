@@ -18,9 +18,7 @@ export const DivLogoError = styled(DivLogo)`
 export const WarningError = styled(TitleLogin)`
   font-size: 24px;
 `;
-export const TitleError = styled(TitleLogin)`
-  transform: scale(1.2);
-`;
+export const TitleError = styled(TitleLogin)``;
 
 export const ButtonBack = styled(Button1)`
   margin-top: 20px;

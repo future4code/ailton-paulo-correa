@@ -88,6 +88,12 @@ export const InputTitle = styled.input`
   padding-left: 17px;
 `;
 
+export const NavPagination = styled.div`
+  display: flex;
+  gap: 20px;
+  margin: 0 auto;
+`
+
 export const Pagination = styled.nav`
   font-family: "IBM Plex Sans";
   font-style: normal;
@@ -96,4 +102,8 @@ export const Pagination = styled.nav`
   height: 38px;
   line-height: 23px;
   margin: 12px auto;
+  :hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;

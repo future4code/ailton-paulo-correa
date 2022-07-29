@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseUrl } from "../constants/baseUrl";
+import { goTo } from "../routes/Coordinator";
 
 export const requestData = async (
   type,
@@ -7,7 +8,8 @@ export const requestData = async (
   body,
   token,
   setData,
-  setErro
+  setErro,
+  navigate
 ) => {
   try {
     setData("");
@@ -24,6 +26,10 @@ export const requestData = async (
   } catch (error) {
     if (setErro) {
       setErro(error.response);
+      if (navigate && error.response.status === 401 && token) {
+        localStorage.setItem("token", "");
+        goTo(navigate, "");
+      }
     }
   }
 };

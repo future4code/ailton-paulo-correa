@@ -71,9 +71,11 @@ export const TermAccept = styled.label`
   font-size: 14px;
   line-height: 19px;
   margin-top: 0;
+  cursor: pointer;
 `;
 
 export const CheckBoxTerm = styled(Input)`
   width: 18px;
   height: 18px;
+  cursor: pointer;
 `;

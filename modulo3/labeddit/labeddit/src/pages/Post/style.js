@@ -8,6 +8,15 @@ export const PostPage = styled.main`
   overflow: hidden;
 `;
 
+export const NotFoundPost = styled.p`
+  font-family: "IBM Plex Sans";
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 23px;
+  margin-top: 40px;
+  text-align: center;
+`
+
 export const ContainerPost = styled(ContarinerFeed)`
   padding-top: 28px;
 `;

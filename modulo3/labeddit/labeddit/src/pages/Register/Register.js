@@ -31,9 +31,13 @@ export default function Register() {
   const [focusName, setFocusName] = useState(false);
   const [focusEmail, setFocusEmail] = useState(false);
   const [focusPW, setFocusPW] = useState(false);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (token) {
+      goTo(navigate, "feed");
+    }
     if (!!data) {
       if (data.status >= 400) {
         // alert(data.data.message ? `Email invalido` : data.data);
@@ -43,7 +47,7 @@ export default function Register() {
         goTo(navigate, "feed");
         clearForm();
       } else {
-        console.log("Erro não identicado,errp abaixo de 400");
+        alert("Erro não identicado,errp abaixo de 400");
       }
     }
   }, [data]);

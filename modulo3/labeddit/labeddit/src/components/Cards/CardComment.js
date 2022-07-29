@@ -16,7 +16,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import { requestData } from "../../services/requestApi";
 
-export default function CardComment({ comment, updatePost, setUpdatePost }) {
+export default function CardComment({
+  comment,
+  updatePost,
+  setUpdatePost,
+  setCurrentPost,
+}) {
   const token = localStorage.getItem("token");
   const [data, setData] = useState("");
 
@@ -29,6 +34,7 @@ export default function CardComment({ comment, updatePost, setUpdatePost }) {
       setData
     );
     setUpdatePost(!updatePost);
+    setCurrentPost("")
   };
 
   const unvote = async () => {
@@ -40,6 +46,7 @@ export default function CardComment({ comment, updatePost, setUpdatePost }) {
       setData
     );
     setUpdatePost(!updatePost);
+    setCurrentPost("")
   };
   return (
     <>

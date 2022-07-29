@@ -42,6 +42,7 @@ export const Button1 = styled.button`
   border: none;
   border-radius: 27px;
   color: #ffffff;
+  cursor: pointer;
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
   font-size: 18px;

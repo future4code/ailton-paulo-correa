@@ -14,6 +14,7 @@ export const IconBack = styled.img`
   height: 25px;
   position: absolute;
   left: 34px;
+  cursor: pointer;
 `;
 
 export const DivLogo = styled.div`
@@ -55,4 +56,5 @@ export const ButtonHeader = styled.button`
   line-height: 25px;
   position: absolute;
   right: 29px;
+  cursor: pointer;
 `;

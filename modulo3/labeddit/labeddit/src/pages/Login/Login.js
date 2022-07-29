@@ -32,19 +32,22 @@ export default function Login() {
   });
   const [focusName, setFocusName] = useState(false);
   const [focusPW, setFocusPW] = useState(false);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (token) {
+      goTo(navigate, "feed");
+    }
     if (!!data) {
       if (data.status >= 400) {
-        // alert(data.data.message ? `Email invalido` : data.data);
         alert(data.data);
       } else if (data.data.token) {
         localStorage.setItem("token", data.data.token);
         goTo(navigate, "feed");
         clearForm();
       } else {
-        console.log("Erro não identicado,erro abaixo de 400");
+        alert("Erro não identicado,erro abaixo de 400");
       }
     }
   }, [data]);

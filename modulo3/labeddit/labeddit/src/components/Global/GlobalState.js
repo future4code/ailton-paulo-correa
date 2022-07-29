@@ -14,23 +14,33 @@ export default function GlobalState({ children }) {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const path = `posts?page=${1}&size=20`;
+    const path = `posts?page=${pagination}&size=20`;
     const getData = async () => {
       if (!token) {
         localStorage.setItem("token", "");
         goTo(navigate, "");
       } else {
-        await requestData("get", path, null, token, setDataPosts, setErro);
+        await requestData(
+          "get",
+          path,
+          null,
+          token,
+          setDataPosts,
+          setErro,
+          navigate
+        );
       }
     };
     getData();
-  }, [updatePost]);
+  }, [updatePost, pagination]);
 
-  if (erro.status === 401 && token) {
-    localStorage.setItem("token", "");
-    goTo(navigate, "");
-  }
-  const values = { dataPosts, updatePost, setUpdatePost };
+  const values = {
+    dataPosts,
+    updatePost,
+    setUpdatePost,
+    pagination,
+    setPagination,
+  };
 
   return <Provider value={values}>{children}</Provider>;
 }

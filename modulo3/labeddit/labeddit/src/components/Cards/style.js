@@ -52,6 +52,7 @@ export const BoxComments = styled.div`
 export const IconInteraction = styled.img`
   width: 15px;
   height: 14px;
+  cursor: pointer;
 `;
 
 export const CountPost = styled.p`

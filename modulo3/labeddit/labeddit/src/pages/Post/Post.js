@@ -12,6 +12,7 @@ import {
   ContainerPost,
   PostPage,
   TextBoxComment,
+  NotFoundPost,
 } from "./style";
 import { useForm } from "../../hooks/useForm";
 import { requestData } from "../../services/requestApi";
@@ -22,33 +23,43 @@ export default function Post() {
   const [comments, setComments] = useState("");
   const [currentPost, setCurrentPost] = useState("");
   const [data, setData] = useState("");
+  const [renderPost, setRenderPost] = useState("");
   const { dataPosts, updatePost, setUpdatePost } = useContext(GlobalContext);
   const { form, onChange, clearForm } = useForm({ body: "" });
   const params = useParams();
 
+  if (dataPosts && !currentPost) {
+    const getCurrentPost = async () => {
+      const res = await dataPosts?.data?.filter((item) => {
+        return item.id === params.id;
+      });
+      const exists = await dataPosts?.data?.map((item) => {
+        return item.id === params.id;
+      });
+      if (!exists.includes(true)) {
+        setRenderPost(false);
+      } else {
+        setRenderPost(true);
+      }
+      setCurrentPost(res[0]);
+    };
+    getCurrentPost();
+  }
+
   useEffect(() => {
-    if (dataPosts) {
-      if (dataPosts && !currentPost) {
-        const res = dataPosts?.data?.filter((item) => {
-          return item.id === params.id;
-        });
-        setCurrentPost(res);
-        //talvez aqui vai um else para caso o cara pesquisou uma id não existente
-      }
-      if (currentPost) {
-        const getComments = async () => {
-          await requestData(
-            "get",
-            `posts/${params.id}/comments`,
-            "",
-            token,
-            setComments
-          );
-        };
-        getComments();
-      }
+    if (dataPosts && currentPost) {
+      const getComments = async () => {
+        await requestData(
+          "get",
+          `posts/${params.id}/comments`,
+          "",
+          token,
+          setComments
+        );
+      };
+      getComments();
     }
-  }, [currentPost, dataPosts]);
+  }, [dataPosts, currentPost]);
 
   useEffect(() => {
     if (!!data && token) {
@@ -71,11 +82,15 @@ export default function Post() {
   return (
     <PostPage>
       <Header page={"post"} />
-      {!currentPost && <Loading />}
-      {currentPost && (
+      {renderPost === false && (
+        <NotFoundPost>Falha ao encontrar a postagem!</NotFoundPost>
+      )}
+      {renderPost === "" && !currentPost?.id && <Loading />}
+      {!!renderPost && !!currentPost?.id && (
         <ContainerPost>
           <CardFeed
-            post={currentPost[0]}
+            page={"post"}
+            post={currentPost}
             updatePost={updatePost}
             setUpdatePost={setUpdatePost}
             setCurrentPost={setCurrentPost}
@@ -86,10 +101,10 @@ export default function Post() {
             onChange={onChange}
             placeholder="Adicionar comentário"
           />
-          {!!(dataPosts && form.body) || (
+          {!!(dataPosts && form.body && token) || (
             <ButtonNewCommentOFF>Responder</ButtonNewCommentOFF>
           )}
-          {!!(dataPosts && form.body) && (
+          {!!(dataPosts && form.body && token) && (
             <ButtonNewComment onClick={newPost}>Responder</ButtonNewComment>
           )}
           <LineDivisor top={"18px"} bottom={"0px"} />
@@ -104,6 +119,7 @@ export default function Post() {
                     comment={item}
                     updatePost={updatePost}
                     setUpdatePost={setUpdatePost}
+                    setCurrentPost={setCurrentPost}
                   />
                 );
               })}
