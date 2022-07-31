@@ -88,7 +88,7 @@ export const InputTitle = styled.input`
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  height: 38px;
+  height: 53px;
   line-height: 23px;
   padding-left: 17px;
 `;
@@ -97,7 +97,7 @@ export const NavPagination = styled.div`
   display: flex;
   gap: 20px;
   margin: 0 auto;
-`
+`;
 
 export const Pagination = styled.nav`
   font-family: "IBM Plex Sans";

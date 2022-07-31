@@ -34,7 +34,7 @@ export default function CardComment({
       setData
     );
     setUpdatePost(!updatePost);
-    setCurrentPost("")
+    setCurrentPost("");
   };
 
   const unvote = async () => {
@@ -46,7 +46,7 @@ export default function CardComment({
       setData
     );
     setUpdatePost(!updatePost);
-    setCurrentPost("")
+    setCurrentPost("");
   };
   return (
     <>

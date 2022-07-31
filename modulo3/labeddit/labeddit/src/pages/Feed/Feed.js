@@ -51,7 +51,7 @@ export default function Feed() {
             name="title"
             onChange={onChange}
             value={form.title}
-            placeholder="Título"
+            placeholder="Título do post"
           />
           <MiracleDiv size={"8px"} />
           <TextBoxPost
