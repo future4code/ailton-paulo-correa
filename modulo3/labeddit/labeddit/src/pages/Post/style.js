@@ -4,8 +4,10 @@ import { ContarinerFeed, Posts, TextBoxPost } from "../Feed/style";
 
 export const PostPage = styled.main`
   height: 100vh;
-  max-height: 100vh;
   overflow: hidden;
+  @media screen and (max-height: 780px) {
+    height: auto;
+  }
 `;
 
 export const NotFoundPost = styled.p`
@@ -15,10 +17,14 @@ export const NotFoundPost = styled.p`
   line-height: 23px;
   margin-top: 40px;
   text-align: center;
-`
+`;
 
 export const ContainerPost = styled(ContarinerFeed)`
   padding-top: 28px;
+  @media screen and (min-width: 800px) {
+    width: 800px;
+    margin: 0 auto;
+  }
 `;
 
 export const TextBoxComment = styled(TextBoxPost)`
@@ -36,6 +42,7 @@ export const ButtonNewComment = styled(Button1)`
 `;
 export const ButtonNewCommentOFF = styled(ButtonNewComment)`
   background-image: linear-gradient(90deg, #555555, gray);
+  cursor: no-drop;
 `;
 
 export const Comments = styled(Posts)``;

@@ -16,8 +16,8 @@ export const GlobalStyled = createGlobalStyle`
   }
   ::-webkit-scrollbar-track {
     background: unset;
-    margin-top: 48px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 50px;

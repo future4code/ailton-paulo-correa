@@ -8,6 +8,10 @@ export const ContarinerError = styled.main`
   justify-content: center;
   flex-grow: 1;
   padding: 32px;
+  @media screen and (min-width: 800px) {
+    width: 800px;
+    margin: 0 auto;
+  }
 `;
 
 export const DivLogoError = styled(DivLogo)`

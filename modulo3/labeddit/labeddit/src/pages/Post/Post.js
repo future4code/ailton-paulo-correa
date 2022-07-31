@@ -28,25 +28,25 @@ export default function Post() {
   const { form, onChange, clearForm } = useForm({ body: "" });
   const params = useParams();
 
-  if (dataPosts && !currentPost) {
-    const getCurrentPost = async () => {
-      const res = await dataPosts?.data?.filter((item) => {
-        return item.id === params.id;
-      });
-      const exists = await dataPosts?.data?.map((item) => {
-        return item.id === params.id;
-      });
-      if (!exists.includes(true)) {
-        setRenderPost(false);
-      } else {
-        setRenderPost(true);
-      }
-      setCurrentPost(res[0]);
-    };
-    getCurrentPost();
-  }
-
   useEffect(() => {
+    if (dataPosts && !currentPost) {
+      setRenderPost("");
+      const getCurrentPost = async () => {
+        const res = await dataPosts?.data?.filter((item) => {
+          return item.id === params.id;
+        });
+        const exists = await dataPosts?.data?.map((item) => {
+          return item.id === params.id;
+        });
+        if (!exists.includes(true)) {
+          setRenderPost(false);
+        } else {
+          setRenderPost(true);
+        }
+        setCurrentPost(res[0]);
+      };
+      getCurrentPost();
+    }
     if (dataPosts && currentPost) {
       const getComments = async () => {
         await requestData(

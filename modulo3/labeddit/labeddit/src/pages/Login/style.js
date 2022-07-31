@@ -9,6 +9,9 @@ export const ContainerLogin = styled.main`
     width: 600px;
     margin: 0 auto;
   }
+  @media screen and (max-height: 900px) {
+    padding-bottom: 100px;
+  }
 `;
 
 export const DivLogo = styled.div`

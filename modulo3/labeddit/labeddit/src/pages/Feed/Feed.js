@@ -32,11 +32,12 @@ export default function Feed() {
     }
     clearForm();
   }, [data]);
+
   useEffect(() => {
-    if (!!dataPosts && !dataPosts?.data.length) {
+    if (!!dataPosts && dataPosts?.data.length === 0) {
       setPagination(pagination - 1);
     }
-  }, [pagination]);
+  }, [dataPosts]);
 
   const newPost = async () => {
     await requestData("post", "posts", form, token, setData);
@@ -94,7 +95,6 @@ export default function Feed() {
                   {"< Anterior"}
                 </Pagination>
               )}
-
               {dataPosts.data.length === 20 && (
                 <Pagination
                   onClick={() => {

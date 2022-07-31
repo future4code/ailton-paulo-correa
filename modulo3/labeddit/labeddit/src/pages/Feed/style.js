@@ -4,7 +4,7 @@ import { Button1, LineDivisor } from "../../components/Global/GeneralStyle";
 export const FeedPage = styled.main`
   height: 100vh;
   overflow: hidden;
-  @media screen and (max-height: 720px) {
+  @media screen and (max-height: 780px) {
     height: auto;
   }
 `;
@@ -14,6 +14,10 @@ export const ContarinerFeed = styled.div`
   flex-direction: column;
   padding: 32px 32px 32px 32px;
   max-height: 100%;
+  @media screen and (min-width: 800px) {
+    width: 800px;
+    margin: 0 auto;
+  }
 `;
 
 export const FormFeed = styled.div`
@@ -49,6 +53,7 @@ export const ButtonNewPost = styled(Button1)`
 
 export const ButtonNewPostOFF = styled(ButtonNewPost)`
   background-image: linear-gradient(90deg, #555555, gray);
+  cursor: no-drop;
 `;
 
 export const LineDivisorPost = styled(LineDivisor)`
@@ -66,8 +71,8 @@ export const Posts = styled.div`
   }
   ::-webkit-scrollbar-track {
     background: unset;
-    margin-top: 48px;
-    margin-bottom: 30px;
+    margin-top: 12px;
+    margin-bottom: 40px;
   }
   ::-webkit-scrollbar-thumb {
     border-radius: 50px;

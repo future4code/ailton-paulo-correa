@@ -24,7 +24,7 @@ export default function ErrorPage() {
       <MiracleDiv size={"40px"} />
       <TitleError>LabEddit</TitleError>
       <WarningError>Página não encontrada!</WarningError>
-      <ButtonBack onClick={() => goTo(navigate, "")}>Voltar</ButtonBack>
+      <ButtonBack onClick={() => goTo(navigate, "feed")}>Voltar</ButtonBack>
     </ContarinerError>
   );
 }
