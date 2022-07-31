@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+## LabEddit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### O que funciona
+- Login
+        - É possível conectar uma conta existente, caso não tenha sido criada não será possível prosseguir;
+        - Se já conectado é redirecionado para página de feeds.
+- Registro
+        - É possível criar uma conta nova, caso email já tenha sido usado não será possível;
+        - Se já conectado é redirecionado para página de feeds.
+- Feed 
+        - É possível criar postagens;
+        - É possível interagir com os post e visualiza-los;
+        - Caso não esteja conectado ou sessão expirou é redirecionado para tela de login.
+- Postagem
+        - É possível responder a postagem selecionada;
+        - É possível interagir com a postagem e comentários;
+        - Caso não esteja conectado ou sessão expirou é redirecionado para tela de login.
 
-## Available Scripts
 
-In the project directory, you can run:
+- Paginação na página de feed
+- Responsividade OK
+- Loading na página de feed e post
+- Logout
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### O que não funciona
+- Não é possível visualizar um post buscando por ID caso ele não se encontre entre os 20 primeiros post que api entrega;
+- Na página da postagem é possível interagir com like e deslike da postagem mas existe um atraso para mudança dos ícones e valores, ao clicar na primeira vez nada acontece, mas na segunda vez clicada é mostrado a resposta para o primeiro click.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Link Surge 
+### https://paulo-labeddit.surge.sh/
 
-### `npm test`
+### Imagens
+<p align="center">
+Telas no iPhone 13 PRO MAX
+</p>
+<p align="center">
+<img  height="500px" src="https://user-images.githubusercontent.com/104540624/182026151-afb35353-5585-4a74-b19a-fc343264ab69.png">
+<img  height="500px" src="https://user-images.githubusercontent.com/104540624/182026167-e5c73507-fe45-4161-9525-b9a88fe546e0.png">
+<img  height="500px" src="https://user-images.githubusercontent.com/104540624/182026196-803850e3-fe35-4b82-960a-8a96c97dfbb1.png">
+<img  height="500px" src="https://user-images.githubusercontent.com/104540624/182026229-c5c83231-a0b6-494c-92cb-b45ca74635b2.png">
+<img  height="500px" src="https://user-images.githubusercontent.com/104540624/182026243-5dff2ee4-3b75-4295-b3f3-56a4ec343f26.png">
+</p>
+<br/>
+<p align="center">
+Telas no Computador
+</p>
+<p align="center">
+<img  width="700px" src="https://user-images.githubusercontent.com/104540624/182026278-e9f41db4-c6e4-4e80-b0ae-05ce5c26e6a8.png">
+<img  width="700px" src="https://user-images.githubusercontent.com/104540624/182026291-1ffb5bef-7893-4350-85ac-0f6173d1939f.png">
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
