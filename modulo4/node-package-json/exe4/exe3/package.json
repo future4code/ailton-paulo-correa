@@ -1,0 +1,13 @@
+{
+    "name": "package-json-exe3",
+    "version": "1.0.0",
+    "description": "Exercício 3",
+    "type": "module",
+    "main": "exe3.js",
+    "scripts": {
+      "start": "node ./exe3.js"
+    },
+    "author": "Paulo Correa",
+    "license": "ISC"
+  }
+  
