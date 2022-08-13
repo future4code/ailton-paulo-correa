@@ -17,7 +17,9 @@ const exe7 = (list) => {
         .map((item) => {
         return { ...item, valueUnitary: ajustPrice(Number(item.valueUnitary)) };
     })
-        .sort((a, b) => { return a.quantity - b.quantity; });
+        .sort((a, b) => {
+        return a.quantity - b.quantity;
+    });
     return arrayList;
 };
 console.table(exe7(stock));

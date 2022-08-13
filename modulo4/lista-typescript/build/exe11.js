@@ -20,10 +20,10 @@ const exe11 = (num) => {
     for (const item of aux) {
         while (auxNum >= item.value) {
             romanNumerals += item.letter;
-            auxNum -= item.value;
+            console.log("loop");
         }
     }
     return romanNumerals;
 };
-console.log(exe11(9003));
+console.log(exe11(9009));
 //# sourceMappingURL=exe11.js.map

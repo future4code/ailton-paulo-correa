@@ -11,12 +11,12 @@ const clients: clientType[] = [
 
 const exe5 = (list: clientType[]): string[] => {
   const listAdmin: string[] = list
-    .filter((item) => {
+    .filter((item: clientType) => {
       if (item.role === "admin") {
         return item.email;
       }
     })
-    .map((item) => {
+    .map((item: clientType) => {
       return item.email;
     });
   return listAdmin;

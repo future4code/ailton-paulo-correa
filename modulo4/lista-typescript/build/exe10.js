@@ -25,5 +25,5 @@ const exe10 = (cpf) => {
     }
     return true;
 };
-console.log(exe10("145.382.206-21"));
+console.log(exe10("145.382.206-20"));
 //# sourceMappingURL=exe10.js.map

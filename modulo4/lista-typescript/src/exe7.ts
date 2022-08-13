@@ -21,11 +21,12 @@ const ajustPrice = (price: number): string => {
 
 const exe7 = (list: stockType[]): stockType[] => {
   const arrayList: stockType[] = list
-    .map((item) => {
+    .map((item: stockType) => {
       return { ...item, valueUnitary: ajustPrice(Number(item.valueUnitary)) };
     })
-    .sort((a, b) =>  {return a.quantity - b.quantity}
-    )      
+    .sort((a: stockType, b: stockType): number => {
+      return a.quantity - b.quantity;
+    });
   return arrayList;
 };
 console.table(exe7(stock));

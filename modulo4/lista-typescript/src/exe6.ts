@@ -14,18 +14,18 @@ const clientsBank: clientBankType[] = [
 ];
 
 const exe6 = (list: clientBankType[]): clientBankType[] => {
-  const sumDebts = list.map((item) => {
+  const sumDebts: number[] = list.map((item: clientBankType) => {
     return item.debts.reduce((a, b) => a + b, 0);
   });
-  const clientBalanceNegative = list
-    .map((item, i) => {
+  const clientBalanceNegative: clientBankType[] = list
+    .map((item: clientBankType, i: number) => {
       return {
         ...item,
         balanceTotal: item.balanceTotal - sumDebts[i],
         debts: [],
       };
     })
-    .filter((item) => {
+    .filter((item: clientBankType) => {
       return item.balanceTotal < 0;
     });
   return clientBalanceNegative;
