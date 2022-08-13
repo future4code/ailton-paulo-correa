@@ -15,7 +15,7 @@ const ajustPrice = (price) => {
 const exe7 = (list) => {
     const arrayList = list
         .map((item) => {
-        return Object.assign(Object.assign({}, item), { valueUnitary: ajustPrice(Number(item.valueUnitary)) });
+        return { ...item, valueUnitary: ajustPrice(Number(item.valueUnitary)) };
     })
         .sort((a, b) => { return a.quantity - b.quantity; });
     return arrayList;

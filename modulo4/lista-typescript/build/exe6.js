@@ -13,7 +13,11 @@ const exe6 = (list) => {
     });
     const clientBalanceNegative = list
         .map((item, i) => {
-        return Object.assign(Object.assign({}, item), { balanceTotal: item.balanceTotal - sumDebts[i], debts: [] });
+        return {
+            ...item,
+            balanceTotal: item.balanceTotal - sumDebts[i],
+            debts: [],
+        };
     })
         .filter((item) => {
         return item.balanceTotal < 0;

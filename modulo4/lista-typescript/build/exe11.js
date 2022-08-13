@@ -20,7 +20,6 @@ const exe11 = (num) => {
     for (const item of aux) {
         while (auxNum >= item.value) {
             romanNumerals += item.letter;
-            console.log(auxNum);
             auxNum -= item.value;
         }
     }

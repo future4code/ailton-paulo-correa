@@ -1,5 +1,11 @@
 const exe10 = (cpf: string): boolean => {
   const cpfOnlyNumber: string = cpf.replace("-", ".").split(".").join("");
+  if (
+    cpfOnlyNumber.length != 11 ||
+    cpfOnlyNumber.replaceAll(cpfOnlyNumber[0], "").length === 0
+  ) {
+    return false;
+  }
   let result: number = 0;
   for (let i: number = 0; i < 9; i++) {
     result += Number(cpfOnlyNumber[i]) * (10 - i);

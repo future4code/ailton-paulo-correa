@@ -1,6 +1,10 @@
 "use strict";
 const exe10 = (cpf) => {
     const cpfOnlyNumber = cpf.replace("-", ".").split(".").join("");
+    if (cpfOnlyNumber.length != 11 ||
+        cpfOnlyNumber.replaceAll(cpfOnlyNumber[0], "").length === 0) {
+        return false;
+    }
     let result = 0;
     for (let i = 0; i < 9; i++) {
         result += Number(cpfOnlyNumber[i]) * (10 - i);
@@ -21,5 +25,5 @@ const exe10 = (cpf) => {
     }
     return true;
 };
-console.log(exe10("145.382.206-20"));
+console.log(exe10("145.382.206-21"));
 //# sourceMappingURL=exe10.js.map
