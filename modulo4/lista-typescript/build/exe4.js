@@ -16,7 +16,7 @@ const collaborators = [
 ];
 const exe4 = (list) => {
     return list.filter((item) => {
-        if (item.sector === SECTORS.MARKETING) {
+        if (item.sector === SECTORS.MARKETING && item.presential) {
             return item;
         }
     });

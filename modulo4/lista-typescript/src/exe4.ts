@@ -21,7 +21,7 @@ const collaborators: collaboratorsType[] = [
 
 const exe4 = (list: collaboratorsType[]): collaboratorsType[] => {
   return list.filter((item: collaboratorsType) => {
-    if (item.sector === SECTORS.MARKETING) {
+    if (item.sector === SECTORS.MARKETING && item.presential) {
       return item;
     }
   });
