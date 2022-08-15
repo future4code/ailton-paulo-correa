@@ -1,0 +1,1 @@
+// 5. a) utilizando o comando npx tsc --init trás o arquivo com todas as configurações utilizaveis, mas a maioria estão comentados, ou seja, desativadas.
