@@ -1,0 +1,13 @@
+{
+    "name": "package-json-exe2",
+    "version": "1.0.0",
+    "description": "Exercício 2",
+    "type": "module",
+    "main": "exe2.js",
+    "scripts": {
+      "start": "node ./exe2.js"
+    },
+    "author": "Paulo Correa",
+    "license": "ISC"
+  }
+  

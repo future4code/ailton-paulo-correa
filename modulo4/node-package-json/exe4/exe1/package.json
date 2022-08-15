@@ -1,0 +1,13 @@
+{
+    "name": "package-json-exe1",
+    "version": "1.0.0",
+    "description": "Exercício 1",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+      "start": "node ./exe1.js"
+    },
+    "author": "Paulo Correa",
+    "license": "ISC"
+  }
+  

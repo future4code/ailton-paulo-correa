@@ -1,0 +1,15 @@
+{
+  "name": "package-json",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "exe1": "node ./exe4/exe1/exe1.js",
+    "exe2": "node ./exe4/exe2/exe2.js",
+    "exe3": "node ./exe4/exe3/exe3.js"
+  },
+  "author": "Paulo Correa",
+  "license": "ISC"
+}
