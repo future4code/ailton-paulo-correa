@@ -49,12 +49,17 @@ app.get("/products", (req: Request, res: Response) => {
     } else {
       search = req.query.search?.toString();
     }
-    res.send(
-      products.filter((item) => {
-        return item.name.toLowerCase().includes(search.toLowerCase());
-      })
-    );
-  } catch (error) {}
+    const filterProducts: product[] = products.filter((item) => {
+      return item.name.toLowerCase().includes(search.toLowerCase());
+    });
+    if (!filterProducts.length) {
+      res.statusCode = 404;
+      throw new Error("Produto não encontrado!");
+    }
+    res.send();
+  } catch (error: any) {
+    res.status(res.statusCode || 500).send({ message: error.message });
+  }
 });
 
 app.put("/products/edit/:id", (req: Request, res: Response) => {
