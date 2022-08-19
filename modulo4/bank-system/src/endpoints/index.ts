@@ -1,15 +1,14 @@
 import express, { Express, Response, Request } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
+import { balance, account } from "./types";
 import {
-  balance,
-  account,
-  getBalance,
-  addBalance,
-  payType,
-  transfer,
-} from "./types";
-import { checkAge, checkCPF, checkDate, checkTypeString } from "./functions";
+  checkAge,
+  checkCPF,
+  checkDate,
+  checkExistCPF,
+  checkTypeString,
+} from "./functions";
 import { accounts } from "../data/mock";
 
 const app: Express = express();
@@ -57,17 +56,23 @@ app.post("/users/create", (req: Request, res: Response) => {
       throw new Error("Usuário não tem 18 anos completos!");
     }
 
-    const newBalance: balance = {
-      description: `Cliente ${name} criou sua conta na data ${currentYear}`,
-      date: currentYear,
-      value: 0,
-    };
-
     const resultCheckCPF: boolean = checkCPF(cpf);
     if (!resultCheckCPF) {
       errorCode = 401;
       throw new Error("CPF informado é inválido!");
     }
+
+    const resultCheckExistCPF: boolean = checkExistCPF(cpf);
+    if (!resultCheckExistCPF) {
+      errorCode = 401;
+      throw new Error("CPF já cadastrado!");
+    }
+
+    const newBalance: balance = {
+      description: `Cliente ${name} criou sua conta na data ${currentYear}`,
+      date: currentYear,
+      value: 0,
+    };
 
     accounts.push({
       id: Date.now(),

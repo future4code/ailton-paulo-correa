@@ -1,3 +1,5 @@
+import { accounts } from "../data/mock";
+
 export const checkAge = (currentYear: string, birthdate: string): boolean => {
   const currentY = new Date(currentYear);
   const birth = new Date(birthdate);
@@ -58,9 +60,16 @@ export const checkCPF = (cpf: string): boolean => {
 };
 
 export const checkTypeString = (requestCheck: string[]): boolean => {
-  let noError = true;
-  for (const checking of requestCheck) {
-    if (typeof checking !== "string") noError = false;
-  }
-  return noError;
+  for (const checking of requestCheck)
+    if (typeof checking !== "string") return false;
+  return true;
+};
+
+export const checkExistCPF = (cpf: string): boolean => {
+  const checking = accounts.find(
+    (item) =>
+      item.cpf.replace("-", ".").split(".").join("") ===
+      cpf.replace("-", ".").split(".").join("")
+  );
+  return !checking;
 };
