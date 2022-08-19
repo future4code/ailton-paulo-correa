@@ -36,3 +36,31 @@ export const checkDate = (birth: string): boolean => {
 
   return true;
 };
+
+export const checkCPF = (cpf: string): boolean => {
+  const cpfNum: string = cpf.replace("-", ".").split(".").join("");
+  if (cpfNum.length !== 11 || !cpfNum.split(cpfNum[0]).join("").length)
+    return false;
+
+  let result: number = 0;
+  for (let i: number = 0; i < 9; i++) result += Number(cpfNum[i]) * (10 - i);
+  let check: number = 11 - (result % 11);
+  check = check < 10 ? check : 0;
+  if (!(check === Number(cpfNum[9]))) return false;
+
+  result = 0;
+  for (let i: number = 0; i < 10; i++) result += Number(cpfNum[i]) * (11 - i);
+  check = 11 - (result % 11);
+  check = check < 10 ? check : 0;
+  if (!(check === Number(cpfNum[10]))) return false;
+
+  return true;
+};
+
+export const checkTypeString = (requestCheck: string[]): boolean => {
+  let noError = true;
+  for (const checking of requestCheck) {
+    if (typeof checking !== "string") noError = false;
+  }
+  return noError;
+};

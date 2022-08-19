@@ -9,7 +9,7 @@ import {
   payType,
   transfer,
 } from "./types";
-import { checkAge, checkDate } from "./functions";
+import { checkAge, checkCPF, checkDate, checkTypeString } from "./functions";
 import { accounts } from "../data/mock";
 
 const app: Express = express();
@@ -17,8 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/test", (req: Request, res: Response) => {
-  const currentYear = new Date("11/10/1995").toISOString().slice(0, 10);
-  res.send(`Serviço funcionando corretamente! ${currentYear}`);
+  res.send(`Serviço funcionando corretamente!`);
 });
 
 app.get("/users", (req: Request, res: Response) => {
@@ -29,6 +28,18 @@ app.post("/users/create", (req: Request, res: Response) => {
   let errorCode: number = 500;
   try {
     const { name, cpf, birthdate }: account = req.body;
+
+    if (!name || !cpf || !birthdate) {
+      errorCode = 422;
+      throw new Error("Algum valor não foi informado!");
+    }
+
+    if (!checkTypeString([name, cpf, birthdate])) {
+      errorCode = 422;
+      throw new Error("Erro com o tipo de um ou mais valores informado!");
+    }
+
+    // A DATA DE ENTRADA DEVE ESTAR NO FORMATO MM/DD/AAAA
 
     if (!Date.parse(birthdate) || !checkDate(birthdate)) {
       errorCode = 422;
@@ -52,19 +63,11 @@ app.post("/users/create", (req: Request, res: Response) => {
       value: 0,
     };
 
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
-    // FALTA VALIDA CPF
+    const resultCheckCPF: boolean = checkCPF(cpf);
+    if (!resultCheckCPF) {
+      errorCode = 401;
+      throw new Error("CPF informado é inválido!");
+    }
 
     accounts.push({
       id: Date.now(),
@@ -77,7 +80,12 @@ app.post("/users/create", (req: Request, res: Response) => {
 
     res.send(accounts);
   } catch (error: any) {
-    res.status(errorCode).send({ message: error.message });
+    res.status(errorCode).send({
+      message:
+        errorCode !== 500
+          ? error.message
+          : `Erro no servidor, favor reportar o erro!`,
+    });
   }
 });
 
