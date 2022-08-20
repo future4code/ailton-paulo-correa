@@ -8,8 +8,7 @@ export const accounts: account[] = [
     cpf: "111.111.111-11",
     birthdate: "11-10-1995",
     balance: {
-      description: "descrição",
-      date: "19-08-2022",
+      dateUpdate: "19-08-2022",
       value: 100,
     },
     historyTransfer: [
@@ -18,6 +17,7 @@ export const accounts: account[] = [
         cpfSender: "111.111.111-11",
         nameSender: "Nome 1",
         value: 100,
+        description: "descrição",
         cpfReceiver: "111.111.111-11",
         nameReceiver: "Nome 2",
       },
@@ -29,8 +29,7 @@ export const accounts: account[] = [
     cpf: "111.111.111-11",
     birthdate: "11-10-1995",
     balance: {
-      description: "descrição",
-      date: "19-08-2022",
+      dateUpdate: "19-08-2022",
       value: 100,
     },
     historyTransfer: [],
@@ -41,8 +40,7 @@ export const accounts: account[] = [
     cpf: "111.111.111-11",
     birthdate: "11-10-1995",
     balance: {
-      description: "descrição",
-      date: "19-08-2022",
+      dateUpdate: "19-08-2022",
       value: 100,
     },
     historyTransfer: [],
@@ -53,8 +51,7 @@ export const accounts: account[] = [
     cpf: "111.111.111-11",
     birthdate: "11-10-1995",
     balance: {
-      description: "descrição",
-      date: "19-08-2022",
+      dateUpdate: "19-08-2022",
       value: 100,
     },
     historyTransfer: [
@@ -63,6 +60,7 @@ export const accounts: account[] = [
         cpfSender: "111.111.111-11",
         nameSender: "Nome 1",
         value: 100,
+        description: "descrição",
         cpfReceiver: "111.111.111-11",
         nameReceiver: "Nome 2",
       },
@@ -71,6 +69,7 @@ export const accounts: account[] = [
         cpfSender: "111.111.111-11",
         nameSender: "Nome 1",
         value: 55,
+        description: "descrição",
         cpfReceiver: "111.111.111-11",
         nameReceiver: "Nome 5",
       },
@@ -82,8 +81,7 @@ export const accounts: account[] = [
     cpf: "111.111.111-11",
     birthdate: "11-10-1995",
     balance: {
-      description: "descrição",
-      date: "19-08-2022",
+      dateUpdate: "19-08-2022",
       value: 100,
     },
     historyTransfer: [],

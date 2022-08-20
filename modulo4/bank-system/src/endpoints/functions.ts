@@ -64,6 +64,11 @@ export const checkTypeString = (requestCheck: string[]): boolean => {
     if (typeof checking !== "string") return false;
   return true;
 };
+export const checkTypeNumber = (requestCheck: number[]): boolean => {
+  for (const checking of requestCheck)
+    if (typeof checking !== "number") return false;
+  return true;
+};
 
 export const checkExistCPF = (cpf: string): boolean => {
   const checking = accounts.find(

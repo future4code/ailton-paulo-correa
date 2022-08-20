@@ -5,15 +5,15 @@ export type transfer = {
   cpfSender: string;
   nameSender: string;
   value: number;
-  cpfReceiver: string;
-  nameReceiver: string;
+  description: string;
+  cpfReceiver?: string;
+  nameReceiver?: string;
 };
 // transfer
 // --------------------------
 // create account
 export type balance = {
-  description: string;
-  date: string;
+  dateUpdate: string;
   value: number;
 };
 
