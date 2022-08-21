@@ -1,12 +1,13 @@
 import express, { Express, Response, Request } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { balance, account, addBalance, transfer } from "./types";
+import { balance, account, addBalance, transfer, payType } from "./types";
 import {
   checkAge,
   checkCPF,
   checkDate,
   checkExistCPF,
+  checkLateDate,
   checkTypeNumber,
   checkTypeString,
 } from "./functions";
@@ -139,11 +140,21 @@ app.post("/users/create", (req: Request, res: Response) => {
 app.put("/users/addbalance", (req: Request, res: Response) => {
   let errorCode: number = 500;
   try {
-    const { name, cpf, newValue }: addBalance = req.body;
+    const { name, cpf, newValue, date }: addBalance = req.body;
 
     if (!name || !cpf || !newValue) {
       errorCode = 422;
       throw new Error("Algum valor não foi informado!");
+    }
+
+    let dateValidation: string;
+
+    if (!date) dateValidation = new Date().toISOString().slice(0, 10);
+    else dateValidation = new Date(date).toISOString().slice(0, 10);
+
+    if (!Date.parse(dateValidation) || !checkDate(dateValidation)) {
+      errorCode = 422;
+      throw new Error("Data informada é inválida!");
     }
 
     if (!checkTypeString([name, cpf]) || !checkTypeNumber([newValue])) {
@@ -164,7 +175,6 @@ app.put("/users/addbalance", (req: Request, res: Response) => {
       errorCode = 422;
       throw new Error("Nome informado é inválido!");
     }
-    console.log(existName);
 
     const resultCheckExistCPF: boolean = checkExistCPF(cpf);
     if (resultCheckExistCPF) {
@@ -184,6 +194,7 @@ app.put("/users/addbalance", (req: Request, res: Response) => {
       cpfSender: cpf,
       nameSender: name,
       value: newValue,
+      date: dateValidation,
       description: `Depósito de dinheiro`,
     };
     editUser[0].balance = newBalance;
@@ -199,6 +210,82 @@ app.put("/users/addbalance", (req: Request, res: Response) => {
     });
 
     res.send(updateAccounts);
+  } catch (error: any) {
+    res.status(errorCode).send({
+      message:
+        errorCode !== 500
+          ? error.message
+          : `Erro no servidor, favor reportar o erro!`,
+    });
+  }
+});
+
+app.post("/users/paybill", (req: Request, res: Response) => {
+  let errorCode: number = 500;
+  try {
+    const { value, cpf, payDate, description } = req.body;
+
+    if (!description || !cpf || !value) {
+      errorCode = 422;
+      throw new Error("Algum valor não foi informado!");
+    }
+
+    let dateValidation: string;
+
+    if (!payDate) dateValidation = new Date().toISOString().slice(0, 10);
+    else dateValidation = new Date(payDate).toISOString().slice(0, 10);
+
+    if (!Date.parse(dateValidation) || !checkDate(dateValidation)) {
+      errorCode = 422;
+      throw new Error("Data informada é inválida!");
+    }
+
+    let resultLateDate: boolean = checkLateDate(dateValidation);
+    if (resultLateDate) {
+      errorCode = 422;
+      throw new Error("Não é possível pagar uma conta atrada!");
+    }
+
+    if (!checkTypeString([description, cpf]) || !checkTypeNumber([value])) {
+      errorCode = 422;
+      throw new Error("Erro com o tipo de um ou mais valores informado!");
+    }
+
+    const resultCheckCPF: boolean = checkCPF(cpf);
+    if (!cpf || cpf === ":cpf" || !resultCheckCPF) {
+      errorCode = 422;
+      throw new Error("CPF informado é inválido!");
+    }
+
+    const resultCheckExistCPF: boolean = checkExistCPF(cpf);
+    if (resultCheckExistCPF) {
+      errorCode = 401;
+      throw new Error("CPF não encontrado no sistema!");
+    }
+
+    const userIndex: number = accounts.findIndex(
+      (item) =>
+        item.cpf.replace("-", ".").split(".").join("") ===
+        cpf.replace("-", ".").split(".").join("")
+    );
+
+    if (Number(accounts[userIndex].balance?.value) < value) {
+      errorCode = 422;
+      throw new Error("Saldo insuficiente para realizar pagamento!");
+    }
+
+    const newPayBill: transfer = {
+      id: Date.now(),
+      cpfSender: cpf,
+      nameSender: accounts[userIndex].name,
+      value: value * -1,
+      date: dateValidation,
+      description,
+    };
+
+    accounts[userIndex].historyTransfer?.push(newPayBill);
+
+    res.send(accounts);
   } catch (error: any) {
     res.status(errorCode).send({
       message:

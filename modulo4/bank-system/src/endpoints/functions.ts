@@ -1,14 +1,20 @@
 import { accounts } from "../data/mock";
 
 export const checkAge = (currentYear: string, birthdate: string): boolean => {
-  const currentY = new Date(currentYear);
-  const birth = new Date(birthdate);
-  let userAge = Math.abs(currentY.getFullYear() - birth.getFullYear());
+  const currentY: string[] = new Date(currentYear)
+    .toISOString()
+    .slice(0, 10)
+    .split("-");
+  const birth: string[] = new Date(birthdate)
+    .toISOString()
+    .slice(0, 10)
+    .split("-");
+
+  let userAge: number = Math.abs(Number(currentY[0]) - Number(birth[0]));
 
   if (
-    currentY.getMonth() < birth.getMonth() ||
-    (currentY.getMonth() === birth.getMonth() &&
-      currentY.getDate() < birth.getDate())
+    Number(currentY[1]) <= Number(birth[1]) &&
+    Number(currentY[2]) < Number(birth[2])
   )
     userAge--;
 
@@ -17,10 +23,10 @@ export const checkAge = (currentYear: string, birthdate: string): boolean => {
 };
 
 export const checkDate = (birth: string): boolean => {
-  const month30Days = [4, 6, 9, 11];
-  const month31Days = [1, 3, 5, 7, 8, 10, 12];
+  const month30Days: number[] = [4, 6, 9, 11];
+  const month31Days: number[] = [1, 3, 5, 7, 8, 10, 12];
   const arrayDate: string[] = birth.split("/") || birth.split("-");
-  const leapYear =
+  const leapYear: boolean =
     Number(arrayDate[2]) % 400 === 0 ||
     (Number(arrayDate[2]) % 4 === 0 && Number(arrayDate[2]) % 100 !== 0);
 
@@ -71,10 +77,23 @@ export const checkTypeNumber = (requestCheck: number[]): boolean => {
 };
 
 export const checkExistCPF = (cpf: string): boolean => {
-  const checking = accounts.find(
+  return !accounts.find(
     (item) =>
       item.cpf.replace("-", ".").split(".").join("") ===
       cpf.replace("-", ".").split(".").join("")
   );
-  return !checking;
+};
+
+export const checkLateDate = (date: string): boolean => {
+  let currentYear: string[] = new Date().toISOString().slice(0, 10).split("-");
+  const dateCheck: string[] = new Date(date)
+    .toISOString()
+    .slice(0, 10)
+    .split("-");
+
+  return (
+    currentYear[0] <= dateCheck[0] &&
+    currentYear[1] <= dateCheck[1] &&
+    currentYear[2] > dateCheck[2]
+  );
 };

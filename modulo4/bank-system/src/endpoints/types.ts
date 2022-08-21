@@ -5,6 +5,7 @@ export type transfer = {
   cpfSender: string;
   nameSender: string;
   value: number;
+  date: string;
   description: string;
   cpfReceiver?: string;
   nameReceiver?: string;
@@ -39,14 +40,16 @@ export type addBalance = {
   name: string;
   cpf: string;
   newValue: number;
+  date?: string;
 };
 // add balance
 // --------------------------
-// pay
+// payBill
 export type payType = {
   value: number;
-  payDate: string;
+  cpf: string;
+  payDate?: string;
   description: string;
 };
-// pay
+// paybill
 // --------------------------
