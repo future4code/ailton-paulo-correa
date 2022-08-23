@@ -4,11 +4,11 @@
 USE `ailton-paulo-henrique`;
 ```
 
+### Indo para o RH.
+
 ```
 SET SQL_SAFE_UPDATES = 0;
 ```
-
-### Indo para o RH.
 
 ```
 select * from Actor;
@@ -64,7 +64,9 @@ CHANGE gender gender VARCHAR(100);
 
 ```
 UPDATE Actor
-SET name = "Antonio Fagundes",	birth_date = "1950-06-02"
+SET
+     name = "Antonio Fagundes",
+     birth_date = "1950-06-02"
 WHERE id = "004";
 ```
 
@@ -346,8 +348,8 @@ ORDER BY release_date DESC LIMIT 3;
 SELECT * FROM Movies ORDER BY score DESC LIMIT 3;
 ```
 
+### Era engano, não preciso ir ao RH.
+
 ```
 SET SQL_SAFE_UPDATES = 1;
 ```
-
-### Era engano, não preciso ir ao RH.
