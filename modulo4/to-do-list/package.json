@@ -8,7 +8,7 @@
     "start": "tsc && node ./build/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Paulo Correa",
   "license": "ISC",
   "dependencies": {
     "@types/knex": "^0.16.1",

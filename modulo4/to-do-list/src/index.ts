@@ -1,15 +1,19 @@
 import express, { Express, Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { checkEmail } from "./features/functions";
+import {
+  checkEmail,
+  checkFreeEmail,
+  checkFreeNickname,
+} from "./features/functions";
 import { user } from "./features/types";
-import { createUser } from "./features/connection";
+import { createUser, getAllUsers } from "./features/connection";
 
 const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-app.post("/user", (req: Request, res: Response) => {
+app.post("/user", async (req: Request, res: Response) => {
   let errorCode = 500;
   try {
     const { name, nickname, email }: user = req.body;
@@ -24,6 +28,14 @@ app.post("/user", (req: Request, res: Response) => {
       errorCode = 422;
       throw new Error(`Email informado é inválido!`);
     }
+    if (await checkFreeEmail(email)) {
+      errorCode = 422;
+      throw new Error(`Email informado já foi cadastrado!`);
+    }
+    if (await checkFreeNickname(nickname)) {
+      errorCode = 422;
+      throw new Error(`Nickname informado já foi cadastrado!`);
+    }
 
     const id: string = Date.now().toString();
     const newUser: user = {
@@ -32,7 +44,15 @@ app.post("/user", (req: Request, res: Response) => {
       nickname,
       email,
     };
-    createUser(newUser);
+
+    const result = await createUser(newUser);
+    console.log("aaa",result);
+
+    if (!!result[0]) {
+      errorCode = 500;
+      throw new Error(`Erro inesperado foi encontrado!`);
+    }
+
     res
       .status(201)
       .send({ message: `Usuário criado com sucesso!`, data: newUser });

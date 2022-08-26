@@ -20,9 +20,17 @@ export const createUser = async ({
   nickname,
   email,
 }: user): Promise<any> => {
-  const result = await connection()
+  const result = await connection
+    .queryBuilder()
     .insert({ id, name, nickname, email })
     .into("Users");
+  return result;
+};
 
+export const getAllUsers = async (): Promise<user[]> => {
+  const result: user[] = await connection
+    .queryBuilder()
+    .select("*")
+    .from("Users");
   return result;
 };
