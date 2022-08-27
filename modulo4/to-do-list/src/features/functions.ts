@@ -29,6 +29,13 @@ export const searchIdTask = async (id: string): Promise<boolean> => {
   return false;
 };
 
+export const searchUserIdTask = async (userId: string): Promise<boolean> => {
+  const allTasks: task[] = await getAllTasks();
+
+  for (const item of allTasks) if (item.creatorUserId === userId) return true;
+  return false;
+};
+
 export const checkFreeEmail = async (email: string): Promise<boolean> => {
   const allUsers: user[] = await getAllUsers();
 

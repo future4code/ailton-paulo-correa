@@ -3,7 +3,7 @@ import knex from "knex";
 import dotenv from "dotenv";
 
 dotenv.config();
-export const connection = knex({
+export const connection: any = knex({
   client: "mysql",
   connection: {
     host: process.env.DB_HOST,
@@ -49,8 +49,6 @@ export const getUser = async (id: string): Promise<user> => {
 };
 
 export const getTask = async (id: string): Promise<task> => {
-  console.log("AAAAq");
-
   const result: task[] = await connection
     .select(
       "Tasks.id",
@@ -58,14 +56,12 @@ export const getTask = async (id: string): Promise<task> => {
       "Tasks.description",
       "Tasks.limitDate",
       "Tasks.creatorUserId",
+      "Tasks.status",
       "Users.nickname"
     )
     .from("Tasks")
     .where("Tasks.id", id)
     .leftJoin("Users", "Users.id", "Tasks.creatorUserId");
-
-  console.log(result);
-  console.log("aaaa");
 
   return result[0];
 };
@@ -75,7 +71,7 @@ export const putUser = async (
   name: string,
   nickname: string
 ): Promise<any> => {
-  let result;
+  let result: any;
   if (!!name)
     result = await connection("Users").update("name", name).where("id", id);
   if (!!nickname)
@@ -94,8 +90,61 @@ export const postTask = async ({
 }: task): Promise<any> => {
   const result: task[] = await connection
     .queryBuilder()
-    .insert({ id, title, description, limitDate, creatorUserId })
+    .insert({
+      id,
+      title,
+      description,
+      limitDate,
+      creatorUserId,
+      status: "a fazer",
+    })
     .into("Tasks");
   console.log(result);
+  return result;
+};
+
+export const allUserNick = async (): Promise<any> => {
+  const result: user[] = await connection("Users").select("id", "nickname");
+  return result;
+};
+
+export const taskByUserID = async (userId: string): Promise<any> => {
+  const result: task[] = await connection
+    .select(
+      "Tasks.id",
+      "Tasks.title",
+      "Tasks.description",
+      "Tasks.limitDate",
+      "Tasks.creatorUserId",
+      "Tasks.status",
+      "Users.nickname"
+    )
+    .from("Tasks")
+    .where("Tasks.creatorUserId", userId)
+    .leftJoin("Users", "Users.id", "Tasks.creatorUserId");
+
+  return result;
+};
+
+export const userByNickname = async (nickname: string): Promise<any> => {
+  const result: user[] = await connection
+    .select("id", "nickname")
+    .from("Users")
+    .where("nickname", "LIKE", `%${nickname.toLowerCase()}%`);
+  return result;
+};
+
+export const responsibleUser = async (
+  userID: string,
+  taskID: string
+): Promise<any> => {
+  const result: user[] = await connection
+    .queryBuilder()
+    .insert({
+      id: Date.now().toString(),
+      responsible_user_id: userID,
+      task_id: taskID,
+    })
+    .into("Responsible");
   return result;
 };

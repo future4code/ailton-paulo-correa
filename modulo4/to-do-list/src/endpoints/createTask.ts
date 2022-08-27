@@ -7,7 +7,7 @@ export const createTask = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  let errorCode = 500;
+  let errorCode: number = 500;
   try {
     const { title, description, limitDate, creatorUserId }: task = req.body;
     let verifyDate: string | string[] = limitDate.split("/");

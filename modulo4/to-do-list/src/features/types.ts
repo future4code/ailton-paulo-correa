@@ -14,6 +14,19 @@ export type task = {
   id?: string;
   title: string;
   description: string;
+  limitDate: string;  
+  status?: string;
+  creatorUserId: string;
+};
+
+export type getUser = { id: string; nickname: string };
+
+export type resultTasks = {
+  id: string;
+  title: string;
+  description: string;
   limitDate: string;
   creatorUserId: string;
+  status: string;
+  cnickname: string;
 };
