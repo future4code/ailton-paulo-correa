@@ -7,6 +7,7 @@ export const checkEmail = (email: string): boolean => {
   check = check.replace(".", "-!");
   check = check.split("-!");
   check[0] = check[0].replace("_", "");
+  check[2] = check[2].replace(".", "");
 
   if (!check[0] || !check[1] || !check[2]) return true;
   if (check.length !== 3) return true;

@@ -49,7 +49,7 @@ export const getUser = async (id: string): Promise<user> => {
 };
 
 export const getTask = async (id: string): Promise<task> => {
-  console.log("AAAA");
+  console.log("AAAAq");
 
   const result: task[] = await connection
     .select(
@@ -61,8 +61,11 @@ export const getTask = async (id: string): Promise<task> => {
       "Users.nickname"
     )
     .from("Tasks")
+    .where("Tasks.id", id)
     .leftJoin("Users", "Users.id", "Tasks.creatorUserId");
+
   console.log(result);
+  console.log("aaaa");
 
   return result[0];
 };
