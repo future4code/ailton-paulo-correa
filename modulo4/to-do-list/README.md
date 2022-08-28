@@ -15,12 +15,12 @@
     <li> Encontrar uma tarefa pelo seu ID;</li>
     <li> Encontrar as tarefas criadas por um determinado usuário;</li>
     <li> Atribuir um usuário para ser responsável por uma tarefa;</li>
+    <li> Encontrar o(s) usuário(s) responsável por uma tarefa;</li>
     <li> Atribuir mais de um responsável por tarefa.</li>
 </ul>
 
 <h2>🔨 Funcionalidades não implementadas</h2>
 <ul>
-    <li> Encontrar o(s) usuário(s) responsável por uma tarefa;</li>
     <li> Encontrar uma tarefa com seus respectivos responsáveis;</li>
     <li> Atualizar a condição da tarefa pelo seu ID;</li>
     <li> Encontrar as tarefas pela sua condição;</li>
@@ -128,8 +128,8 @@ Como a API não possui um link para utilização, os teste serão feitos apenas 
 
 ```json
 {
-    "name": "Paulo",
-    "nickname": "Mankey"
+  "name": "Paulo",
+  "nickname": "Mankey"
 }
 ```
 
@@ -159,10 +159,10 @@ Como a API não possui um link para utilização, os teste serão feitos apenas 
 
 ```json
 {
-    "title": "Titulo exemplo",
-    "description": "Descrição exemplo",
-    "limitDate": "11/10/2022" ,
-    "creatorUserId": "1661701107601"
+  "title": "Titulo exemplo",
+  "description": "Descrição exemplo",
+  "limitDate": "11/10/2022",
+  "creatorUserId": "1661701107601"
 }
 ```
 
@@ -340,8 +340,8 @@ Como a API não possui um link para utilização, os teste serão feitos apenas 
 
 ```json
 {
-    "taskId": "1661624450486",
-    "userId": "1661535985769"
+  "taskId": "1661624450486",
+  "userId": "1661535985769"
 }
 ```
 
@@ -351,6 +351,91 @@ Como a API não possui um link para utilização, os teste serão feitos apenas 
 // Success
 {
     "message": "Usuário atribuido para uma tarefa!"
+}
+
+// Failed
+{
+    "message": "Mensagem informando o erro!"
+}
+```
+
+> <h2>GET - Get User Responsible for Task</h2>
+
+### Path URL
+
+```
+{BASE_URL}/task/:id/responsible
+```
+
+### Path Variables
+
+#### `KEY` id
+
+#### `VALUE` 1661702352260
+
+### Response
+
+```json
+// Success
+{
+    "message": "Usuários responsáveis por essa tarefa encontrados!",
+    "data": [
+        {
+            "responsible_user_id": "1661701107601",
+            "nickname": "Mankey"
+        },
+        {
+            "responsible_user_id": "1661535985769",
+            "nickname": "Paulo"
+        }
+    ]
+}
+
+// Failed
+{
+    "message": "Mensagem informando o erro!"
+}
+```
+
+> <h2>GET - Get User Responsible for Task</h2>
+
+### Path URL
+
+```
+{BASE_URL}/task/:id/responsiblesTask
+```
+
+### Path Variables
+
+#### `KEY` id
+
+#### `VALUE` 1661702352260
+
+### Response
+
+```json
+// Success
+{
+    "message": "Usuários responsáveis por essa tarefa encontrados!",
+    "data": {
+        "taskId": "1661702352260",
+        "title": "Titulo exemplo",
+        "description": "Descrição exemplo",
+        "limitDate": "2022/10/11",
+        "creatorUserId": "1661701107601",
+        "status": "a fazer",
+        "creatorUserNickname": "Mankey",
+        "responsibleUsers": [
+            {
+                "id": "1661701107601",
+                "nickname": "Mankey"
+            },
+            {
+                "id": "1661535985769",
+                "nickname": "Paulo"
+            }
+        ]
+    }
 }
 
 // Failed

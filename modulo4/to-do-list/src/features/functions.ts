@@ -25,7 +25,7 @@ export const searchIdUser = async (id: string): Promise<boolean> => {
 export const searchIdTask = async (id: string): Promise<boolean> => {
   const allTasks: task[] = await getAllTasks();
 
-  for (const item of allTasks) if (item.id === id) return true;
+  for (const item of allTasks) if (item.taskId === id) return true;
   return false;
 };
 

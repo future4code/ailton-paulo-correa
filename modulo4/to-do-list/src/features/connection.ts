@@ -1,4 +1,4 @@
-import { getUser, task, user } from "./types";
+import { getUser, resultTasks, task, user } from "./types";
 import knex from "knex";
 import dotenv from "dotenv";
 
@@ -38,7 +38,14 @@ export const getAllUsers = async (): Promise<user[]> => {
 export const getAllTasks = async (): Promise<task[]> => {
   const result: task[] = await connection
     .queryBuilder()
-    .select("*")
+    .select(
+      "id AS taskId",
+      "title",
+      "description",
+      "limitDate",
+      "creatorUserId",
+      "status"
+    )
     .from("Tasks");
   return result;
 };
@@ -51,7 +58,7 @@ export const getUserId = async (id: string): Promise<user> => {
 export const getTask = async (id: string): Promise<task> => {
   const result: task[] = await connection
     .select(
-      "Tasks.id",
+      "Tasks.id AS taskId",
       "Tasks.title",
       "Tasks.description",
       "Tasks.limitDate",
@@ -82,7 +89,7 @@ export const putUser = async (
 };
 
 export const postTask = async ({
-  id,
+  taskId,
   title,
   description,
   limitDate,
@@ -91,7 +98,7 @@ export const postTask = async ({
   const result: task[] = await connection
     .queryBuilder()
     .insert({
-      id,
+      taskId,
       title,
       description,
       limitDate,
@@ -152,14 +159,10 @@ export const getUserResponsibleTask = async (
   id: string
 ): Promise<getUser[]> => {
   const result: getUser[] = await connection
-    .select("Responsible.responsible_user_id", "Users.nickname")
-    .from("Tasks")
-    .where("Tasks.id", id)
-    .leftJoin("Users", "Users.id", "Tasks.creatorUserId")
-    .leftJoin(
-      "Responsible",
-      "Responsible.task_id",
-      "Tasks.id"
-    );
+    .select("Responsible.responsible_user_id AS id", "Users.nickname")
+    .from("Responsible")
+    .where("Responsible.task_id", id)
+    .leftJoin("Users", "Users.id", "Responsible.responsible_user_id")
+    .leftJoin("Tasks", "Tasks.id", "Responsible.task_id");
   return result;
 };

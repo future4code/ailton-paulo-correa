@@ -11,12 +11,13 @@ export type editBody = {
 };
 
 export type task = {
-  id?: string;
+  taskId?: string;
   title: string;
   description: string;
-  limitDate: string;  
+  limitDate: string;
   status?: string;
   creatorUserId: string;
+  nickname?: string;
 };
 
 export type getUser = { id: string; nickname: string };
@@ -28,5 +29,15 @@ export type resultTasks = {
   limitDate: string;
   creatorUserId: string;
   status: string;
-  cnickname: string;
+  nickname: string;
+};
+
+export type taskResponsibles = {
+  taskId?: string;
+  title: string;
+  description: string;
+  limitDate: string;
+  creatorUserId: string;
+  creatorUserNickname: string;
+  responsibleUsers: getUser[];
 };
