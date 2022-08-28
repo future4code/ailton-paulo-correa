@@ -17,7 +17,6 @@ export const editUser = async (req: Request, res: Response): Promise<void> => {
       throw new Error(`Nenhum valor informado para editar!`);
     }
     const result = await putUser(id, name, nickname);
-    console.log(result);
 
     res.status(200).send({ message: "Usuário editado com sucesso!" });
   } catch (error: any) {

@@ -1,4 +1,4 @@
-import { task, user } from "./types";
+import { getUser, task, user } from "./types";
 import knex from "knex";
 import dotenv from "dotenv";
 
@@ -43,7 +43,7 @@ export const getAllTasks = async (): Promise<task[]> => {
   return result;
 };
 
-export const getUser = async (id: string): Promise<user> => {
+export const getUserId = async (id: string): Promise<user> => {
   const result: user[] = await connection("Users").where("id", id);
   return result[0];
 };
@@ -99,7 +99,6 @@ export const postTask = async ({
       status: "a fazer",
     })
     .into("Tasks");
-  console.log(result);
   return result;
 };
 
@@ -146,5 +145,21 @@ export const responsibleUser = async (
       task_id: taskID,
     })
     .into("Responsible");
+  return result;
+};
+
+export const getUserResponsibleTask = async (
+  id: string
+): Promise<getUser[]> => {
+  const result: getUser[] = await connection
+    .select("Responsible.responsible_user_id", "Users.nickname")
+    .from("Tasks")
+    .where("Tasks.id", id)
+    .leftJoin("Users", "Users.id", "Tasks.creatorUserId")
+    .leftJoin(
+      "Responsible",
+      "Responsible.task_id",
+      "Tasks.id"
+    );
   return result;
 };
