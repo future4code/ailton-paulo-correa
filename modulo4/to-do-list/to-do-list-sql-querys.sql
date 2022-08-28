@@ -1,6 +1,7 @@
 -- Select All Users
 SELECT * FROM Users;
 SELECT * FROM Tasks;
+SELECT * FROM Responsible;
 
 -- Create Table Users
 CREATE TABLE Users (
@@ -16,6 +17,7 @@ CREATE TABLE Tasks (
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     limitDate VARCHAR(255) NOT NULL,
+    status VARCHAR(255),
     creatorUserId VARCHAR(255) NOT NULL,
     FOREIGN KEY (creatorUserId)
         REFERENCES Users (id)

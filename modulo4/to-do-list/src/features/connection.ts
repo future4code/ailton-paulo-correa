@@ -1,4 +1,4 @@
-import { getUser, resultTasks, task, user } from "./types";
+import { getUser, task, user } from "./types";
 import knex from "knex";
 import dotenv from "dotenv";
 
@@ -164,5 +164,12 @@ export const getUserResponsibleTask = async (
     .where("Responsible.task_id", id)
     .leftJoin("Users", "Users.id", "Responsible.responsible_user_id")
     .leftJoin("Tasks", "Tasks.id", "Responsible.task_id");
+  return result;
+};
+
+export const updateStatus = async (taskId: string, status: string) :Promise<any> => {
+  const result = await connection("Tasks")
+    .update("status", status)
+    .where("id", taskId);
   return result;
 };
