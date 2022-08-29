@@ -9,7 +9,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-// EXE 1 - C
+// EXE 1
 async function getSubscribers(): Promise<any> {
   try {
     const { data }: data = await axios.get(`${BASE_URL}/subscribers`);
@@ -86,7 +86,6 @@ const sendNotificationsEx6 = async (
 
     await Promise.all(promises);
     console.log(promises);
-    console.log("aaaa");
   } catch {
     console.log("Error");
   }
@@ -97,34 +96,38 @@ const main = async () => {
   // A) Get com BASE URL + /subscribers
   // B) Promise<any[]>
   const res: user[] = await getSubscribers();
-  // console.log(res);
+  console.log(res);
   //
   // EXE 2
-  // const res2:any = await getSubs();
-  // console.log(res2);
-  // EXE 3
+  const res2:any = await getSubs();
+  console.log(res2);
   //
+  // EXE 3
   // A) Devemos válidar o que está vindo com um mapeamento ou dando uma tipagem para a variável que irá receber os valores da requisição, como se estivessemos confirmando o que irá ser armazenado nela.
   // B) É boa prática para que não seja enviado valores indesejáveis.
-  // const res3: user[] = await getSubscribersEx3();
-  // console.log(res3);
+  const res3: user[] = await getSubscribersEx3();
+  console.log(res3);
   //
   // EXE 4
   // A) Void, pois a requisição não retorna valores!
-  // await createNews({
-  //   title: "title",
-  //   content: "content",
-  //   date: 2022,
-  // });
+  await createNews({
+    title: "title",
+    content: "content",
+    date: 2022,
+  });
   //
   // EXE 5
-  // await sendNotifications(res, "Seja bem vindoooooo!");
+  await sendNotifications(res, "Seja bem vindoooooo!");
   //
   // EXE 6
+  // Resolve todas as promises encontradas em seu argumento, similar ao que await faz, mas pelo que entendi nessa situação temos varias promises sendo feitas em map, onde não se é capaz de utilizar o await.
   await sendNotificationsEx6(res, "Seja bem vindoooooo!");
+
+  // Para testar individualmente cada exercicio basta comentar as linhas que não deseja executar para não poluir o chat e também certifique que o main esteja sendo executado na linha 129.
 };
 
-main();
+// main();
+// Descomente a linha 129 para executar todas funções
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
