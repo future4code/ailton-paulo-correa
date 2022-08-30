@@ -23,16 +23,13 @@ export const selectUserByType = async (type: string): Promise<user[]> => {
 };
 
 export const selectUserOrder = async ({
-  name,
-  type,
+  columnOrder,
   order,
 }: userOrder): Promise<user[]> => {
-  const res: user[] = await connection(`aula48_exercicio`)
-    .whereRaw("name LIKE ?", `%${name}%`)
-    .orderBy(
-      name ? "name" : type ? "type" : "email",
-      order ? order.toUpperCase() : "ASC"
-    );
+  const res: user[] = await connection(`aula48_exercicio`).orderBy(
+    columnOrder as string,
+    order ? order.toUpperCase() : "ASC"
+  );
   return res;
 };
 
@@ -46,6 +43,7 @@ export const selectUserByPage = async (page: number): Promise<user[]> => {
 export const selectUserAllFilters = async ({
   name,
   type,
+  columnOrder,
   order,
   page,
 }: allFilters): Promise<user[]> => {
@@ -53,7 +51,7 @@ export const selectUserAllFilters = async ({
     .whereRaw(`name LIKE ?`, name ? `%${name}%` : `%${""}%`)
     .andWhereRaw(`type LIKE ?`, type ? `%${type}%` : `%${""}%`)
     .orderBy(
-      name ? "name" : type ? "type" : "name",
+      columnOrder as string,
       order ? order.toUpperCase() : "DESC"
     )
     .limit(5)

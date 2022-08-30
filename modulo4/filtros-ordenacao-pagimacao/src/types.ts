@@ -6,14 +6,14 @@ export type user = {
 };
 
 export type userOrder = {
-  name?: string;
-  type?: string;
+  columnOrder?: string;
   order?: string;
 };
 
 export type allFilters = {
   name?: string;
   type?: string;
+  columnOrder?: string;
   order?: string;
   page?: string;
 };
