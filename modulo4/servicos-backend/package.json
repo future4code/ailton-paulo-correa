@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "clear && ts-node-dev ./src/index.ts",
-    "start": "tsc && node ./build/index.js"
+    "start": "node ./build/index.js",
+    "postinstall": "tsc",
+    "test": "clear && echo \"Running tests...\""
+  },
+  "engines": {
+    "node": "v16.15.0"
   },
   "keywords": [],
   "author": "",
