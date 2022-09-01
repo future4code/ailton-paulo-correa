@@ -1,11 +1,14 @@
 import { app } from "./app";
+import { createProducts } from "./endpoints/createProducts";
 import { createUsers } from "./endpoints/createUsers";
+import { getAllProducts } from "./endpoints/getAllProducts";
 import { getAllUsers } from "./endpoints/getAllUsers";
+import { purchases } from "./endpoints/createPurchases";
+import { getPurchaseByUser } from "./endpoints/getPurchaseByUser";
 
 app.get(`/users`, getAllUsers);
+app.get(`/products`, getAllProducts);
+app.get(`/users/:user_id/purchases`, getPurchaseByUser);
 app.post(`/users`, createUsers);
-
-console.log(
-  /\.(jpg|jpeg|png|webp|avif|gif|svg)/.test("http://localhost:3003/users")
-);
-console.log(/^[a-z0-9.]+@[a-z0-9]+\.[a-z.]+?$/i.test("gabriel@email.com.br"));
+app.post(`/products`, createProducts);
+app.post(`/purchases`, purchases);

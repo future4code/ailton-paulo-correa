@@ -13,6 +13,7 @@ CREATE TABLE labecommerce_products (
     price DOUBLE NOT NULL,
     image_url VARCHAR(255) NOT NULL
 );
+SELECT * FROM labecommerce_products;
 
 -- Registro de compra
 CREATE TABLE labecommerce_purchases (

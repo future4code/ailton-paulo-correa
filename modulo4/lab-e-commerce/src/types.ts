@@ -9,13 +9,13 @@ export type product = {
   id?: string;
   name: string;
   price: number;
-  imageUrl: string;
+  image_url: string;
 };
 
 export type purchase = {
-  id: string;
+  id?: string;
   quantity: number;
-  totalPrice: number;
-  userId: string;
-  productId: string;
+  total_price?: number;
+  user_id: string;
+  product_id: string;
 };

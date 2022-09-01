@@ -9,7 +9,8 @@ export const createUsers = async (
 ): Promise<void> => {
   let errorCode: number = 500;
   try {
-    const newUser: user = req.body;
+    const { name, email, password }: user = req.body;
+    const newUser: user = { name, email, password };
 
     Object.keys(newUser).forEach((key) => {
       if (!newUser[key]) {
