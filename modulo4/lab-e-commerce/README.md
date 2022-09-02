@@ -4,7 +4,7 @@
 <h2>🛠️ Funcionalidades</h2>
 <ul>
     <li> Criar usuários;</li>
-    <li> Pegar usuários;/li>
+    <li> Pegar usuários;</li>
     <li> Criar produtos;</li>
     <li> Pegar produtos;</li>
     <li> Criar compra de um produto;</li>
