@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { postPurchase, priceProduct, searchIdUser } from "../data/query";
+import {
+  postPurchase,
+  priceProduct,
+  searchIdProduct,
+  searchIdUser,
+} from "../data/query";
 import { purchase } from "../types";
 
 export const purchases = async (req: Request, res: Response): Promise<void> => {
@@ -12,7 +17,7 @@ export const purchases = async (req: Request, res: Response): Promise<void> => {
       quantity,
     };
 
-    Object.keys(newPurchase).forEach((key) => {
+    Object.keys(newPurchase).forEach((key): void => {
       if (!newPurchase[key]) {
         errorCode = 404;
         throw new Error(`O ${key} não foi informado!`);
@@ -33,17 +38,30 @@ export const purchases = async (req: Request, res: Response): Promise<void> => {
         );
       }
     });
-    if (!(await searchIdUser(user_id))) {
+
+    if (!(await searchIdUser(user_id as string))) {
       errorCode = 404;
-      throw new Error(`O ID informado não existe no banco de dados!`);
+      throw new Error(
+        `O ID de usuário informado não existe no banco de dados!`
+      );
+    }
+
+    if (!(await searchIdProduct(product_id))) {
+      errorCode = 404;
+      throw new Error(
+        `O ID de produto informado não existe no banco de dados!`
+      );
     }
 
     const price = await priceProduct(product_id);
     newPurchase.id = Date.now().toString();
-    newPurchase.total_price = price * quantity;
-    await postPurchase(newPurchase)
+    newPurchase.total_price = Number((price * quantity).toFixed(2));
+    await postPurchase(newPurchase);
 
-    res.status(201).send({ message: "Compra realizada com sucesso!", data: newPurchase });
+    res.status(201).send({
+      message: "Compra do produto realizada com sucesso!",
+      data: newPurchase,
+    });
   } catch (error: any) {
     res.status(errorCode).send({ message: error.message });
   }

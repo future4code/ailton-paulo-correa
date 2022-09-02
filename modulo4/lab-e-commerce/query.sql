@@ -6,6 +6,7 @@ CREATE TABLE labecommerce_users (
     password VARCHAR(255) NOT NULL
 );
 SELECT * FROM labecommerce_users;
+
 -- Busca por todos os usuários
 CREATE TABLE labecommerce_products (
     id VARCHAR(255) PRIMARY KEY,

@@ -12,7 +12,7 @@ export const createUsers = async (
     const { name, email, password }: user = req.body;
     const newUser: user = { name, email, password };
 
-    Object.keys(newUser).forEach((key) => {
+    Object.keys(newUser).forEach((key): void => {
       if (!newUser[key]) {
         errorCode = 404;
         throw new Error(`O ${key} não foi informado!`);

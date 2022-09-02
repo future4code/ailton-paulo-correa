@@ -13,14 +13,23 @@ export const allUsers = async (): Promise<user[]> =>
 export const postProduct = async (newProduct: product): Promise<void> =>
   await connection().insert(newProduct).into("labecommerce_products");
 
-export const allProducts = async (): Promise<product[]> =>
-  await connection("labecommerce_products").select("*");
+export const allProducts = async (
+  order: string,
+  search: string
+): Promise<product[]> =>
+  await connection("labecommerce_products")
+    .select("*")
+    .whereRaw(`name LIKE ?`, `%${search}%`)
+    .orderBy("name", order);
 
 export const postPurchase = async (newPurchase: purchase): Promise<void> =>
   await connection().insert(newPurchase).into("labecommerce_purchases");
 
 export const searchIdUser = async (id: string): Promise<boolean> =>
   !!(await connection("labecommerce_users").where({ id })).length;
+
+export const searchIdProduct = async (id: string): Promise<boolean> =>
+  !!(await connection("labecommerce_products").where({ id })).length;
 
 export const priceProduct = async (id: string): Promise<number> => {
   const res: { price: number }[] = await connection("labecommerce_products")

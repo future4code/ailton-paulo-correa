@@ -14,9 +14,14 @@ export const getPurchaseByUser = async (req: Request, res: Response) => {
       errorCode = 404;
       throw new Error(`O ID informado não existe no banco de dados!`);
     }
-    
+
     const purchases = await purchasesUser(user_id);
-    res.status(200).send({ message: "", data: { purchases } });
+    res
+      .status(200)
+      .send({
+        message: "Lista de compras do usuário informado!",
+        data: { purchases },
+      });
   } catch (error: any) {
     res.status(errorCode).send({ message: error.message });
   }

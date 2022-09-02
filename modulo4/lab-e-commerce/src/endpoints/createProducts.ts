@@ -12,7 +12,7 @@ export const createProducts = async (
     const { name, price, image_url }: product = req.body;
     const newProduct: product = { name, price, image_url };
 
-    Object.keys(newProduct).forEach((key) => {
+    Object.keys(newProduct).forEach((key): void => {
       if (!newProduct[key]) {
         errorCode = 404;
         throw new Error(`O ${key} não foi informado!`);
