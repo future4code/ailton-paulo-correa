@@ -19,10 +19,12 @@ export class UserController {
 
   public login = async (req: Request, res: Response) => {
     try {
-      const {email,password}:UserLogin = req.body
-      
+      const { email, password }: UserLogin = req.body;
+      const userBusiness = new UserBusiness();
+      const user: UserLogin = { email, password };
+      const token = await userBusiness.login(user);
 
-      res.status(200).send({ message: "Logado com sucesso!", data: "token" });
+      res.status(200).send({ message: "Logado com sucesso!", data: { token } });
     } catch (error: any) {
       res.status(error.statusCode || 500).send({ message: error.message });
     }
