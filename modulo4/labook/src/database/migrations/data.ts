@@ -1,7 +1,7 @@
 import { ILikeDB, IPostDB } from "../../models/Post";
-import { IUserDB, USER_ROLES } from "../../models/User";
+import { IUserDataBase, USER_ROLES } from "../../models/User";
 
-export const users: IUserDB[] = [
+export const users: IUserDataBase[] = [
   {
     id: "101",
     name: "Astrodev",

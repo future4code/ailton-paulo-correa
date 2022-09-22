@@ -22,13 +22,13 @@ class Migrations extends BaseDatabase {
       }
     } finally {
       console.log("Ending connection...");
-      BaseDatabase.connection.destroy();
+      this.getConnection().destroy();
       console.log("Connection closed graciously.");
     }
   };
 
   createTables = async () => {
-    await BaseDatabase.connection.raw(`
+    await this.getConnection().raw(`
         DROP TABLE IF EXISTS ${PostDatabase.TABLE_LIKES};
         DROP TABLE IF EXISTS ${PostDatabase.TABLE_POSTS};
         DROP TABLE IF EXISTS ${UserDatabase.TABLE_USERS};
@@ -59,11 +59,11 @@ class Migrations extends BaseDatabase {
   };
 
   insertData = async () => {
-    await BaseDatabase.connection(UserDatabase.TABLE_USERS).insert(users);
+    await this.getConnection().into(UserDatabase.TABLE_USERS).insert(users);
 
-    await BaseDatabase.connection(PostDatabase.TABLE_POSTS).insert(posts);
+    await this.getConnection().into(PostDatabase.TABLE_POSTS).insert(posts);
 
-    await BaseDatabase.connection(PostDatabase.TABLE_LIKES).insert(likes);
+    await this.getConnection().into(PostDatabase.TABLE_LIKES).insert(likes);
   };
 }
 
