@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Button = styled.span`
   align-items: center;
-  background-color: ${({ hasClicked }) => (hasClicked ? "#D18000" : "#ffffff")};
+  background-color: ${({ selected }) => (selected ? "#D18000" : "#ffffff")};
   border: none;
   border-radius: 4px;
-  color: ${({ hasClicked }) => (hasClicked ? "#ffffff" : "#000000")};
+  color: ${({ selected }) => (selected ? "#ffffff" : "#000000")};
   display: flex;
   font-weight: 700;
   font-size: 1rem;
@@ -16,8 +16,8 @@ export const Button = styled.span`
   @media screen and (max-width: 600px) {
     font-size: 0.875rem;
     line-height: 1.25rem;
-    padding: ${({ hasClicked }) =>
-      hasClicked ? "0.375rem 0.8rem" : "0.375rem 1rem"};
+    padding: ${({ selected }) =>
+      selected ? "0.375rem 0.8rem" : "0.375rem 1rem"};
   }
 `;
 

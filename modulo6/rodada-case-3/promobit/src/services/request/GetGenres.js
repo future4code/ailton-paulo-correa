@@ -5,7 +5,6 @@ const GetGenres = async (set) => {
   try {
     const pathUrl = `/genre/movie/list?api_key=${ApiKey}&language=pt-BR`;
     const { data } = await axios.get(`${ApiBaseURL}${pathUrl}`);
-    console.log(data);
     set(data.genres);
   } catch (error) {
     console.log(error.message);
