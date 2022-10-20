@@ -21,7 +21,12 @@ export default function Home() {
   }, [genres, pagination]);
 
   const showGenres = genres?.map((genre) => (
-    <GenreButton genre={genre} selectGenres={selectGenres} setSelectGenres={setSelectGenres} key={genre.id} />
+    <GenreButton
+      genre={genre}
+      selectGenres={selectGenres}
+      setSelectGenres={setSelectGenres}
+      key={genre.id}
+    />
   ));
   const showMovies = movies
     ?.filter((movie) => {

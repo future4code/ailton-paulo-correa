@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   background-color: #e5e5e5;
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -15,6 +16,7 @@ export const FilterBox = styled.section`
   align-items: center;
   min-height: 28.125rem;
   padding: 0 1rem;
+  width: 100%;
   @media screen and (max-width: 600px) {
     align-items: flex-start;
   }
@@ -72,14 +74,17 @@ export const GenreBox = styled.nav`
 export const MoviesSection = styled.section`
   column-gap: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, min-content));
-  justify-content: space-between;
-  padding: 2rem 7rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, min-content));
+  justify-content: start;
+  max-width: 88%;
+  padding: 2rem 0;
   row-gap: 3rem;
+  width: fit-content;
   @media screen and (max-width: 600px) {
-    column-gap: 0;
+    column-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(9.667rem, min-content));
-    padding: 2rem 1rem;
+    max-width: 100%;
+    padding: 2rem 0;
     row-gap: 2rem;
   }
 `;
