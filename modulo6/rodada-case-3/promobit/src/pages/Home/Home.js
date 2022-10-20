@@ -56,7 +56,9 @@ export default function Home() {
           <St.GenreBox>{showGenres}</St.GenreBox>
           <St.Space />
         </St.FilterBox>
+        <St.DivGrid>
         <St.MoviesSection>{showMovies}</St.MoviesSection>
+        </St.DivGrid>
       </St.Container>
       {!selectGenres.length && (
         <FooterPagination

@@ -75,16 +75,26 @@ export const MoviesSection = styled.section`
   column-gap: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11rem, min-content));
-  justify-content: start;
-  max-width: 88%;
+  justify-content: space-between;
+  max-width: 100%;
   padding: 2rem 0;
   row-gap: 3rem;
-  width: fit-content;
+  /* width: fit-content; */
   @media screen and (max-width: 600px) {
     column-gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(9.667rem, min-content));
     max-width: 100%;
     padding: 2rem 0;
     row-gap: 2rem;
+  }
+`;
+
+export const DivGrid = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 88%;
+  @media screen and (max-width: 600px) {
+    justify-content: space-evenly;
+    width: 100%;
   }
 `;
