@@ -5,6 +5,7 @@ export const Container = styled.header`
   background: #5c16c5;
   align-items: center;
   height: 3.5rem;
+  cursor: ${({ hasBack }) => (hasBack ? "pointer" : "unset")};
   @media screen and (max-width: 600px) {
     justify-content: center;
   }

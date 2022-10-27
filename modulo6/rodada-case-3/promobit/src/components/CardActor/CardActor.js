@@ -1,6 +1,6 @@
 import React from "react";
 import { ImgBaseURL } from "../../constants/Basic";
-import { Container, PhotoActor } from "./styled";
+import { Character, Container, Name, PhotoActor } from "./styled";
 import noPhoto from "../../assets/sem-foto.png";
 
 export default function CardActor({ cast }) {
@@ -10,8 +10,8 @@ export default function CardActor({ cast }) {
   return (
     <Container>
       <PhotoActor img={photoActor} alt={`Foto de ${cast.name}`} />
-      <p>{cast.name}</p>
-      <p>{cast.character}</p>
+      <Name>{cast.name}</Name>
+      <Character>{cast.character}</Character>
     </Container>
   );
 }

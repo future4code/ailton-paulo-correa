@@ -12,6 +12,13 @@ export default function Home() {
   const [genres, setGenres] = useState(undefined);
   const [pagination, setPagination] = useState(1);
   const [selectGenres, setSelectGenres] = useState([]);
+  const [screen, setScreen] = useState(window.innerWidth);
+  const minCards = screen / 176;
+  const detecteSize = () => {
+    setScreen(window.innerWidth);
+  };
+
+  window.addEventListener("resize", detecteSize);
 
   useEffect(() => {
     (async () => {
@@ -28,18 +35,25 @@ export default function Home() {
       key={genre.id}
     />
   ));
+  const movieList = movies?.filter((movie) => {
+    if (!selectGenres.length) return movie;
+    else {
+      const findGenre = movie.genre_ids.filter((id) => {
+        return selectGenres.indexOf(id) >= 0;
+      });
+      return findGenre.length;
+    }
+  });
 
-  const showMovies = movies
-    ?.filter((movie) => {
-      if (!selectGenres.length) return movie;
-      else {
-        const findGenre = movie.genre_ids.filter((id) => {
-          return selectGenres.indexOf(id) >= 0;
-        });
-        return findGenre.length;
-      }
-    })
-    ?.map((movie) => <CardMovie movie={movie} key={movie.id} />);
+  if (movieList?.length && movieList?.length < minCards) {
+    for (let i = movieList.length; i < minCards; i++) {
+      movieList.push(undefined);
+    }
+  }
+
+  const showMovies = movieList?.map((movie, index) => (
+    <CardMovie movie={movie} key={movie ? movie.id : `a${index}`} />
+  ));
 
   return (
     <>
@@ -57,9 +71,11 @@ export default function Home() {
           <St.GenreBox>{showGenres}</St.GenreBox>
           <St.Space />
         </St.FilterBox>
-        <St.DivGrid>
-          <St.MoviesSection>{showMovies}</St.MoviesSection>
-        </St.DivGrid>
+        <St.SectionMovies>
+          <St.DivGrid>
+            <St.MoviesSection>{showMovies}</St.MoviesSection>
+          </St.DivGrid>
+        </St.SectionMovies>
       </St.Container>
       {!selectGenres.length && (
         <FooterPagination

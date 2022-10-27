@@ -18,6 +18,23 @@ export const PhotoActor = styled.span`
   background-image: url(${({ img }) => img});
   background-size: cover;
   background-position: center top;
+  border-radius: 4px;
   height: 13.875rem;
   width: 10.938rem;
+`;
+
+export const Name = styled.span`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  color: #131313;
+`;
+
+export const Character = styled.span`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #131313;
 `;

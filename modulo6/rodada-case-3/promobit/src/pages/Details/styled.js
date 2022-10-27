@@ -131,23 +131,26 @@ export const SectionDetails = styled.section`
   flex-direction: column;
   padding: 0 7rem;
   @media screen and (max-width: 1040px) {
-    padding: 0 1rem;
+    padding: 0;
   }
 `;
 
-export const BoxCast = styled.div`
+export const Box = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
 `;
 
-export const CastTitle = styled.span`
+export const DetailsTitle = styled.span`
   font-style: normal;
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 2rem;
   letter-spacing: -0.005em;
   color: #131313;
+  @media screen and (max-width: 1040px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const ListCast = styled.div`
@@ -156,7 +159,7 @@ export const ListCast = styled.div`
   overflow: auto;
   padding-bottom: 2rem;
   ::-webkit-scrollbar {
-    width: 0.75rem;
+    height: 0.75rem;
   }
   ::-webkit-scrollbar-track {
     background: #dddddd;
@@ -169,6 +172,8 @@ export const ListCast = styled.div`
     border-radius: 6.25rem;
   }
   @media screen and (max-width: 1040px) {
+    padding: 0 1rem;
+    padding-bottom: 2rem;
     ::-webkit-scrollbar-thumb {
       min-width: 4rem;
     }

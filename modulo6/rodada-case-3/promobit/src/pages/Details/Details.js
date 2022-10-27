@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import CardMovie from "../../components/CardMovie/CardMovie";
 import CardActor from "../../components/CardActor/CardActor";
 import CardCrew from "../../components/CardCrew/CardCrew";
 import Header from "../../components/Header/Header";
@@ -7,22 +8,39 @@ import { ImgBaseURL } from "../../constants/Basic";
 import GetCredits from "../../services/request/GetCredits";
 import GetMovieById from "../../services/request/GetMovieById";
 import GetReleaseDates from "../../services/request/GetReleaseDates";
+import GetTrailer from "../../services/request/GetTrailer";
+import GetRecomendations from "../../services/request/GetRecomendations";
 import * as St from "./styled";
+import { DivGrid, MoviesSection } from "../Home/styled";
 
 export default function Details() {
   const { id } = useParams();
   const [movie, setMovie] = useState(undefined);
   const [releaseDate, setReleaseDate] = useState(undefined);
   const [credits, setCredits] = useState(undefined);
+  const [trailer, setTrailer] = useState(undefined);
+  const [recomendations, setRecomendations] = useState(undefined);
+  const [loading, setLoading] = useState(true);
+  const [screen, setScreen] = useState(window.innerWidth);
+  const minCards = screen / 176;
+  const detecteSize = () => {
+    setScreen(window.innerWidth);
+  };
+
+  window.addEventListener("resize", detecteSize);
 
   useEffect(() => {
+    setLoading(true);
     const getValues = async () => {
       await GetMovieById(id, setMovie);
       await GetReleaseDates(id, setReleaseDate);
       await GetCredits(id, setCredits);
+      await GetTrailer(id, setTrailer);
+      await GetRecomendations(id, setRecomendations);
+      setLoading(false);
     };
     getValues();
-  }, []);
+  }, [id]);
 
   const findAgeGroup = releaseDate
     ?.filter((release) => release.iso_3166_1 === "BR")
@@ -36,27 +54,35 @@ export default function Details() {
   const date = `${new Date(movie?.release_date).toLocaleDateString()} (BR)`;
   const voteAverage = (movie?.vote_average * 10).toFixed(0);
   const runtime = `${(movie?.runtime / 60).toFixed(0)}h${movie?.runtime % 60}m`;
-  const jobFind = [
-    "writing",
-    "characters",
-    "character",
-    "director",
-    "screenplay",
-  ];
+  const jobFind = ["characters", "director", "screenplay"];
 
   const showCrews = credits?.crew
+    .sort((a, b) => {
+      if (a.job < b.job) return -1;
+      if (a.job > b.job) return 1;
+      return 0;
+    })
     .filter((crew) => jobFind.indexOf(crew.job.toLowerCase()) >= 0)
-    .map((crew) => <CardCrew crew={crew} key={crew.id} />);
+    .map((crew, index) => <CardCrew crew={crew} key={index} />);
 
   const showCast = credits?.cast.map((cast) => (
     <CardActor cast={cast} key={cast.id} />
   ));
 
-  console.log(credits?.cast);
+  if (recomendations?.length && recomendations?.length < minCards) {
+    for (let i = recomendations.length; i < minCards; i++) {
+      recomendations.push(undefined);
+    }
+  }
+
+  const showRecomendations = recomendations?.map((movie) => (
+    <CardMovie movie={movie} />
+  ));
   return (
     <div>
       <Header hasBack={true} />
-      {movie && (
+      {loading && "Carregando"}
+      {!loading && (
         <St.Container>
           <St.BoxInfo>
             <St.DivPoster>
@@ -88,10 +114,32 @@ export default function Details() {
           </St.BoxInfo>
           <St.Space space={4.625} />
           <St.SectionDetails>
-            <St.BoxCast>
-              <St.CastTitle>Elenco original</St.CastTitle>
+            <St.Box>
+              <St.DetailsTitle>Elenco original</St.DetailsTitle>
+              <St.Space space={1.5} />
               <St.ListCast>{showCast}</St.ListCast>
-            </St.BoxCast>
+            </St.Box>
+            <St.Space space={2.438} />
+            <St.Box>
+              {trailer?.length > 0 && (
+                <>
+                  <St.DetailsTitle>Trailer</St.DetailsTitle>
+                  <St.Space space={1.5} />
+                  <iframe
+                    width="907"
+                    height="510"
+                    src={`https://www.youtube.com/embed/${trailer[0].key}`}
+                    title={trailer[0].name}
+                    frameBorder="0"
+                    // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </>
+              )}
+            </St.Box>
+            <DivGrid>
+              <MoviesSection>{showRecomendations}</MoviesSection>
+            </DivGrid>
           </St.SectionDetails>
           <St.Space space={7} />
         </St.Container>

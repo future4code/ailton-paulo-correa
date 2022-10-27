@@ -72,36 +72,35 @@ export const GenreBox = styled.nav`
 `;
 
 export const MoviesSection = styled.section`
-display: flex;
-flex-wrap: wrap;
-row-gap: 3rem;
-column-gap: 2rem;
-padding: 2rem 0;
-  /* column-gap: 2rem;
+  padding: 2rem 0;
+  column-gap: 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  justify-content: space-evenly;
+  justify-items: center;
   max-width: 100%;
   row-gap: 3rem;
-  width: fit-content; */
+  width: fit-content;
   @media screen and (max-width: 600px) {
-    column-gap: 1rem;
-    justify-content: space-evenly;
-    /* 
-    max-width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(9.667rem, 1fr));
-    padding: 2rem 0;
-    */
-    row-gap: 2rem; 
+    column-gap: 0;
+    row-gap: 2rem;
   }
 `;
 
 export const DivGrid = styled.div`
   display: flex;
   justify-content: center;
-  width: 88%;
+  width: 100%;
   @media screen and (max-width: 600px) {
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
+  }
+`;
+
+export const SectionMovies = styled.section`
+  display: flex;
+  padding: 0 7rem;
+  width: 100%;
+  @media screen and (max-width: 1040px) {
+    padding: 0;
   }
 `;
