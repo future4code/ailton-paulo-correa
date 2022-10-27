@@ -28,6 +28,7 @@ export default function Home() {
       key={genre.id}
     />
   ));
+
   const showMovies = movies
     ?.filter((movie) => {
       if (!selectGenres.length) return movie;
@@ -35,7 +36,7 @@ export default function Home() {
         const findGenre = movie.genre_ids.filter((id) => {
           return selectGenres.indexOf(id) >= 0;
         });
-        return findGenre.length === selectGenres.length;
+        return findGenre.length;
       }
     })
     ?.map((movie) => <CardMovie movie={movie} key={movie.id} />);
@@ -57,7 +58,7 @@ export default function Home() {
           <St.Space />
         </St.FilterBox>
         <St.DivGrid>
-        <St.MoviesSection>{showMovies}</St.MoviesSection>
+          <St.MoviesSection>{showMovies}</St.MoviesSection>
         </St.DivGrid>
       </St.Container>
       {!selectGenres.length && (

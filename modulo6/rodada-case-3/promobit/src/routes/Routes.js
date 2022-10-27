@@ -9,7 +9,7 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/movie/:name" element={<Details />} />
+        <Route path="/movie/:id/:name" element={<Details />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
