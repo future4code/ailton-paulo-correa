@@ -12,6 +12,7 @@ import GetTrailer from "../../services/request/GetTrailer";
 import GetRecomendations from "../../services/request/GetRecomendations";
 import * as St from "./styled";
 import { DivGrid, MoviesSection } from "../Home/styled";
+import Loading from "../../components/Loading/Loading";
 
 export default function Details() {
   const { id } = useParams();
@@ -22,7 +23,8 @@ export default function Details() {
   const [recomendations, setRecomendations] = useState(undefined);
   const [loading, setLoading] = useState(true);
   const [screen, setScreen] = useState(window.innerWidth);
-  const minCards = screen / 176;
+  const minCards =
+    screen > 1040 ? (screen - 224) / 176 - 1 : (screen - 40) / 154;
   const detecteSize = () => {
     setScreen(window.innerWidth);
   };
@@ -37,7 +39,9 @@ export default function Details() {
       await GetCredits(id, setCredits);
       await GetTrailer(id, setTrailer);
       await GetRecomendations(id, setRecomendations);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     };
     getValues();
   }, [id]);
@@ -75,13 +79,13 @@ export default function Details() {
     }
   }
 
-  const showRecomendations = recomendations?.map((movie) => (
-    <CardMovie movie={movie} />
+  const showRecomendations = recomendations?.map((movie, index) => (
+    <CardMovie movie={movie} key={movie ? movie.id : `a${index}`} />
   ));
   return (
-    <div>
+    <>
       <Header hasBack={true} />
-      {loading && "Carregando"}
+      {loading && <Loading />}
       {!loading && (
         <St.Container>
           <St.BoxInfo>
@@ -99,7 +103,17 @@ export default function Details() {
               </St.Details>
               <St.Space space={1} />
               <St.BoxRating>
-                <St.Rating>{`${voteAverage}%`}</St.Rating>
+                <St.Rating>
+                  <St.ProgressBar>
+                    <St.Circle
+                      r="29"
+                      cx="30"
+                      cy="30"
+                      progress={voteAverage * 2}
+                    />
+                  </St.ProgressBar>
+                  {`${voteAverage}%`}
+                </St.Rating>
                 <St.RatingText>Avaliação dos usuários</St.RatingText>
               </St.BoxRating>
               <St.Space space={2} />
@@ -125,25 +139,29 @@ export default function Details() {
                 <>
                   <St.DetailsTitle>Trailer</St.DetailsTitle>
                   <St.Space space={1.5} />
-                  <iframe
-                    width="907"
-                    height="510"
+                  <St.Iframe
                     src={`https://www.youtube.com/embed/${trailer[0].key}`}
                     title={trailer[0].name}
                     frameBorder="0"
-                    // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
+                  <St.Space space={3.1} />
                 </>
               )}
             </St.Box>
-            <DivGrid>
-              <MoviesSection>{showRecomendations}</MoviesSection>
-            </DivGrid>
+            {showRecomendations.length > 0 && (
+              <>
+                <St.DetailsTitle>Recomendações</St.DetailsTitle>
+                <DivGrid>
+                  <MoviesSection>{showRecomendations}</MoviesSection>
+                </DivGrid>
+              </>
+            )}
           </St.SectionDetails>
           <St.Space space={7} />
         </St.Container>
       )}
-    </div>
+    </>
   );
 }

@@ -69,18 +69,45 @@ export const Details = styled.span`
 `;
 
 export const BoxRating = styled.div`
+  align-items: center;
   display: flex;
   gap: 0.725rem;
 `;
 
 export const Rating = styled.span`
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  color: #14ff00;
+  display: flex;
   font-style: normal;
   font-weight: 700;
   font-size: 1rem;
+  height: 3.75rem;
+  justify-content: center;
   line-height: 2.375rem;
   letter-spacing: -0.005em;
-  color: #14ff00;
+  position: relative;
+  width: 3.75rem;
 `;
+
+export const ProgressBar = styled.svg`
+  border-radius: 100px;
+  height: 3.75rem;
+  position: absolute;
+  width: 3.75rem;
+  rotate: -80deg;
+`;
+
+export const Circle = styled.circle`
+  fill: none;
+  stroke: #14ff00;
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 200;
+  stroke-dashoffset: ${({ progress }) => 200 - (progress - 21)};
+`;
+
 export const RatingText = styled.span`
   color: #ffffff;
   font-style: normal;
@@ -177,5 +204,15 @@ export const ListCast = styled.div`
     ::-webkit-scrollbar-thumb {
       min-width: 4rem;
     }
+  }
+`;
+
+export const Iframe = styled.iframe`
+  height: 50vw; // Aqui tem que ser vw para a altura acompanhar a largura
+  max-height: 31.875rem;
+  max-width: 56.688rem;
+  width: 100%;
+  @media screen and (max-width: 1040px) {
+    padding: 0 1rem;
   }
 `;

@@ -3,6 +3,7 @@ import CardMovie from "../../components/CardMovie/CardMovie";
 import FooterPagination from "../../components/FooterPagination/FooterPagination";
 import GenreButton from "../../components/GenreButton/GenreButton";
 import Header from "../../components/Header/Header";
+import Loading from "../../components/Loading/Loading";
 import GetGenres from "../../services/request/GetGenres";
 import GetMovies from "../../services/request/GetMovies";
 import * as St from "./styled";
@@ -13,7 +14,9 @@ export default function Home() {
   const [pagination, setPagination] = useState(1);
   const [selectGenres, setSelectGenres] = useState([]);
   const [screen, setScreen] = useState(window.innerWidth);
-  const minCards = screen / 176;
+  const minCards =
+    screen > 1040 ? (screen - 224) / 176 - 1 : (screen - 40) / 154;
+  const [loading, setLoading] = useState(true);
   const detecteSize = () => {
     setScreen(window.innerWidth);
   };
@@ -21,10 +24,15 @@ export default function Home() {
   window.addEventListener("resize", detecteSize);
 
   useEffect(() => {
-    (async () => {
+    setLoading(true);
+    const getValues = async () => {
       await GetMovies(pagination, setMovies);
       if (!genres) await GetGenres(setGenres);
-    })();
+    };
+    getValues();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [genres, pagination]);
 
   const showGenres = genres?.map((genre) => (
@@ -58,31 +66,40 @@ export default function Home() {
   return (
     <>
       <Header />
-      <St.Container>
-        <St.FilterBox>
-          <St.Space />
-          <St.BoxDescription>
-            <St.Description>
-              Milhões de filmes, séries e pessoas para descobrir. Explore já.
-            </St.Description>
-          </St.BoxDescription>
-          <St.Space />
-          <St.FilterTitle>FILTRE POR:</St.FilterTitle>
-          <St.GenreBox>{showGenres}</St.GenreBox>
-          <St.Space />
-        </St.FilterBox>
-        <St.SectionMovies>
-          <St.DivGrid>
-            <St.MoviesSection>{showMovies}</St.MoviesSection>
-          </St.DivGrid>
-        </St.SectionMovies>
-      </St.Container>
-      {!selectGenres.length && (
-        <FooterPagination
-          pagination={pagination}
-          setPagination={setPagination}
-        />
-      )}
+      {loading && <Loading />}
+      <>
+        {!loading && (
+          <>
+            <St.FilterBox>
+              <St.Space />
+              <St.BoxDescription>
+                <St.Description>
+                  Milhões de filmes, séries e pessoas para descobrir. Explore
+                  já.
+                </St.Description>
+              </St.BoxDescription>
+              <St.Space />
+              <St.FilterTitle>FILTRE POR:</St.FilterTitle>
+              <St.GenreBox>{showGenres}</St.GenreBox>
+              <St.Space />
+            </St.FilterBox>
+
+            <St.Container>
+              <St.SectionMovies>
+                <St.DivGrid>
+                  <St.MoviesSection>{showMovies}</St.MoviesSection>
+                </St.DivGrid>
+              </St.SectionMovies>
+            </St.Container>
+          </>
+        )}
+        {!loading && !selectGenres.length && (
+          <FooterPagination
+            pagination={pagination}
+            setPagination={setPagination}
+          />
+        )}
+      </>
     </>
   );
 }

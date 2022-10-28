@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  cursor: pointer;
+  cursor: ${({ isEmpty }) => (isEmpty ? "unset" : "pointer")};
   min-height: 20rem;
   width: 11rem;
   @media screen and (max-width: 600px) {
